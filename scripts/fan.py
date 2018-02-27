@@ -20,7 +20,7 @@ def getCPUtemperature():
     """ Get CPU temperature """
     res = os.popen('vcgencmd measure_temp').readline()
     temp = (res.replace("temp=", "").replace("'C\n", ""))
-    print("temp is {0}".format(temp))  # Uncomment here for testing
+    # print("temp is {0}".format(temp))  # Uncomment here for testing
     return temp
 
 
@@ -31,10 +31,10 @@ try:
         CPU_temp = float(getCPUtemperature())
         if (CPU_temp > max_TEMP):
             GPIO.output(pin, True)
-            print ("ON")
+            # print ("ON")
         if (CPU_temp < cutoff_TEMP):
             GPIO.output(pin, False)
-            print ("OFF")
+            # print ("OFF")
         sleep(60)  # Read temperature every 60 sec, edit here to change it
 except KeyboardInterrupt:
     GPIO.cleanup()  # clean up GPIO on CTRL+C exit
