@@ -1,0 +1,23 @@
+{
+        "name" : "Clock",
+        "script" : "clock.py",
+        "args" :
+        {
+                "owmAPIkey" : "",
+                "latitude" : 41.894741,
+                "longitude" : 12.4839,
+
+                "offset" : 69,
+                "direction" : 1,
+
+                "hour-margin" : 2,
+                "minute-margin" : 1,
+                "second-margin" : 0,
+
+                "hour-color" : [255, 0, 0],
+                "minute-color" : [0, 255, 0],
+                "second-color" : [0, 0, 255],
+
+                "marker-color" : [0, 0, 0]
+        }
+}
