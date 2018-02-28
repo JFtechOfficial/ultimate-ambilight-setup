@@ -4,7 +4,7 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 """ Define some variables (do NOT use pin 3, it's hardcoded as shutdown button) """
-pins = {17: 'Rainbow swirl fast', 22: 'Clock'}   # Pin ID: 'Effect name', edit here to change or add pins
+pins = {17: 'Rainbow swirl fast', 22: 'Clock'}   # Pin ID: 'Effect name', edit here to change or add pins and effects
 clear = 27  # Pin ID, edit here to change it
 
 FNULL = open(os.devnull, 'w')
