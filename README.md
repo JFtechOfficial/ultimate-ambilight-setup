@@ -38,12 +38,18 @@ you can modify the install.sh file if you don't want to install all the scripts
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
-if something goes wrong, please manually install all the [dependancies](#️-credits) and download all the fil
+if something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below
+```shell
+sudo apt-get install git
+git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
+mkdir -p /home/osmc/
+mv -i ultimate-ambilght-setup/ /home/osmc/Development/
+```
 
 ## ⚙️ Configuration
 
 ### Clock effect
-* move both `clock.py` and `clock.json` to the Hyperion effects folder (this is the default path)
+* move both `clock.py` and `clock.json` to the Hyperion effects folder (hyperion default path)
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
 ```
@@ -92,8 +98,9 @@ The fan script requires you to do nothing, it's automated.
 
 
 ## 📚 Resources
-Here is my step-by-step video guide to build the ultimate Ambilight setup: 
-Hyperion-project: 
+Here is my step-by-step video guide to build the ultimate Ambilight setup: *TO-DO*
+The `hyperion.config.json` file is an example of working configuration file for hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
+Please visit the [hyperion-project website](https://hyperion-project.org) and support the developers!
 
 ## 🎁 Contributing
 
@@ -102,12 +109,12 @@ Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## ❤️ Credits
 
 Major dependencies:
-* python
-* pyowm
-* RPi.GPIO
-* hyperion-project
+* [python](https://www.python.org)
+* [pyowm](https://github.com/csparpa/pyowm)
+* [RPi.GPIO](https://sourceforge.net/projects/raspberry-gpio-python/)
+* [hyperion](https://github.com/hyperion-project/hyperion)
 
-The following programs have been a source of inspiration:
+The following user have been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3)
 
 
 ## 🎓 License
