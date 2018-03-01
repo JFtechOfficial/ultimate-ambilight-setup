@@ -28,17 +28,17 @@ You can install [hyperion](https://hyperion-project.org) now or after the instal
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download and use PuTTY on Windows) and run this command to download the `install.sh` file:
+Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, (download PuTTY)[https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html] on Windows) and run this command:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
-you can modify the install.sh file if you don't want to install all the scripts
+ It will download the `install.sh` file. You can modify the install.sh file if you don't want to install all the scripts
 
 ```shell
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
-if something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below
+If something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below
 ```shell
 sudo apt-get install git
 git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
@@ -49,12 +49,12 @@ mv -i ultimate-ambilght-setup/ /home/osmc/Development/
 ## ⚙️ Configuration
 
 ### Clock effect
-* move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
+* Move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
 ```
 * [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
-* open the `clock.json` file
+* Open the `clock.json` file
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
@@ -65,20 +65,20 @@ sudo nano /usr/share/hyperion/effects/clock.json
 * Save and close the file
 
 ### Buttons
-* open the `buttons.py` file
+* Open the `buttons.py` file
 ```shell
 nano /home/osmc/Development/buttons.py
 ```
-* modify the `Pins` and `clear` variables to match your GPIO setup
+* Modify the `Pins` and `clear` variables to match your GPIO setup
 * Save and close the file
 
 ### Fan
-* open the `fan.py` file
+* Open the `fan.py` file
 ```shell
 nano /home/osmc/Development/fan.py
 ```
-* modify the `pin` variable to match your GPIO setup
-* you can modify the default `max_TEMP` variable (Temperature in Celsius after which the fan triggers),
+* Modify the `pin` variable to match your GPIO setup
+* You can modify the default `max_TEMP` variable (Temperature in Celsius after which the fan triggers),
 `cutoff_TEMP` variable (Temerature in Celsius after which the fan stops) and `sleepTime` variable (Temperature reading interval in seconds) or you can activate one of the pre-made fan profile by uncommenting it
 * Save and close the file
 
