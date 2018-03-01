@@ -22,7 +22,7 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * A Raspberry Pi 2 or 3
 * A microSD card with an OS installed ([OSMC](https://osmc.tv/download/) is suggested)
 
-You can install and configure [hyperion](https://hyperion-project.org) now or after the installation step. Installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested.
+You can install and configure [hyperion](https://hyperion-project.org) now or after the installation step (Installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
 
 
 ## 💾 Installation
