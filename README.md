@@ -22,9 +22,7 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * A Raspberry Pi 2 or 3
 * A microSD card with an OS installed ([OSMC](https://osmc.tv/download/) is suggested)
 
-You can install [hyperion](https://hyperion-project.org) now or after the installation step
-
-
+You can install and configure [hyperion](https://hyperion-project.org) now or after the installation step. Installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested.
 
 
 ## 💾 Installation
@@ -47,6 +45,8 @@ mv -i ultimate-ambilght-setup/ /home/osmc/Development/
 ```
 
 ## ⚙️ Configuration
+
+Be sure to have [hyperion](https://hyperion-project.org) installed and configured.
 
 ### Clock effect
 * Move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
