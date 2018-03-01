@@ -28,17 +28,17 @@ You can install [hyperion](https://hyperion-project.org) now or after the instal
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, (download PuTTY)[https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html] on Windows) and run this command:
+Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download PuTTY on Windows) and run this command:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
- It will download the `install.sh` file. You can modify the install.sh file if you don't want to install all the scripts
+ It will download the `install.sh` file. You can now modify the install.sh file if you don't want to install all the scripts
 
 ```shell
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
-If something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below
+If something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below:
 ```shell
 sudo apt-get install git
 git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
