@@ -100,7 +100,7 @@ The fan script requires you to do nothing, it's automated.
 ## 📚 Resources
 Here is my step-by-step video guide to build the ultimate Ambilight setup: *TO-DO*
 
-The `hyperion.config.json` file is an example of working configuration file for hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
+The `hyperion.config.json` file is an example of a working configuration file for hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
 
 Please visit the [hyperion-project website](https://hyperion-project.org) and support the developers!
 
