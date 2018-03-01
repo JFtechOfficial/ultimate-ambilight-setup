@@ -47,8 +47,7 @@ sudo ./install.sh
 * move both `clock.py` and `clock.json` to the Hyperion effects folder 
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
-```
-(default path)
+``` (default path)
 * [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * open the `clock.json` file
 ```shell
