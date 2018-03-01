@@ -53,13 +53,13 @@ mv -i ultimate-ambilght-setup/ /home/osmc/Development/
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
 ```
-* [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
+* Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
 * Paste the key in the `clock.json` file (you can use the same key in the kodi weather app)
-* [Get your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
+* Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
 * Paste both latitude and longitude in the `clock.json` file
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save and close the file
