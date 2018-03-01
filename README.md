@@ -28,7 +28,7 @@ You can install [hyperion](https://hyperion-project.org) now or after the instal
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (on MacOS/Linux use the Terminal app, on Windows download and use PuTTY) and run this command to download the `install.sh` file:
+Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download and use PuTTY on Windows) and run this command to download the `install.sh` file:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
@@ -38,7 +38,8 @@ you can modify the install.sh file if you don't want to install all the scripts
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
-if something goes wrong, please manually install all the [dependancies](#️-credits)
+if something goes wrong, please manually install all the [dependancies](#️-credits) and download all the fil
+
 ## ⚙️ Configuration
 
 ### Clock effect
