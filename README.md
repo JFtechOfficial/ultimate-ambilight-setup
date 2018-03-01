@@ -39,7 +39,7 @@ you can modify the install.sh file if you don't want to install all the scripts
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
-
+if something goes wrong, please manually install all the [dependancies](#️-credits)
 ## ⚙️ Configuration
 
 ### Clock effect
