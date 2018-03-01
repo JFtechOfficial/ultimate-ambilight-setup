@@ -37,7 +37,7 @@ python_install(){
 
 ambilight_scripts_install(){
     echo -n "Downloading, installing scripts..."
-    mkdir /home/osmc/Development
+    mkdir -p /home/osmc/Development
     wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz -P /home/osmc/Development
     if [ $? -eq 0 ]; then
         echo "OK"
