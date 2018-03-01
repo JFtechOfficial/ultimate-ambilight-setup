@@ -1,4 +1,4 @@
-![Logo](https://drive.google.com/open?id=0B0eJ6-uYxtK4OFhSU01WN3U4emM)
+![Logo](https://www.dropbox.com/s/esob374h6mj2wfw/logo.png?dl=0)
 # my ambilght setup ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
 
