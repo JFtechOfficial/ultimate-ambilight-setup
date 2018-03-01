@@ -12,7 +12,6 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * [Installation](#-installation)
 * [Configuration](#️-configuration)
 * [Usage](#️-usage)
-* [Examples](#-examples)
 * [Resources](#-resources)
 * [Contributing](#-contributing)
 * [Credits](#️-credits)
@@ -90,11 +89,10 @@ Use buttons connected to the GPIO to launch a predefined hyperion effects, go ba
 
 The fan script requires you to do nothing, it's automated.
 
-## 💼 Examples
-
 
 ## 📚 Resources
-
+Here is my step-by-step video guide to build the ultimate Ambilight setup: 
+Hyperion-project: 
 
 ## 🎁 Contributing
 
