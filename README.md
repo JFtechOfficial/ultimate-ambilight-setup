@@ -12,6 +12,22 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 
 You can install [hyperion](https://hyperion-project.org) now or after the installation step
 
+<details>
+ <summary><strong>Table of Contents</strong> (click to expand)</summary>
+
+* [Installation](#-installation)
+* [Configuration](#️-configuration)
+* [Usage](#️-usage)
+* [Notes](#-notes)
+* [Troubleshooting & debugging](#-troubleshooting--debugging)
+* [Examples](#-examples)
+* [Resources](#-resources)
+* [Contributing](#-contributing)
+* [Credits](#️-credits)
+* [License](#-license)
+</details>
+
+
 ## 💾 Installation
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
