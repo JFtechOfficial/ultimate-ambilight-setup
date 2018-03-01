@@ -3,8 +3,31 @@
 
 Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
 
-## Installing / Getting started
+## Getting started
+??? lorem ipsum ???
 
 ### Requirements
+* A Raspberry Pi 2 or 3
+* A microSD card with an OS installed ([OSMC](https://osmc.tv/download/) is suggested)
+You can install [hyperion](https://hyperion-project.org) now or after the installation step
+
+## Installation
+```shell
+wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
+sudo chmod +x install.sh
+sudo ./install.sh
+```
+
+## Configuration
+
+### Clock effect
+
+### Buttons
+
+### Fan
+
+## Usage
+
+## Contributing
 
 
