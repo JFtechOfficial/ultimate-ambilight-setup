@@ -26,7 +26,7 @@ You can install and configure [hyperion](https://hyperion-project.org) now or af
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download PuTTY on Windows) and run this command:
+Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download [PuTTY](https://www.putty.org) on Windows) and run this command:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
