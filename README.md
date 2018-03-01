@@ -44,10 +44,10 @@ sudo ./install.sh
 ## ⚙️ Configuration
 
 ### Clock effect
-* move both `clock.py` and `clock.json` to the Hyperion effects folder 
+* move both `clock.py` and `clock.json` to the Hyperion effects folder (this is the default path)
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
-``` (default path)
+```
 * [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * open the `clock.json` file
 ```shell
@@ -58,8 +58,6 @@ sudo nano clock.json
 * Paste both latitude and longitude in the `clock.json` file
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save and close the file
-*JFtech needs to insert a GIF here*
-
 
 ### Buttons
 * open the `buttons.py` file
@@ -76,8 +74,7 @@ nano fan.py
 ```
 * modify the `pin` variable to match your GPIO setup
 * you can modify the default `max_TEMP` variable (Temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` variable (Temerature in Celsius after which the fan stops) and `sleepTime` variable (Temperature reading interval in seconds)
-*JFtech needs to insert a GIF here* or you can activate one of the pre-made fan profile by uncommenting it *JFtech needs to insert a GIF here*
+`cutoff_TEMP` variable (Temerature in Celsius after which the fan stops) and `sleepTime` variable (Temperature reading interval in seconds) or you can activate one of the pre-made fan profile by uncommenting it
 * Save and close the file
 
 
@@ -88,7 +85,11 @@ sudo reboot
 
 ## ▶️ Usage
 
-Use your favorite Hyperion client to 
+Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is warm and it has a colder color if outside is cold.
+
+Use buttons connected to the GPIO to launch a predefined hyperion effect, go back to the default mode, or safely turn off the Raspberry Pi.
+
+The fan script requires you to do nothing, it's automated.
 
 ## 💼 Examples
 
@@ -103,10 +104,10 @@ Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## ❤️ Credits
 
 Major dependencies:
-
-* [ShellJS](https://documentup.com/shelljs/shelljs)
-* [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
-* [@octokit/rest](https://github.com/octokit/rest.js)
+* python
+* pyowm
+* RPi.GPIO
+* hyperion-project
 
 The following programs have been a source of inspiration:
 
