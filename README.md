@@ -12,10 +12,10 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * [Installation](#-installation)
 * [Configuration](#️-configuration)
 * [Usage](#️-usage)
-* [Notes](#-notes)
-* [Troubleshooting & debugging](#-troubleshooting--debugging)
 * [Examples](#-examples)
 * [Resources](#-resources)
+* [Notes](#-notes)
+* [Troubleshooting & debugging](#-troubleshooting--debugging)
 * [Contributing](#-contributing)
 * [Credits](#️-credits)
 * [License](#-license)
@@ -33,20 +33,61 @@ You can install [hyperion](https://hyperion-project.org) now or after the instal
 ## 💾 Installation
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
+```
+(you can modify the install.sh file if you don't want to install all the scripts)
+
+```shell
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
 
 ## ⚙️ Configuration
+Remember to reboot your device after the configuration
+```shell
+sudo reboot
+```
 
 ### Clock effect
+* move both clock.py and clock.json to the Hyperion effects folder
+```shell
+sudo mv clock.* /usr/share/hyperion/effects/
+```
+(default path)
+* [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
+* open the clock.json file
+```shell
+sudo nano clock.json
+```
+* Paste the key in the clock.json file (you can use the same key in the kodi weather app)
+* [Get your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
+* Paste both latitude and longitude in the clock.json file
+* You can modify the default colors of the "virutal" clock hands and add markers
+* Save and close the file
+*JFtech needs to insert a GIF here*
+
 
 ### Buttons
+* open the buttons.py file
+```shell
+nano buttons.py
+```
+* modify the Pins and clear variables to match your GPIO setup
+* Save and close the file
 
 ### Fan
+* open the fan.py file
+```shell
+nano fan.py
+```
+* modify the pin variable to match your GPIO setup
+* you can modify the default max_TEMP variable (Temperature in Celsius after which the fan triggers),
+cutoff_TEMP variable (Temerature in Celsius after which the fan stops) and sleepTime variable (Temperature reading interval in seconds)
+*JFtech needs to insert a GIF here* or you can activate one of the pre-made fan profile by uncommenting it *JFtech needs to insert a GIF here*
+* Save and close the file
 
 ## ▶️ Usage
 
+Use your favorite Hyperion client to 
 
 ## 💼 Examples
 
