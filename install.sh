@@ -56,7 +56,7 @@ ambilight_scripts_install(){
         echo "ERROR"
         exit 1
     fi
-    wget clock.py-raw -P /home/osmc/Development
+    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/Hyperion%20effects/clock.py -P /home/osmc/Development
     if [ $? -eq 0 ]; then
         echo "OK"
     else
@@ -64,7 +64,7 @@ ambilight_scripts_install(){
         exit 1
     fi
     # Clock effect config
-    wget clock.json-raw -P /home/osmc/Development
+    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/Hyperion%20effects/clock.json -P /home/osmc/Development
     if [ $? -eq 0 ]; then
         echo "OK"
     else
@@ -72,7 +72,7 @@ ambilight_scripts_install(){
         exit 1
     fi
     # Fan
-    wget run-fan.py -P /home/osmc/Development
+    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/scripts/fan.py -P /home/osmc/Development
     if [ $? -eq 0 ]; then
         echo "OK"
     else
@@ -80,7 +80,7 @@ ambilight_scripts_install(){
         exit 1
     fi
     # Buttons
-    wget buttons.py -P /home/osmc/Development
+    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/scripts/buttons.py -P /home/osmc/Development
     if [ $? -eq 0 ]; then
         echo "OK"
     else
