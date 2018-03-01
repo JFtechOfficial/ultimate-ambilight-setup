@@ -14,8 +14,6 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * [Usage](#️-usage)
 * [Examples](#-examples)
 * [Resources](#-resources)
-* [Notes](#-notes)
-* [Troubleshooting & debugging](#-troubleshooting--debugging)
 * [Contributing](#-contributing)
 * [Credits](#️-credits)
 * [License](#-license)
@@ -31,10 +29,11 @@ You can install [hyperion](https://hyperion-project.org) now or after the instal
 
 
 ## 💾 Installation
+Open a terminal window on your Raspberry Pi or connect via SSH (on MacOS/Linux use the Terminal app, on Windows download and use PuTTY) and run this command to download the `install.sh` file:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
-(you can modify the install.sh file if you don't want to install all the scripts)
+you can modify the install.sh file if you don't want to install all the scripts
 
 ```shell
 sudo chmod +x install.sh
@@ -51,7 +50,7 @@ sudo mv clock.* /usr/share/hyperion/effects/
 * [Get your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * open the `clock.json` file
 ```shell
-sudo nano clock.json
+sudo nano /usr/share/hyperion/effects/clock.json
 ```
 * Paste the key in the `clock.json` file (you can use the same key in the kodi weather app)
 * [Get your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
@@ -62,7 +61,7 @@ sudo nano clock.json
 ### Buttons
 * open the `buttons.py` file
 ```shell
-nano buttons.py
+nano /home/osmc/Development/buttons.py
 ```
 * modify the `Pins` and `clear` variables to match your GPIO setup
 * Save and close the file
@@ -70,7 +69,7 @@ nano buttons.py
 ### Fan
 * open the `fan.py` file
 ```shell
-nano fan.py
+nano /home/osmc/Development/fan.py
 ```
 * modify the `pin` variable to match your GPIO setup
 * you can modify the default `max_TEMP` variable (Temperature in Celsius after which the fan triggers),
@@ -87,7 +86,7 @@ sudo reboot
 
 Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is warm and it has a colder color if outside is cold.
 
-Use buttons connected to the GPIO to launch a predefined hyperion effect, go back to the default mode, or safely turn off the Raspberry Pi.
+Use buttons connected to the GPIO to launch a predefined hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
 
 The fan script requires you to do nothing, it's automated.
 
