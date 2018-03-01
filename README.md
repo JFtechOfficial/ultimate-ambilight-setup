@@ -3,22 +3,23 @@
 
 Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
 
-## Getting started
+## 🚀 Getting started
 ??? lorem ipsum ???
 
 ### Requirements
 * A Raspberry Pi 2 or 3
 * A microSD card with an OS installed ([OSMC](https://osmc.tv/download/) is suggested)
+
 You can install [hyperion](https://hyperion-project.org) now or after the installation step
 
-## Installation
+## 💾 Installation
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
 
-## Configuration
+## ⚙️ Configuration
 
 ### Clock effect
 
@@ -26,8 +27,32 @@ sudo ./install.sh
 
 ### Fan
 
-## Usage
+## ▶️ Usage
 
-## Contributing
+
+## 💼 Examples
+
+
+## 📚 Resources
+
+
+## 🎁 Contributing
+
+Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## ❤️ Credits
+
+Major dependencies:
+
+* [ShellJS](https://documentup.com/shelljs/shelljs)
+* [Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
+* [@octokit/rest](https://github.com/octokit/rest.js)
+
+The following programs have been a source of inspiration:
+
+
+## 🎓 License
+
+[MIT](http://webpro.mit-license.org/)
 
 
