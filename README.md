@@ -42,10 +42,6 @@ sudo ./install.sh
 ```
 
 ## ⚙️ Configuration
-Remember to reboot your device after the configuration
-```shell
-sudo reboot
-```
 
 ### Clock effect
 * move both clock.py and clock.json to the Hyperion effects folder
@@ -84,6 +80,12 @@ nano fan.py
 cutoff_TEMP variable (Temerature in Celsius after which the fan stops) and sleepTime variable (Temperature reading interval in seconds)
 *JFtech needs to insert a GIF here* or you can activate one of the pre-made fan profile by uncommenting it *JFtech needs to insert a GIF here*
 * Save and close the file
+
+
+Remember to reboot your device after the configuration
+```shell
+sudo reboot
+```
 
 ## ▶️ Usage
 
