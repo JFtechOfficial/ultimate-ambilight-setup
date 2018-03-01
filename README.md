@@ -49,7 +49,7 @@ mv -i ultimate-ambilght-setup/ /home/osmc/Development/
 ## ⚙️ Configuration
 
 ### Clock effect
-* move both `clock.py` and `clock.json` to the Hyperion effects folder (hyperion default path)
+* move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
 ```shell
 sudo mv clock.* /usr/share/hyperion/effects/
 ```
