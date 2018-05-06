@@ -39,7 +39,7 @@ try:
     GPIO.wait_for_edge(3, GPIO.FALLING)
     subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
     GPIO.cleanup()
-    sleep(5)
+    sleep(2)
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
 
 except KeyboardInterrupt:
