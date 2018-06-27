@@ -1,0 +1,14 @@
+{
+        "name" : "Fan",
+        "script" : "fan.py",
+        "args" :
+        {
+				"pin" : 26,
+				"settings" :
+				{
+						"max_TEMP" : 70,
+						"cutoff_TEMP" : 60,
+						"sleepTime" : 60
+				}
+        }
+}

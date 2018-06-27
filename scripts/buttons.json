@@ -1,0 +1,13 @@
+{
+        "name" : "Buttons",
+        "script" : "buttons.py",
+        "args" :
+        {
+				"clear" : 27,
+				"effects" : 
+				{
+					"Rainbow swirl fast" : 17,
+					"Clock" : 22
+				}
+        }
+}
