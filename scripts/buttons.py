@@ -1,12 +1,20 @@
 import os
 import subprocess
+import json
 from time import sleep
 import RPi.GPIO as GPIO
 
-""" Define some variables (do NOT use pin 3, it's hardcoded as shutdown button) """
-pins = {17: 'Rainbow swirl fast', 22: 'Clock'}   # Pin ID: 'Effect name', edit here to change or add pins and effects
-clear = 27  # Pin ID, edit here to change it
-
+""" Define some variables editing the button.json config file 
+    (please do NOT use pin 3 (BCM): it must be used as shutdown button) """
+with open('buttons.json') as f:
+    data = json.load(f)
+    f.close()
+    clear = data['args']['clear']  # Pin ID
+    effects = data['args']['effects']
+    pins = {}  # {Pin ID: 'Effect name'}
+    for name in effects:
+        pins.update({effects[name] : name})
+        
 FNULL = open(os.devnull, 'w')
 
 
