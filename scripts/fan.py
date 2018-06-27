@@ -4,7 +4,7 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 """ Define some variables """
-pin = 26  # pin ID, edit here to change it
+pin = 26  # pin ID, edit here to change the default value
 
 # Here you can find some pre-made fan profiles
 # Uncomment only one profile to use it as default. Edit values as you like
