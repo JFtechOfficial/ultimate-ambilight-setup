@@ -1,30 +1,46 @@
 import os
+import json
 from time import sleep
 import RPi.GPIO as GPIO
 
 """ Define some variables """
 pin = 26  # pin ID, edit here to change it
 
-# Uncomment only one profile to use it. Edit values as you like
+# Here you can find some pre-made fan profiles
+# Uncomment only one profile to use it as default. Edit values as you like
+# The fan.json config file will override these profiles
 """ Conservative profile """
-max_TEMP = 70  # Temperature in Celsius after which the fan triggers
-cutoff_TEMP = 60  # Temerature in Celsius after which the fan stops
-sleepTime = 60  # Temperature reading interval in seconds
+profile = {
+    'max_TEMP': 70,  # Temperature in Celsius after which the fan triggers
+    'cutoff_TEMP': 60,  # Temerature in Celsius after which the fan stops
+    'sleepTime': 60  # Temperature reading interval in seconds
+}
 
 """ Aggressive profile """
 """
-max_TEMP = 60  # Temperature in Celsius after which the fan triggers
-cutoff_TEMP = 45  # Temerature in Celsius after which the fan stops
-sleepTime = 1  # Temperature reading interval in seconds
+profile = {
+    'max_TEMP': 60,  # Temperature in Celsius after which the fan triggers
+    'cutoff_TEMP': 45,  # Temerature in Celsius after which the fan stops
+    'sleepTime': 1  # Temperature reading interval in seconds
+}
 """
 
 """ Always ON profile """
 """
-max_TEMP = 10  # Temperature in Celsius after which the fan triggers
-cutoff_TEMP = 1  # Temerature in Celsius after which the fan stops
-sleepTime = 100  # Temperature reading interval in seconds
+profile = {
+    'max_TEMP': 10,  # Temperature in Celsius after which the fan triggers
+    'cutoff_TEMP': 1,  # Temerature in Celsius after which the fan stops
+    'sleepTime': 1000  # Temperature reading interval in seconds
+}
 """
 
+with open('fan.json') as f:
+    data = json.load(f)
+    f.close()
+    pin = data['args']['pin']
+    settings = data['args']['settings']
+    for name in settings:
+        profile.update({name : settings[name]})
 
 def setup():
     """ Raspberry Pi GPIO setup """
@@ -47,12 +63,12 @@ try:
     """ Manage the fan """
     while True:
         CPU_temp = float(getCPUtemperature())
-        if (CPU_temp > max_TEMP):
+        if (CPU_temp > profile[max_TEMP]):
             GPIO.output(pin, True)
             # print ("ON")  # Uncomment here for testing
-        if (CPU_temp < cutoff_TEMP):
+        if (CPU_temp < profile[cutoff_TEMP]):
             GPIO.output(pin, False)
             # print ("OFF")  # Uncomment here for testing
-        sleep(sleepTime)
+        sleep(profile[sleepTime])
 except KeyboardInterrupt:
     GPIO.cleanup()  # clean up GPIO on CTRL+C exit
