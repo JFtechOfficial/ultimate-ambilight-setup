@@ -5,7 +5,7 @@
         {
 				"hyperion_server" : 
 				{
-						"ip_address" : "192.168.1.26",
+						"ip_address" : "Insert.Here.IP.Address",
 						"port" : 19444
 				},
 				"adafruit_mqtt_broker" :
