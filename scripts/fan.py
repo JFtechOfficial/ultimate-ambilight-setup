@@ -4,8 +4,6 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 """ Define some variables """
-pin = 26  # pin ID, edit here to change the default value
-
 # Here you can find some pre-made fan profiles
 # Uncomment only one profile to use it as default. Edit values as you like
 # The fan.json config file will override these profiles
@@ -33,6 +31,8 @@ profile = {
     'sleepTime': 1000  # Temperature reading interval in seconds
 }
 """
+
+pin = 26  # pin ID (BCM), edit here to change the default value
 
 with open('fan.json') as f:
     data = json.load(f)
