@@ -3,8 +3,17 @@
         "script" : "client.js",
         "args" :
         {
-				"ip_address" : "192.168.1.26",
-				"user" : "InsertHereYourUsername",
-				"key" : "InsertHereYourKey"
+				"hyperion_server" : 
+				{
+						"ip_address" : "192.168.1.26",
+						"port" : 19444
+				},
+				"adafruit_mqtt_broker" :
+				{
+						"url" : "mqtts://io.adafruit.com",
+						"port" : 8883,
+						"user" : "InsertHereYourUsername",
+						"key" : "InsertHereYourKey"
+				}
         }
 }
