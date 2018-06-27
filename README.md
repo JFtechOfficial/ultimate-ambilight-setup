@@ -19,14 +19,14 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 </details>
 
 ### Requirements
-* A Raspberry Pi 2 or 3
-* A microSD card with an OS installed ([OSMC](https://osmc.tv/download/) is suggested)
+* A Raspberry Pi 2, 3 or 3+
+* A microSD card with an OS already up and running ([OSMC](https://osmc.tv/download/) is suggested)
 
-You can install and configure [hyperion](https://hyperion-project.org) now or after the installation step (installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
+Make sure you have [hyperion](https://hyperion-project.org) installed and configured. (installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, download [PuTTY](https://www.putty.org) on Windows) and run this command:
+Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command:
 ```shell
 wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
 ```
@@ -46,7 +46,6 @@ mv -i ultimate-ambilght-setup/ /home/osmc/Development/
 
 ## ⚙️ Configuration
 
-Be sure to have [hyperion](https://hyperion-project.org) installed and configured.
 
 ### Clock effect
 * Move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
