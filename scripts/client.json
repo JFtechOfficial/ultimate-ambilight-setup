@@ -1,19 +1,23 @@
 {
-        "name" : "Client",
-        "script" : "client.js",
-        "args" :
-        {
-				"hyperion_server" : 
-				{
-						"ip_address" : "Insert.Here.IP.Address",
-						"port" : 19444
-				},
-				"adafruit_mqtt_broker" :
-				{
-						"url" : "mqtts://io.adafruit.com",
-						"port" : 8883,
-						"user" : "InsertHereYourUsername",
-						"key" : "InsertHereYourKey"
-				}
-        }
+      "name": "Client",
+      "script": "client.js",
+      "args":
+      {
+          "hyperion_server":
+          {
+              "ip_address": "Insert.Ip.Address.Here",
+              "port": 19444
+          },
+          "adafruit_mqtt_broker":
+          {
+              "url": "mqtts://io.adafruit.com",
+              "port": 8883,
+              "username": "InsertYourUsernameHere",
+              "key": "InsertYourKeyHere",
+              "topics":
+              [
+                  "hyperion-topic"
+              ]
+          }
+      }
 }
