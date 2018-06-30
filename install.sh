@@ -33,7 +33,7 @@ python_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo apt-get install Python-dev
+    sudo apt-get install python-dev
     sudo apt install python-pip
     ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     ##python get-pip.py
@@ -41,7 +41,7 @@ python_install(){
 
 
 ambilight_scripts_install(){
-    echo -n "Downloading, installing scripts..."
+    echo -n "Downloading..."
     wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
     if [ $? -eq 0 ]; then
         echo "OK"
