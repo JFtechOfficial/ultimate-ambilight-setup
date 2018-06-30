@@ -26,7 +26,7 @@ python_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo apt-get install Python -y
+    sudo apt-get install python -y
     if [ $? -eq 0 ]; then
         echo "OK"
     else
@@ -34,7 +34,7 @@ python_install(){
         exit 1
     fi
     sudo apt-get install Python-dev
-    sudo apt install Python-pip
+    sudo apt install python-pip
     ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     ##python get-pip.py
 }
@@ -49,7 +49,7 @@ ambilight_scripts_install(){
         echo "ERROR"
         exit 1
     fi
-    tar -xf RPi.GPIO-0.6.2.tar.gz
+    tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
     sudo python RPi.GPIO-0.6.2/setup.py install
     ##sudo rm -rf RPi.GPIO-0.*
     # Clock effect for Hyperion
