@@ -59,14 +59,14 @@ ambilight_scripts_install(){
     else
         echo "ERROR"
         exit 1
-  
+
     ##sudo apt-get install cron -y
     ##if [ $? -eq 0 ]; then
     ##    echo "OK"
     ##else
     ##    echo "ERROR"
     ##    exit 1
-    ##fi
+    fi
 }
 
 echo -n "Starting..."
