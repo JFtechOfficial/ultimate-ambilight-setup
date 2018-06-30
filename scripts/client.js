@@ -13,7 +13,7 @@ fs.readFile('./client.json', 'utf8', function(err, data) {
 
   //variables
   var config = obj.args;
-  var hyperion_ip_address = String(config.hyperion_server.ip_address) || '127.0.0.1';
+  var hyperion_ip_address = config.hyperion_server.ip_address || '127.0.0.1';
   var hyperion_port = config.hyperion_server.port || 19444;
   var url = config.adafruit_mqtt_broker.url || 'mqtts://io.adafruit.com';
   var user = config.adafruit_mqtt_broker.username;
