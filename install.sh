@@ -26,7 +26,7 @@ python_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo apt-get install Python Python-dev Python-pip -y
+    sudo apt-get install Python -y
     if [ $? -eq 0 ]; then
         echo "OK"
     else
