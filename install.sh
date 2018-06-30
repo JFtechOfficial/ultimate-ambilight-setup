@@ -34,9 +34,9 @@ python_install(){
         exit 1
     fi
     sudo apt-get install Python-dev
-    ##sudo apt-get install Python-pip
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-    python get-pip.py
+    sudo apt install Python-pip
+    ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    ##python get-pip.py
 }
 
 
