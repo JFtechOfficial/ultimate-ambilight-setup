@@ -34,23 +34,24 @@ python_install(){
         exit 1
     fi
     sudo apt-get install Python-dev
-    sudo apt-get install Python-pip
+    ##sudo apt-get install Python-pip
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python get-pip.py
 }
 
 
 ambilight_scripts_install(){
     echo -n "Downloading, installing scripts..."
-    mkdir -p /home/osmc/Development
-    wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz -P /home/osmc/Development
+    wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz t
     if [ $? -eq 0 ]; then
         echo "OK"
     else
         echo "ERROR"
         exit 1
     fi
-    tar -xf /home/osmc/Development/RPi.GPIO-0.6.2.tar.gz
-    sudo python /home/osmc/Development/RPi.GPIO-0.6.2/setup.py install
-    sudo rm -rf /home/osmc/Development/RPi.GPIO-0.*
+    tar -xf RPi.GPIO-0.6.2.tar.gz
+    sudo python RPi.GPIO-0.6.2/setup.py install
+    sudo rm -rf RPi.GPIO-0.*
     # Clock effect for Hyperion
     sudo pip install pyowm
     if [ $? -eq 0 ]; then
@@ -58,45 +59,14 @@ ambilight_scripts_install(){
     else
         echo "ERROR"
         exit 1
-    fi
-    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/Hyperion%20effects/clock.py -P /home/osmc/Development
-    if [ $? -eq 0 ]; then
-        echo "OK"
-    else
-        echo "ERROR"
-        exit 1
-    fi
-    # Clock effect config
-    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/Hyperion%20effects/clock.json -P /home/osmc/Development
-    if [ $? -eq 0 ]; then
-        echo "OK"
-    else
-        echo "ERROR"
-        exit 1
-    fi
-    # Fan
-    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/scripts/fan.py -P /home/osmc/Development
-    if [ $? -eq 0 ]; then
-        echo "OK"
-    else
-        echo "ERROR"
-        exit 1
-    fi
-    # Buttons
-    wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/scripts/buttons.py -P /home/osmc/Development
-    if [ $? -eq 0 ]; then
-        echo "OK"
-    else
-        echo "ERROR"
-        exit 1
-    fi
-    sudo apt-get install cron -y
-    if [ $? -eq 0 ]; then
-        echo "OK"
-    else
-        echo "ERROR"
-        exit 1
-    fi
+  
+    ##sudo apt-get install cron -y
+    ##if [ $? -eq 0 ]; then
+    ##    echo "OK"
+    ##else
+    ##    echo "ERROR"
+    ##    exit 1
+    ##fi
 }
 
 echo -n "Starting..."
