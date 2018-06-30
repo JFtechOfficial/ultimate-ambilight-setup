@@ -15,9 +15,18 @@
               "username": "InsertYourUsernameHere",
               "key": "InsertYourKeyHere",
               "topics":
-              [
-                  "hyperion-topic"
-              ]
+              {
+                  "effect_topic" : "InsertTopicNameHere",
+                  "other_topic" : "InsertTopicNameHere"
+
+              }
+          },
+          "kodi_server":
+          {
+            "ip_address": "Insert.Ip.Address.Here",
+            "port": 8080,
+            "video_uri" : "InsertLink/PathHere"
           }
+
       }
 }
