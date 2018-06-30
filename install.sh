@@ -42,7 +42,7 @@ python_install(){
 
 ambilight_scripts_install(){
     echo -n "Downloading, installing scripts..."
-    wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz t
+    wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
     if [ $? -eq 0 ]; then
         echo "OK"
     else
