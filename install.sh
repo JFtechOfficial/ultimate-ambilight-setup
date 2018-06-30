@@ -68,6 +68,11 @@ ambilight_scripts_install(){
     ##    exit 1
     fi
 }
+echo "   ______________            __  "
+echo "  /___    ____/ /____  _____/ /_ "
+echo " __  / / /_  / __/ _ \/ ___/ __ \"
+echo "/ /_/ / __/ / /_/  __/ /__/ / / /"
+echo "\____/_/    \__/\___/\___/_/ /_/ "
 
 echo -n "Starting..."
 prerequisites
