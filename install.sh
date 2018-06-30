@@ -11,8 +11,8 @@ prerequisites() {
 system_update(){
     echo -n "Updating System..."
     sudo apt-get update -y
-    sudo apt-get upgrade -y
-    sudo apt-get dist-upgrade -y
+    ##sudo apt-get upgrade -y
+    ##sudo apt-get dist-upgrade -y
     sudo apt-get autoremove -y
     sudo apt-get autoclean -y
 }
