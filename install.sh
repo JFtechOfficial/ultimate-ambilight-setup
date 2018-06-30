@@ -51,7 +51,7 @@ ambilight_scripts_install(){
     fi
     tar -xf RPi.GPIO-0.6.2.tar.gz
     sudo python RPi.GPIO-0.6.2/setup.py install
-    sudo rm -rf RPi.GPIO-0.*
+    ##sudo rm -rf RPi.GPIO-0.*
     # Clock effect for Hyperion
     sudo pip install pyowm
     if [ $? -eq 0 ]; then
