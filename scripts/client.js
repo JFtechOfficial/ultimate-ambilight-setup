@@ -39,8 +39,8 @@ fs.readFile('./client.json', 'utf8', function(err, data) {
         //console.log('sub', user + '/feeds/' + topics[topic]);
       }
     });
-    //client.publish('jhonfreddo/feeds/hyperion-effect', 'Snake');
-    //console.log('pub jhonfreddo/feeds/hyperion-effect  Snake');
+    //client.publish('username/feeds/hyperion-effects', 'Snake');
+    //console.log('pub username/feeds/hyperion-effects  Snake');
   });
 
   client.on('message', function(topic, message) {
@@ -75,16 +75,16 @@ fs.readFile('./client.json', 'utf8', function(err, data) {
           });
         }
 
-        //turn on the lights - custom effect launch
+        //custom effect launcher - turn on the lights
         if (message == 'ON') {
           hyperion.setEffect('Cinema dim lights', {}, function(err, result) {
             //console.log('err', err, 'result', result);
             hyperion.close();
           });
         }
-        //"fireplace mode"
+        //play a video with capture mode - "fireplace mode"
         if (message == 'PLAY') {
-          hyperion.clear(function(err, result) {
+          hyperion.clearall(function(err, result) {
             //console.log('err', err, 'result', result);
             exec('playonkodi -s ' + kodi_ip_address + ' -p ' + kodi_port + ' ' + uri);
             hyperion.close();
