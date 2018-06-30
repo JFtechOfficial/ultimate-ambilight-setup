@@ -33,7 +33,10 @@ python_install(){
         echo "ERROR"
         exit 1
     fi
+    sudo apt-get install Python-dev
+    sudo apt-get install Python-pip
 }
+
 
 ambilight_scripts_install(){
     echo -n "Downloading, installing scripts..."
