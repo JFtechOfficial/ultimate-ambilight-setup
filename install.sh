@@ -1,4 +1,12 @@
 #!/bin/bash
+
+    # we want to be root to install
+if [ $(id -u) != 0 ]; then
+		echo '---> Critical Error: Please run the script as root (sudo sh ./install.sh) -> abort' 
+		exit 1
+fi
+
+
 echo "   ______________            __   "
 echo "  /___    ____/ /____  _____/ /_  "
 echo " __  / / /_  / __/ _ \/ ___/ __ \ "
@@ -12,11 +20,7 @@ OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
 OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
 OS_OSMC=`grep -m1 -c OSMC /etc/issue`
 OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
-    # we want to be root to install
-    if [ "$EUID" -ne 0 ]; then
-        echo "Please run as root"
-        exit 1
-    fi
+
     interactive=
     fan=
     buttons=
@@ -46,6 +50,19 @@ OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
     shift
 done
 echo $fan
+
+#Check, if year equals 1970
+DATE=$(date +"%Y")
+if [ "$DATE" -le "2015" ]; then
+        echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
+        exit 1
+fi
+
+# check which init script we should use
+USE_SYSTEMD=`grep -m1 -c systemd /proc/1/comm`
+USE_INITCTL=`which /sbin/initctl | wc -l`
+USE_SERVICE=`which /usr/sbin/service | wc -l`
+
 #Install dependencies for Hyperion and setup preperation
 if [ $OS_OPENELEC -ne 1 ]; then
 
