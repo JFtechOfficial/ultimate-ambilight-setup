@@ -59,6 +59,9 @@ ambilight_scripts_install(){
     else
         echo "ERROR"
         exit 1
+    sudo mv clock.* /usr/share/hyperion/effects/
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    sudo apt-get install -y nodejs
 
     ##sudo apt-get install cron -y
     ##if [ $? -eq 0 ]; then
