@@ -135,6 +135,12 @@ echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
 echo "\____/_/    \__/\___/\___/_/ /_/  "
 
 echo "Starting..."
+# Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
+OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
+OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
+OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
+OS_OSMC=`grep -m1 -c OSMC /etc/issue`
+OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
 prerequisites
 #Install dependencies for Hyperion and setup preperation
 if [ $OS_OPENELEC -ne 1 ]; then
