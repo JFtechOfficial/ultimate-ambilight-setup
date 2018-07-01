@@ -33,8 +33,8 @@ python_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo apt-get install python-dev
-    sudo apt install python-pip
+    sudo apt-get install -y python-dev
+    sudo apt install -y python-pip
     ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     ##python get-pip.py
 }
