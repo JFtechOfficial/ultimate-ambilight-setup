@@ -1,6 +1,17 @@
 #!/bin/bash
+echo "   ______________            __   "
+echo "  /___    ____/ /____  _____/ /_  "
+echo " __  / / /_  / __/ _ \/ ___/ __ \ "
+echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
+echo "\____/_/    \__/\___/\___/_/ /_/  "
 
-prerequisites() {
+echo "Starting..."
+# Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
+OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
+OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
+OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
+OS_OSMC=`grep -m1 -c OSMC /etc/issue`
+OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
     # we want to be root to install
     if [ "$EUID" -ne 0 ]; then
         echo "Please run as root"
@@ -35,10 +46,9 @@ prerequisites() {
     shift
 done
 echo $fan
+#Install dependencies for Hyperion and setup preperation
+if [ $OS_OPENELEC -ne 1 ]; then
 
-}
-
-system_update(){
     echo -n "Updating System..."
     sudo apt-get update -y
     ##sudo apt-get upgrade -y
@@ -57,13 +67,9 @@ elif [ $USE_INITCTL -eq 1 ]; then
 elif [ $USE_SERVICE -eq 1 ]; then
 	/usr/sbin/service hyperion stop 2>/dev/null
 fi
+fi
 
 
-
-    
-}
-
-python_install(){
     echo -n "Downloading, installing Python..."
     sudo apt-get install -y build-essential
     if [ $? -eq 0 ]; then
@@ -83,10 +89,7 @@ python_install(){
     sudo apt install -y python-pip
     ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     ##python get-pip.py
-}
 
-
-ambilight_scripts_install(){
     echo -n "Downloading..."
     wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
     if [ $? -eq 0 ]; then
@@ -127,27 +130,8 @@ ambilight_scripts_install(){
     ##    echo "ERROR"
     ##    exit 1
     ##fi
-}
-echo "   ______________            __   "
-echo "  /___    ____/ /____  _____/ /_  "
-echo " __  / / /_  / __/ _ \/ ___/ __ \ "
-echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
-echo "\____/_/    \__/\___/\___/_/ /_/  "
 
-echo "Starting..."
-# Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
-OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
-OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
-OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
-OS_OSMC=`grep -m1 -c OSMC /etc/issue`
-OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
-prerequisites
-#Install dependencies for Hyperion and setup preperation
-if [ $OS_OPENELEC -ne 1 ]; then
-	system_update
-fi
-python_install
-ambilight_scripts_install
+
 echo '---> Starting Hyperion'
 if [ $OS_OPENELEC -eq 1 ]; then
 	/storage/.config/autostart.sh > /dev/null 2>&1 &
