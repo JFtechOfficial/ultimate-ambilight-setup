@@ -71,7 +71,7 @@ ambilight_scripts_install(){
     sudo npm install -g hyperion-client
     sudo -H pip install --upgrade youtube-dl
     sudo npm install -g playonkodi
-    sudo forever-service install assistant-service --script script/client.js 
+    sudo forever-service install assistant-service --script scripts/client.js 
     sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
     sudo forever-service install buttons-service -s scripts/buttons.py -f " -c python"
     ##sudo apt-get install cron -y
