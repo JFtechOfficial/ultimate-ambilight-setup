@@ -63,7 +63,7 @@ ambilight_scripts_install(){
     sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
     sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
     sudo apt install -y curl
-    sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo apt-get install -y npm
     sudo npm install -g forever
@@ -71,7 +71,7 @@ ambilight_scripts_install(){
     sudo npm install -g hyperion-client
     sudo -H pip install --upgrade youtube-dl
     sudo npm install -g playonkodi
-    sudo forever-service install assistant-service -s script/client.js 
+    sudo forever-service install assistant-service --script script/client.js 
     sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
     sudo forever-service install buttons-service -s scripts/buttons.py -f " -c python"
     ##sudo apt-get install cron -y
