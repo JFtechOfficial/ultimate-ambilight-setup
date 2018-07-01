@@ -60,8 +60,8 @@ ambilight_scripts_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo mv clock.py /usr/share/hyperion/effects/
-    sudo mv clock.json /usr/share/hyperion/effects/
+    sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
+    sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
     sudo apt install -y curl
     sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     sudo apt-get install -y nodejs
