@@ -19,14 +19,14 @@ system_update(){
 
 python_install(){
     echo -n "Downloading, installing Python..."
-    sudo apt-get install build-essential -y
+    sudo apt-get install -y build-essential
     if [ $? -eq 0 ]; then
         echo "OK"
     else
         echo "ERROR"
         exit 1
     fi
-    sudo apt-get install python -y
+    sudo apt-get install -y python
     if [ $? -eq 0 ]; then
         echo "OK"
     else
@@ -60,11 +60,12 @@ ambilight_scripts_install(){
         echo "ERROR"
         exit 1
     fi
-    sudo mv clock.* /usr/share/hyperion/effects/
-    sudo apt install curl
+    sudo mv clock.py /usr/share/hyperion/effects/
+    sudo mv clock.py /usr/share/hyperion/effects/
+    sudo apt install -y curl
     sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     sudo apt-get install -y nodejs
-    sudo apt-get install npm
+    sudo apt-get install -y npm
     sudo npm install -g forever
     sudo npm install -g forever-service
     sudo npm install -g hyperion-client
