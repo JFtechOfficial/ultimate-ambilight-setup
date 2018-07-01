@@ -50,14 +50,15 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
-startup=$((fan+buttons+assistant))
-default_install=$((startup+clock))
+default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
   fan=1
   buttons=1
   clock=1
   assistant=1
 fi
+startup=$((fan+buttons+assistant))
+
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
 OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
