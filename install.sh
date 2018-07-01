@@ -59,6 +59,7 @@ ambilight_scripts_install(){
     else
         echo "ERROR"
         exit 1
+    fi
     sudo mv clock.* /usr/share/hyperion/effects/
     sudo apt-get install -y nodejs
     sudo apt-get install npm
@@ -73,7 +74,7 @@ ambilight_scripts_install(){
     ##else
     ##    echo "ERROR"
     ##    exit 1
-    fi
+    ##fi
 }
 echo "   ______________            __   "
 echo "  /___    ____/ /____  _____/ /_  "
