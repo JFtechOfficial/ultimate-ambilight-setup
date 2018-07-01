@@ -61,6 +61,8 @@ ambilight_scripts_install(){
         exit 1
     fi
     sudo mv clock.* /usr/share/hyperion/effects/
+    sudo apt install curl
+    curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
     sudo apt-get install -y nodejs
     sudo apt-get install npm
     sudo npm install -g forever
