@@ -7,8 +7,7 @@ echo " Tested on: Raspberry Pi 3 - OSMC - Hyperion 1.03.3 "
 
 usage(){
 
-  echo "
-Usage:
+  echo "Usage:
     sudo ./install.sh
     sudo ./install.sh -i
     sudo ./install.sh [-f | --fan -c | --clock -b | --buttons -a | --assistant]
