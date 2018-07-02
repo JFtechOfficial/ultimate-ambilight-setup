@@ -7,19 +7,28 @@ echo " Tested on: Raspberry Pi 3 - OSMC - Hyperion 1.03.3 "
 
 usage(){
 
+  echo "Usage:
+    sudo ./install.sh
+    sudo ./install.sh -i
+    sudo ./install.sh -f | --fan -c | --clock
+    sudo ./install.sh -h | --help
+    sudo ./install.sh --version
+
+  Options:
+    General options:
+        -h --help           Show this screen.
+        -v --version        Show version.
+        -s --silent         Show less stuff during installation.
+        -i --interactive    Insert installation parameters during installation.
+    Custom installation options:
+    (if you use the options below you will install only the stuff you specify)
+        -f --fan            Install fan script.
+        -c --clock          Install clock effect.
+        -b --buttons        Install buttons script.
+        -a --assistant      Install Google Assistant script.
+"
 }
 
-# we want to be root to install
-if [ $(id -u) != 0 ]; then
-  echo '---> Critical Error: Please run the script as root (sudo ./install.sh) -> abort'
-  exit 1
-fi
-#Check, if year equals 1970
-DATE=$(date +"%Y")
-if [ "$DATE" -le "2017" ]; then
-  echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
-  exit 1
-fi
 
 echo "   ______________            __   "
 echo "  /___    ____/ /____  _____/ /_  "
@@ -67,6 +76,22 @@ while [ "$1" != "" ]; do
   esac
   shift
 done
+
+
+
+# we want to be root to install
+if [ $(id -u) != 0 ]; then
+  echo '---> Critical Error: Please run the script as root (sudo ./install.sh) -> abort'
+  exit 1
+fi
+#Check, if year equals 1970
+DATE=$(date +"%Y")
+if [ "$DATE" -le "2017" ]; then
+  echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
+  exit 1
+fi
+
+
 default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
   fan=1
