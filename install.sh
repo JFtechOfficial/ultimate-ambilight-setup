@@ -2,12 +2,12 @@
 
 # we want to be root to install
 if [ $(id -u) != 0 ]; then
-  echo '---> Critical Error: Please run the script as root (sudo sh ./install.sh) -> abort'
+  echo '---> Critical Error: Please run the script as root (sudo ./install.sh) -> abort'
   exit 1
 fi
 #Check, if year equals 1970
 DATE=$(date +"%Y")
-if [ "$DATE" -le "2015" ]; then
+if [ "$DATE" -le "2017" ]; then
   echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
   exit 1
 fi
@@ -21,7 +21,8 @@ echo ""
 echo "Starting..."
 
 
-interactive=
+interactive=0
+verbose=0
 fan=0
 buttons=0
 clock=0
@@ -58,6 +59,7 @@ if [ $default_install -eq 0 ]; then
   assistant=1
 fi
 startup=$((fan+buttons+assistant))
+gpio=$((fan+buttons))
 
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
@@ -71,7 +73,7 @@ USE_SYSTEMD=`grep -m1 -c systemd /proc/1/comm`
 USE_INITCTL=`which /sbin/initctl | wc -l`
 USE_SERVICE=`which /usr/sbin/service | wc -l`
 
-#Install dependencies for Hyperion and setup preperation
+
 if [ $OS_OPENELEC -ne 1 ]; then
 
   echo -n "Updating System..."
@@ -80,6 +82,24 @@ if [ $OS_OPENELEC -ne 1 ]; then
   ##sudo apt-get dist-upgrade -y
   sudo apt-get autoremove -y
   sudo apt-get autoclean -y
+fi
+
+#Install dependencies and setup preperation
+echo -n "Downloading and installing Python..."
+sudo apt-get install -y build-essential
+sudo apt-get install -y python
+sudo apt-get install -y python-dev
+sudo apt install -y python-pip
+##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+##python get-pip.py
+if [ $gpio -ne 0 ]; then
+  echo -n "Downloading Rpi.GPIO..."
+  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
+  sudo python setup.py install
+  sudo rm -rf RPi.GPIO-0.6.2.tar.gz
+fi
+if [ $clock -ne 0 ]; then
   echo '---> Stop Hyperion, if necessary'
   if [ $OS_OPENELEC -eq 1 ]; then
     killall hyperiond 2>/dev/null
@@ -92,27 +112,20 @@ if [ $OS_OPENELEC -ne 1 ]; then
   elif [ $USE_SERVICE -eq 1 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
-fi
-
-
-echo -n "Downloading and installing Python..."
-sudo apt-get install -y build-essential
-sudo apt-get install -y python
-sudo apt-get install -y python-dev
-sudo apt install -y python-pip
-##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-##python get-pip.py
-
-echo -n "Downloading..."
-wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
-tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
-sudo python setup.py install
-##sudo rm -rf RPi.GPIO-0.*
-if [ $clock -ne 0 ]; then
   # Clock effect for Hyperion
   sudo pip install pyowm
   sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
   sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
+  echo '---> Starting Hyperion'
+  if [ $OS_OPENELEC -eq 1 ]; then
+    /storage/.config/autostart.sh > /dev/null 2>&1 &
+  elif [ $USE_SYSTEMD -eq 1 ]; then
+    systemctl start hyperion
+  elif [ $USE_INITCTL -eq 1 ]; then
+    /sbin/initctl start hyperion
+  elif [ $USE_SERVICE -eq 1 ]; then
+    /usr/sbin/service hyperion start
+  fi
 fi
 if [ $startup -ne 0 ]; then
   sudo apt install -y curl
@@ -129,7 +142,6 @@ if [ $assistant -ne 0 ]; then
   sudo forever-service install assistant-service --script scripts/client.js
   sudo service assistant-service start
 fi
-
 if [ $fan -ne 0 ]; then
   sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
   sudo service fan-service start
@@ -146,17 +158,6 @@ fi
 ##    exit 1
 ##fi
 
-
-echo '---> Starting Hyperion'
-if [ $OS_OPENELEC -eq 1 ]; then
-  /storage/.config/autostart.sh > /dev/null 2>&1 &
-elif [ $USE_SYSTEMD -eq 1 ]; then
-  systemctl start hyperion
-elif [ $USE_INITCTL -eq 1 ]; then
-  /sbin/initctl start hyperion
-elif [ $USE_SERVICE -eq 1 ]; then
-  /usr/sbin/service hyperion start
-fi
 # cleanup -> TO-DO
 echo
 echo -n "REBOOT NOW? [y/N]"
