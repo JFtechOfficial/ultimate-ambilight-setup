@@ -1,5 +1,14 @@
 #!/bin/bash
 
+version(){
+echo " Version 0.1 - 2018 "
+echo " Tested on: Raspberry Pi 3 - OSMC - Hyperion 1.03.3 "
+}
+
+usage(){
+
+}
+
 # we want to be root to install
 if [ $(id -u) != 0 ]; then
   echo '---> Critical Error: Please run the script as root (sudo ./install.sh) -> abort'
