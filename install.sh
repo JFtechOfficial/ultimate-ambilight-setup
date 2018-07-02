@@ -7,25 +7,26 @@ echo " Tested on: Raspberry Pi 3 - OSMC - Hyperion 1.03.3 "
 
 usage(){
 
-  echo "Usage:
+  echo "
+Usage:
     sudo ./install.sh
     sudo ./install.sh -i
     sudo ./install.sh -f | --fan -c | --clock
     sudo ./install.sh -h | --help
     sudo ./install.sh --version
 
-  Options:
+Options:
     General options:
         -h --help           Show this screen.
         -v --version        Show version.
         -s --silent         Show less stuff during installation.
         -i --interactive    Insert installation parameters during installation.
     Custom installation options:
-    (if you use the options below you will install only the stuff you specify)
         -f --fan            Install fan script.
         -c --clock          Install clock effect.
         -b --buttons        Install buttons script.
         -a --assistant      Install Google Assistant script.
+    (if you use custom installation options you will install only the stuff you specify)
 "
 }
 
@@ -41,7 +42,7 @@ echo "https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=
 echo ""
 echo "Report bugs and get help on GitHub"
 echo "https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues"
-
+echo ""
 
 interactive=0
 silent=0
