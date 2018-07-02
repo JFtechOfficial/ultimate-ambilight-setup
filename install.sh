@@ -23,8 +23,6 @@ echo "https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=
 echo ""
 echo "Report bugs and get help on GitHub"
 echo "https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues"
-echo ""
-echo "Starting..."
 
 
 interactive=0
@@ -70,6 +68,8 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
+echo ""
+echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
 OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
