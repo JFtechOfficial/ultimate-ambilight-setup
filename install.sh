@@ -11,7 +11,7 @@ usage(){
 Usage:
     sudo ./install.sh
     sudo ./install.sh -i
-    sudo ./install.sh -f | --fan -c | --clock
+    sudo ./install.sh [-f | --fan -c | --clock -b | --buttons -a | --assistant]
     sudo ./install.sh -h | --help
     sudo ./install.sh --version
 
@@ -26,7 +26,8 @@ Options:
         -c --clock          Install clock effect.
         -b --buttons        Install buttons script.
         -a --assistant      Install Google Assistant script.
-    (if you use custom installation options you will install only the stuff you specify)
+    (if you use any of the custom installation options
+    you will install only the stuff you specify instead of all the stuff)
 "
 }
 
@@ -37,12 +38,13 @@ echo " __  / / /_  / __/ _ \/ ___/ __ \ "
 echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
 echo "\____/_/    \__/\___/\___/_/ /_/  "
 echo ""
-echo "Find out how to install both hardware and software for this project on YouTube"
-echo "https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=1"
-echo ""
-echo "Report bugs and get help on GitHub"
-echo "https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues"
-echo ""
+echo "
+Find out how to install both hardware and software for this project on YouTube
+https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=1
+
+Report bugs and get help on GitHub
+https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues
+"
 
 interactive=0
 silent=0
@@ -103,7 +105,6 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
-echo ""
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
