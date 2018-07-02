@@ -18,11 +18,17 @@ echo " __  / / /_  / __/ _ \/ ___/ __ \ "
 echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
 echo "\____/_/    \__/\___/\___/_/ /_/  "
 echo ""
+echo "Find out how to install both hardware and software for this project on YouTube"
+echo "https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=1"
+echo ""
+echo "Report bugs and get help on GitHub"
+echo "https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues"
+echo ""
 echo "Starting..."
 
 
 interactive=0
-verbose=0
+silent=0
 fan=0
 buttons=0
 clock=0
@@ -39,9 +45,12 @@ while [ "$1" != "" ]; do
       ;;
     -a | --assistant )      assistant=1
       ;;
-    -v | --verbose )        verbose=1
+    -s | --silent )         silent=1
       ;;
     -i | --interactive )    interactive=1
+      ;;
+    -v | --version )        version
+      exit 1
       ;;
     -h | --help )           usage
       exit
