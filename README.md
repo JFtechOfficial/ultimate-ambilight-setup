@@ -42,7 +42,10 @@ sudo ./install.sh -i
 ```
 
 ## ⚙️ Configuration
-
+If you change any configuration value after you completed the installation process please remember to reboot your device afterwards
+```shell
+sudo reboot
+```
 
 ### Clock effect
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
@@ -66,7 +69,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-* Modify the `effects` and `clear` values to match your GPIO setup
+* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already hardcoded as power button for you ;)
 * Save and close the file
 
 ### Fan
@@ -89,18 +92,21 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 ```
 * Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
 * If You used a different port you can modify the default `port` value of the `hyperion_server`
-* Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) username and key
-* Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) "effect launching" topic
-* Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) "effect clearing" topics
+* Create an [Adafruit-IO](https://io.adafruit.com/) account
+* Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your Adafruit-IO username and key
+* Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
+* Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topics
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, HotStar, and many more)
 * Save and close the file
 
-
-If you change any configuretion value after you completed the installation process please remember to reboot your device
-```shell
-sudo reboot
-```
+Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
+* to the same topic as the `effect-topic` you can send an effect name in order to activate an effect 
+* to the same topic as the `other-topic` you can send 
+     * `OFF` in order to turn any Hyperion effect off
+     * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn on this effect)
+     * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off
+     * `STOP` in order to stop any video
 
 ## ▶️ Usage
 
@@ -110,6 +116,7 @@ Use buttons connected to the GPIO to launch your predefined hyperion effects, go
 
 The fan script requires you to do nothing, it's automated.
 
+Use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion what to do. 
 
 ## 📚 Resources
 Here is my step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
@@ -129,8 +136,11 @@ Major dependencies:
 * [pyowm](https://github.com/csparpa/pyowm)
 * [RPi.GPIO](https://sourceforge.net/projects/raspberry-gpio-python/)
 * [hyperion](https://github.com/hyperion-project/hyperion)
+* [node-hyperion-client](https://github.com/WeeJeWel/node-hyperion-client)
+* [play-on-kodi](https://github.com/ritiek/play-on-kodi)
 
-The following user have been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3)
+
+The following user have been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3) <3
 
 
 ## 🎓 License
