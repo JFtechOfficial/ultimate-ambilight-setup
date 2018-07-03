@@ -22,22 +22,18 @@ Scripts I created to enhance the Hyperion experience. You can also read this in 
 * A Raspberry Pi 2, 3 or 3+
 * A microSD card with an OS already up and running ([OSMC](https://osmc.tv/download/) is suggested)
 
-Make sure you have [hyperion](https://hyperion-project.org) installed and configured. (installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
+Make sure you have [Hyperion](https://hyperion-project.org) installed and configured. (installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
 
 
 ## 💾 Installation
-* Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command:
+* Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command to clone this repository on your device:
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- It will download clone this repository on your device
- * You can now run the install.sh script
+ * You can run the install.sh script (if you choose you can configure all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
 ```shell
 cd ~/ultimate-ambilight-setup/
 sudo chmod +x install.sh
-```
-(if you choose you can configure all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
-```shell
 sudo ./install.sh -i
 ```
 
@@ -57,7 +53,7 @@ sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 * Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
 * Modify both `latitude` and `longitude` values pasting your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
-* Save and close the file
+* Save `Ctrl + X`and close `Enter` the file
 * If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
@@ -70,8 +66,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
 * Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already hardcoded as power button for you ;)
-* Save and close the file
-
+* Save `Ctrl + X`and close `Enter` the file
 ### Fan
 * Open the `fan.json` file
 ```shell
@@ -83,7 +78,7 @@ nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.py
 ```
-* Save and close the file
+* Save `Ctrl + X`and close `Enter` the file
 
 ### Google Assistant
 * Open the `client.json` file
@@ -98,7 +93,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topics
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, HotStar, and many more)
-* Save and close the file
+* Save `Ctrl + X`and close `Enter` the file
 
 Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
 * to the same topic as the `effect-topic` you can send an effect name in order to activate an effect 
@@ -112,7 +107,7 @@ Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-I
 
 Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
 
-Use buttons connected to the GPIO to launch your predefined hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
+Use buttons connected to the GPIO to launch your predefined Hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
 
 The fan script requires you to do nothing, it's automated.
 
@@ -121,7 +116,7 @@ Use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion 
 ## 📚 Resources
 Here is my step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
 
-The `hyperion.config.json` file is an example of a working configuration file for hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
+The `hyperion.config.json` file is an example of a working configuration file for Hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
 
 Please visit the [hyperion-project website](https://hyperion-project.org) and support the developers!
 
@@ -132,7 +127,6 @@ Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## ❤️ Credits
 
 Major dependencies:
-* [python](https://www.python.org)
 * [pyowm](https://github.com/csparpa/pyowm)
 * [RPi.GPIO](https://sourceforge.net/projects/raspberry-gpio-python/)
 * [hyperion](https://github.com/hyperion-project/hyperion)
