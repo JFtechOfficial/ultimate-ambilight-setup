@@ -1,7 +1,8 @@
 [![banner](https://dl.dropboxusercontent.com/s/xbczn9daprt7q2i/banner.png?dl=0 "banner with JFtech logo & social")](https://linktr.ee/jftechofficial)
 [![Raspberry Pi](https://img.shields.io/badge/made%20for-Raspberry%20Pi-red.svg)](https://www.raspberrypi.org) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) ![license](https://img.shields.io/github/license/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub issues](https://img.shields.io/github/issues/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub top language](https://img.shields.io/github/languages/top/JFtechOfficial/ultimate-ambilght-setup.svg) ![Requires.io](https://img.shields.io/requires/github/JFtechOfficial/ultimate-ambilght-setup.svg)
 
-Scripts I created to enhance the Hyperion experience. You can also read this in [:it:Italian🇮🇹](README-it-IT.md)
+Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
+
 
 ## 🚀 Getting started
 *TO-DO*
@@ -36,6 +37,7 @@ cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 sudo ./install.sh -i
 ```
+
 
 ## ⚙️ Configuration
 If you change any configuration value after you completed the [installation](#-installation) process please remember to reboot your device afterwards
@@ -103,6 +105,7 @@ Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-I
      * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off
      * `STOP` in order to stop any video
 
+
 ## ▶️ Usage
 
 Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
@@ -113,6 +116,7 @@ The fan script requires you to do nothing, it's automated.
 
 Use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion what to do. 
 
+
 ## 📚 Resources
 Here is my step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
 
@@ -120,9 +124,11 @@ The `hyperion.config.json` file is an example of a working configuration file fo
 
 Please visit the [hyperion-project website](https://hyperion-project.org) and support the developers!
 
+
 ## 🎁 Contributing
 
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 
 ## ❤️ Credits
 
