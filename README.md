@@ -26,11 +26,12 @@ Make sure you have [hyperion](https://hyperion-project.org) installed and config
 
 
 ## 💾 Installation
-Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command:
+* Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command:
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- It will download clone this repository on your computer. You can now run the install.sh script
+ It will download clone this repository on your device
+ * You can now run the install.sh script
 ```shell
 cd ~/ultimate-ambilight-setup/
 sudo chmod +x install.sh
@@ -51,7 +52,7 @@ sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
 * Modify the `owmAPIkey` value (empty by default) pasting your API key (you can use the same key in the kodi weather app)
 * Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
-* Modify both `latitude` and `longitude` values with your latitude and longitude
+* Modify both `latitude` and `longitude` values pasting your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save and close the file
 * If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory
@@ -75,14 +76,28 @@ nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
 * You can modify the default `max_TEMP` value (Temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds).  or you can find some pre-made fan profiles in the `fan.py` file
+`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds). You can find some pre-made fan profiles in the `fan.py` file
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.py
 ```
 * Save and close the file
 
+### Google Assistant
+* Open the `client.json` file
+```shell
+nano ~/ultimate-ambilight-setup/scripts/client.json
+```
+* Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
+* If You used a different port you can modify the default `port` value of the `hyperion_server`
+* Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) username and key
+* Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) "effect launching" topic
+* Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your [adafruit-io](https://io.adafruit.com/) "effect clearing" topics
+* Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
+* Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, HotStar, and many more)
+* Save and close the file
 
-Remember to reboot your device after the configuration
+
+If you change any configuretion value after you completed the installation process please remember to reboot your device
 ```shell
 sudo reboot
 ```
