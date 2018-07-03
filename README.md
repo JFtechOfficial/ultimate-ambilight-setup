@@ -30,10 +30,10 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- * You can run the install.sh script (if you choose you can configure all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
+ * Run the install.sh script (if you choose you can configure all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
 ```shell
 cd ~/ultimate-ambilight-setup/
-sudo chmod +x install.sh
+sudo chmod 775 install.sh
 sudo ./install.sh -i
 ```
 
