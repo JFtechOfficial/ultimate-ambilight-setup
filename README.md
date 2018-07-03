@@ -37,7 +37,7 @@ cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
 * If you choose you can [configure](#️-configuration) all the .json files you want to install in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can choose what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install all the stuff").
-`
+```shell
 Options:
     General options:
         -h --help           Show this screen.
@@ -49,7 +49,7 @@ Options:
         -c --clock          Install clock effect.
         -b --buttons        Install buttons script.
         -a --assistant      Install Google Assistant script.
-`
+```
 
 * Run the `install.sh` script:
 ```shell
