@@ -28,57 +28,57 @@ Make sure you have [hyperion](https://hyperion-project.org) installed and config
 ## 💾 Installation
 Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command:
 ```shell
-wget https://raw.githubusercontent.com/JFtechOfficial/ultimate-ambilght-setup/master/install.sh
+cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- It will download the `install.sh` file. You can now modify the install.sh file if you don't want to install all the scripts
-
+ It will download clone this repository on your computer. You can now run the install.sh script
 ```shell
+cd ~/ultimate-ambilight-setup/
 sudo chmod +x install.sh
-sudo ./install.sh
 ```
-If something goes wrong, please manually install all the [dependancies](#️-credits) and clone this repository using the commands below:
+(if you choose you can configure all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
 ```shell
-sudo apt-get install git
-git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
-mkdir -p /home/osmc/
-mv -i ultimate-ambilght-setup/ /home/osmc/Development/
+sudo ./install.sh -i
 ```
 
 ## ⚙️ Configuration
 
 
 ### Clock effect
-* Move both `clock.py` and `clock.json` to the Hyperion effects folder (I'm using the hyperion default path)
-```shell
-sudo mv clock.* /usr/share/hyperion/effects/
-```
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file
 ```shell
-sudo nano /usr/share/hyperion/effects/clock.json
+sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
-* Paste the key in the `clock.json` file (you can use the same key in the kodi weather app)
+* Modify the `owmAPIkey` value (empty by default) pasting your API key (you can use the same key in the kodi weather app)
 * Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
-* Paste both latitude and longitude in the `clock.json` file
+* Modify both `latitude` and `longitude` values with your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save and close the file
+* If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory
+```shell
+sudo nano /usr/share/hyperion/effects/clock.json
+```
+(example with the default path)
 
 ### Buttons
-* Open the `buttons.py` file
+* Open the `buttons.json` file
 ```shell
-nano /home/osmc/Development/buttons.py
+nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-* Modify the `Pins` and `clear` variables to match your GPIO setup
+* Modify the `effects` and `clear` values to match your GPIO setup
 * Save and close the file
 
 ### Fan
-* Open the `fan.py` file
+* Open the `fan.json` file
 ```shell
-nano /home/osmc/Development/fan.py
+nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
-* Modify the `pin` variable to match your GPIO setup
-* You can modify the default `max_TEMP` variable (Temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` variable (Temerature in Celsius after which the fan stops) and `sleepTime` variable (Temperature reading interval in seconds) or you can activate one of the pre-made fan profile by uncommenting it
+* Modify the `pin` value to match your GPIO setup
+* You can modify the default `max_TEMP` value (Temperature in Celsius after which the fan triggers),
+`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds).  or you can find some pre-made fan profiles in the `fan.py` file
+```shell
+nano ~/ultimate-ambilight-setup/scripts/fan.py
+```
 * Save and close the file
 
 
@@ -89,9 +89,9 @@ sudo reboot
 
 ## ▶️ Usage
 
-Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is warm and it has a colder color if outside is cold.
+Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
 
-Use buttons connected to the GPIO to launch a predefined hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
+Use buttons connected to the GPIO to launch your predefined hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
 
 The fan script requires you to do nothing, it's automated.
 
