@@ -98,12 +98,12 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Save `Ctrl + X` and close `Enter` the file
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
-* to the same topic as the `effect-topic` 
+* to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
    * an effect name in order to activate an effect 
-* to the same topic as the `other-topic`
+* to the "effect clearing" topic *(the same topic assigned to `other-topic` earlier)*
    * `OFF` in order to turn any Hyperion effect off
    * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
-   * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (go back to the capture mode)
+   * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goES back to the capture mode)
    * `STOP` in order to stop any video
 
 
