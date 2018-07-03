@@ -4,7 +4,7 @@
 Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
 
 ## 🚀 Getting started
-??? lorem ipsum ???
+*TO-DO*
 <details>
  <summary><strong>Table of Contents</strong> (click to expand)</summary>
 
