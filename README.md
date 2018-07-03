@@ -58,7 +58,8 @@ sudo ./install.sh -i
 
 
 ## ⚙️ Configuration
-You can manually configure all the .json files before the execution in the `install.sh` script (instead of using the interactive terminal via the `-i` argument). You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
+You can manually configure all the .json files you want to install before the execution of the `install.sh` script instead of using the interactive terminal via the `-i` argument. In both cases you'll have to provide the same information.
+You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
 ```shell
 sudo reboot
 ```
