@@ -55,12 +55,12 @@ sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 * Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
 * Modify both `latitude` and `longitude` values pasting your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
-* Save `Ctrl + X`and close `Enter` the file
+* Save `Ctrl + X` and close `Enter` the file
 * If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
-(example with the default path)
+*(example with the default path)*
 
 ### Buttons
 * Open the `buttons.json` file
@@ -68,7 +68,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
 * Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already hardcoded as power button for you ;)
-* Save `Ctrl + X`and close `Enter` the file
+* Save `Ctrl + X` and close `Enter` the file
 ### Fan
 * Open the `fan.json` file
 ```shell
@@ -80,7 +80,7 @@ nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.py
 ```
-* Save `Ctrl + X`and close `Enter` the file
+* Save `Ctrl + X` and close `Enter` the file
 
 ### Google Assistant
 * Open the `client.json` file
@@ -92,18 +92,19 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Create an [Adafruit-IO](https://io.adafruit.com/) account
 * Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your Adafruit-IO username and key
 * Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
-* Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topics
+* Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topic
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
-* Save `Ctrl + X`and close `Enter` the file
+* Save `Ctrl + X` and close `Enter` the file
 
-Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
-* to the same topic as the `effect-topic` you can send an effect name in order to activate an effect 
-* to the same topic as the `other-topic` you can send 
-     * `OFF` in order to turn any Hyperion effect off
-     * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn on this effect)
-     * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off
-     * `STOP` in order to stop any video
+Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
+* to the same topic as the `effect-topic` 
+   * an effect name in order to activate an effect 
+* to the same topic as the `other-topic`
+   * `OFF` in order to turn any Hyperion effect off
+   * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
+   * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (go back to the capture mode)
+   * `STOP` in order to stop any video
 
 
 ## ▶️ Usage
