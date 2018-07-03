@@ -92,7 +92,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
 * Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topics
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
-* Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, HotStar, and many more)
+* Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Save `Ctrl + X`and close `Enter` the file
 
 Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
