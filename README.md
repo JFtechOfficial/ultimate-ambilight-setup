@@ -38,7 +38,7 @@ sudo ./install.sh -i
 ```
 
 ## ⚙️ Configuration
-If you change any configuration value after you completed the installation process please remember to reboot your device afterwards
+If you change any configuration value after you completed the [installation](#-installation) process please remember to reboot your device afterwards
 ```shell
 sudo reboot
 ```
