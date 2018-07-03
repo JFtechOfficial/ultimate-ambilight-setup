@@ -97,7 +97,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Save `Ctrl + X`and close `Enter` the file
 
-Use [IFTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
+Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker.
 * to the same topic as the `effect-topic` you can send an effect name in order to activate an effect 
 * to the same topic as the `other-topic` you can send 
      * `OFF` in order to turn any Hyperion effect off
@@ -118,11 +118,11 @@ Use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion 
 
 
 ## 📚 Resources
-Here is my step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
+Here is a step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
 
 The `hyperion.config.json` file is an example of a working configuration file for Hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
 
-Please visit the [hyperion-project website](https://hyperion-project.org) and support the developers!
+Please visit the [hyperion-project website](https://hyperion-project.org) to learn more about Hyperion
 
 
 ## 🎁 Contributing
@@ -140,7 +140,7 @@ Major dependencies:
 * [play-on-kodi](https://github.com/ritiek/play-on-kodi)
 
 
-The following user have been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3) <3
+The following user has been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3) <3
 
 
 ## 🎓 License
