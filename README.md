@@ -31,23 +31,41 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- * Run the install.sh script (if you choose you can [configure](#️-configuration) all the .json files in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument)
+ * Prepare the install.sh script:
 ```shell
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
+```
+* If you choose you can [configure](#️-configuration) all the .json files you want to install in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can choose what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install all the stuff").
+`
+Options:
+    General options:
+        -h --help           Show this screen.
+        -v --version        Show version.
+        -s --silent         Show less stuff during installation.
+        -i --interactive    Insert installation parameters during installation.
+    Custom installation options:
+        -f --fan            Install fan script.
+        -c --clock          Install clock effect.
+        -b --buttons        Install buttons script.
+        -a --assistant      Install Google Assistant script.
+`
+
+* Run the `install.sh` script:
+```shell
 sudo ./install.sh -i
 ```
 
 
 ## ⚙️ Configuration
-If you change any configuration value after you completed the [installation](#-installation) process please remember to reboot your device afterwards
+You can manually configure all the .json files before the execution in the `install.sh` script (instead of using the interactive terminal via the `-i` argument). You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
 ```shell
 sudo reboot
 ```
 
 ### Clock effect
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
-* Open the `clock.json` file
+* Open the `clock.json` file:
 ```shell
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
@@ -56,34 +74,34 @@ sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 * Modify both `latitude` and `longitude` values pasting your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save `Ctrl + X` and close `Enter` the file
-* If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory
+* If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory:
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
 *(example with the default path)*
 
 ### Buttons
-* Open the `buttons.json` file
+* Open the `buttons.json` file:
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
 * Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already hardcoded as power button for you ;)
 * Save `Ctrl + X` and close `Enter` the file
 ### Fan
-* Open the `fan.json` file
+* Open the `fan.json` file:
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
 * You can modify the default `max_TEMP` value (Temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds). You can find some pre-made fan profiles in the `fan.py` file
+`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds). You can find some pre-made fan profiles in the `fan.py` file:
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.py
 ```
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Google Assistant
-* Open the `client.json` file
+* Open the `client.json` file:
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/client.json
 ```
