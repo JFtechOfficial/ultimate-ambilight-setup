@@ -1,7 +1,7 @@
 [![banner](https://dl.dropboxusercontent.com/s/xbczn9daprt7q2i/banner.png?dl=0 "banner with JFtech logo & social")](https://linktr.ee/jftechofficial)
 [![Raspberry Pi](https://img.shields.io/badge/made%20for-Raspberry%20Pi-red.svg)](https://www.raspberrypi.org) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) ![license](https://img.shields.io/github/license/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub issues](https://img.shields.io/github/issues/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/JFtechOfficial/ultimate-ambilght-setup.svg) ![GitHub top language](https://img.shields.io/github/languages/top/JFtechOfficial/ultimate-ambilght-setup.svg) ![Requires.io](https://img.shields.io/requires/github/JFtechOfficial/ultimate-ambilght-setup.svg)
 
-Scripts I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
+Scripts that I created to enhance the Hyperion experience. You can also read this in [Italian🇮🇹](README-it-IT.md)
 
 
 ## 🚀 Getting started
@@ -36,7 +36,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* If you choose you can [manually configure](#️-configuration) all the .json files you want to install in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can choose what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install all the stuff").
+* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories now. If you choose to do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install everything").
 ```shell
 Options:
     General options:
