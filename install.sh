@@ -108,8 +108,8 @@ startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
 re='^-?[0-9]+[.][0-9]+$'
-rei='^[123456789]+[0-9]*$'
-reb='^[01]$'
+rei='^[123456789]+[0-9]*'
+reb='^[01]'
 
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
