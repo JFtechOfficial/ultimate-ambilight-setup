@@ -70,10 +70,12 @@ sudo reboot
 ```shell
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
-* Modify the `owmAPIkey` value (empty by default) pasting your API key (you can use the same key in the kodi weather app)
+* Modify the `owmAPIkey` value pasting your API key (you can use the same key in the kodi weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
-* Modify both `latitude` and `longitude` values pasting your latitude and longitude
-* You can modify the default colors of the "virutal" clock hands and add markers
+* Modify both `latitude` and `longitude` values pasting your own latitude and longitude
+* Modify the `offset` value to match your LED setup
+* Modify the `direction` value to match your LED setup ( `0` -> clockwise, `1` -> counterclockwise)
+* You can modify the default colors and widths of the "virutal" clock hands and/or add markers
 * Save `Ctrl + X` and close `Enter` the file
 * If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory:
 ```shell
@@ -86,7 +88,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already hardcoded as power button for you ;)
+* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BCM) a.k.a. GPIO 5 (BOARD): it's already been hardcoded for you as power button ;)
 * Save `Ctrl + X` and close `Enter` the file
 ### Fan
 * Open the `fan.json` file:
