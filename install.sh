@@ -107,8 +107,9 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
-re='^-?[0-9]+([.][0-9]+)?$'
+re='^-?[0-9]+[.][0-9]+$'
 rei='^[0-9]+$'
+reb='^[0-1]$'
 
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
@@ -143,9 +144,6 @@ sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
-  if [ $interactive -ne 0 ]; then
-    read OWMkey
-  fi
   echo -n "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo -n "installing Rpi.GPIO..."
@@ -215,7 +213,7 @@ Enter the direction of your LED stip.
 Leave empty if you don't want to modify the default value.
     "
     while read -p "Direction: " direc; do
-      if ! [[ $lon  =~ [0-1] ]]; then
+      if ! [[ $lon  =~ $reb ]]; then
         echo "Direction must be an 0 or 1"
       else break
       fi
