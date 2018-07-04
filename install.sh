@@ -93,7 +93,10 @@ if [ "$DATE" -le "2017" ]; then
   echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
   exit 1
 fi
-
+output=""
+if [ $silent -ne 0 ]; then
+  output="1>/dev/null"
+fi
 default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
   fan=1
@@ -185,7 +188,7 @@ if [ $startup -ne 0 ]; then
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
-  ehco -n "installing some usefull modules..."
+  ehco -n "installing some other usefull modules..."
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
