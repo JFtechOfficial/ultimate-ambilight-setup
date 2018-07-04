@@ -36,7 +36,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* If you choose you can [configure](#️-configuration) all the .json files you want to install in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can choose what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install all the stuff").
+* If you choose you can [manually configure](#️-configuration) all the .json files you want to install in both `Hyperion effects` and `scripts` directories now. If you do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can choose what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install all the stuff").
 ```shell
 Options:
     General options:
@@ -57,7 +57,7 @@ sudo ./install.sh -i
 ```
 
 
-## ⚙️ Configuration
+## ⚙️ Manual Configuration
 You can manually configure all the .json files you want to install before the execution of the `install.sh` script instead of using the interactive terminal via the `-i` argument. In both cases you'll have to provide the same information.
 You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
 ```shell
@@ -71,7 +71,7 @@ sudo reboot
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
 * Modify the `owmAPIkey` value (empty by default) pasting your API key (you can use the same key in the kodi weather app)
-* Get [your coordinates](https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en&oco=1) 
+* Get [your coordinates](https://www.whataremycoordinates.com/) 
 * Modify both `latitude` and `longitude` values pasting your latitude and longitude
 * You can modify the default colors of the "virutal" clock hands and add markers
 * Save `Ctrl + X` and close `Enter` the file
@@ -116,15 +116,6 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Save `Ctrl + X` and close `Enter` the file
 
-Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
-* to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
-   * an effect name in order to activate an effect 
-* to the "effect clearing" topic *(the same topic assigned to `other-topic` earlier)*
-   * `OFF` in order to turn any Hyperion effect off
-   * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
-   * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goES back to the capture mode)
-   * `STOP` in order to stop any video
-
 
 ## ▶️ Usage
 
@@ -134,7 +125,15 @@ Use buttons connected to the GPIO to launch your predefined Hyperion effects, go
 
 The fan script requires you to do nothing, it's automated.
 
-Use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion what to do. 
+Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
+* to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
+   * an effect name in order to activate an effect 
+* to the "effect clearing" topic *(the same topic assigned to `other-topic` earlier)*
+   * `OFF` in order to turn any Hyperion effect off
+   * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
+   * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goes back to capture mode)
+   * `STOP` in order to stop any video
+Now you can use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion what to do. 
 
 
 ## 📚 Resources
