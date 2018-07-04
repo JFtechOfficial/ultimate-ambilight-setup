@@ -128,7 +128,7 @@ Use buttons connected to the GPIO to launch your predefined Hyperion effects, go
 Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold, and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
-* to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
+* to the "effect launching" topic *(the same topic assigned to *`effect-topic`* earlier)*
    * an effect name in order to activate an effect 
 * to the "effect clearing" topic *(the same topic assigned to *`other-topic`* earlier)*
    * `OFF` in order to turn any Hyperion effect off
