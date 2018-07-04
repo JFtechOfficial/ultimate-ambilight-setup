@@ -140,14 +140,30 @@ sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
+  if [ $interactive -ne 0 ] then
+    read OWMkey
+  fi
   echo -n "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo -n "installing Rpi.GPIO..."
   sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
+
 fi
 if [ $clock -ne 0 ]; then
+  if [ $interactive -ne 0 ] then
+    echo "
+Enter your OpenWeatherMap API key.
+Leave empty if you don't want to modify the default value.
+You can get a new API key here: https://openweathermap.org/appid
+    "
+    read -p "OpenWeatherMap API key: " OWMkey
+    echo "$OWMkey"
+    if [-z $OWMkey ]; then
+    echo "use jq"
+    fi
+  fi
   echo "Stop Hyperion, if necessary"
   if [ $OS_OPENELEC -eq 1 ]; then
     killall hyperiond 2>/dev/null
