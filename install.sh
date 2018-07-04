@@ -25,8 +25,9 @@ Options:
         -c --clock          Install clock effect.
         -b --buttons        Install buttons script.
         -a --assistant      Install Google Assistant script.
-    (if you use any of the custom installation options
-    you will install only the stuff you specify instead of all the stuff)
+    ( if you use any of the custom installation options
+    you will install only the scripts/effects you specify
+    instead of all the scripts/effects )
 "
 }
 
@@ -93,7 +94,6 @@ if [ "$DATE" -le "2017" ]; then
   exit 1
 fi
 
-
 default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
   fan=1
@@ -112,7 +112,7 @@ OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
 OS_OSMC=`grep -m1 -c OSMC /etc/issue`
 OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
 
-# check which init script we should use
+# check which should use
 USE_SYSTEMD=`grep -m1 -c systemd /proc/1/comm`
 USE_INITCTL=`which /sbin/initctl | wc -l`
 USE_SERVICE=`which /usr/sbin/service | wc -l`
@@ -127,7 +127,7 @@ if [ $OS_OPENELEC -ne 1 ]; then
   sudo apt-get autoremove -y
   sudo apt-get autoclean -y
 fi
-
+##-qq  1>/dev/null
 #Install dependencies and setup preperation
 echo -n "Downloading and installing Python..."
 sudo apt-get install -y build-essential
@@ -139,12 +139,13 @@ sudo apt install -y python-pip
 if [ $gpio -ne 0 ]; then
   echo -n "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  echo -n "installing Rpi.GPIO..."
   sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
 fi
 if [ $clock -ne 0 ]; then
-  echo '---> Stop Hyperion, if necessary'
+  echo "Stop Hyperion, if necessary"
   if [ $OS_OPENELEC -eq 1 ]; then
     killall hyperiond 2>/dev/null
   elif [ $USE_SYSTEMD -eq 1 ]; then
@@ -157,10 +158,12 @@ if [ $clock -ne 0 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
   # Clock effect for Hyperion
+  echo -n "Installing pyowm..."
   sudo pip install pyowm
+  echo -n "installing clock effect..."
   sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
   sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
-  echo '---> Starting Hyperion'
+  echo "Starting Hyperion..."
   if [ $OS_OPENELEC -eq 1 ]; then
     /storage/.config/autostart.sh > /dev/null 2>&1 &
   elif [ $USE_SYSTEMD -eq 1 ]; then
@@ -174,23 +177,29 @@ fi
 if [ $startup -ne 0 ]; then
   sudo apt install -y curl
   sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  echo -n "installing nodejs and npm..."
   sudo apt-get install -y nodejs
   sudo apt-get install -y npm
+  echo -n "installing forever-service..."
   sudo npm install -g forever
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
+  ehco -n "installing some usefull modules..."
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
+  echo -n "installing Google Assisant client script..."
   sudo forever-service install assistant-service --script scripts/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
+  echo -n "installing fan script..."
   sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
+  echo -n "installing buttons script..."
   sudo forever-service install buttons-service -s scripts/buttons.py -f " -c python"
   sudo service buttons-service start
 fi
