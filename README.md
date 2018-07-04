@@ -5,7 +5,7 @@ Scripts that I created to enhance the Hyperion experience. You can also read thi
 
 
 ## 🚀 Getting started
-*TO-DO*
+
 <details>
  <summary><strong>Table of Contents</strong> (click to expand)</summary>
 
@@ -36,7 +36,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories now. If you choose to do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install everything").
+* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories. If you choose to do so you can omit the `-i` argument, otherwise follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-f`, `-b`, `-c` and `-a` arguments (no arguments means "install everything").
 ```shell
 Options:
     General options:
@@ -109,10 +109,10 @@ nano ~/ultimate-ambilight-setup/scripts/fan.py
 nano ~/ultimate-ambilight-setup/scripts/client.json
 ```
 * Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
-* If You used a different port you can modify the default `port` value of the `hyperion_server`
+* If you used a different port you can modify the default `port` value of the `hyperion_server`
 * Create an [Adafruit-IO](https://io.adafruit.com/) account
 * Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your Adafruit-IO username and key
-* Modify the `effect-topic`value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
+* Modify the `effect-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
 * Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topic
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
@@ -125,7 +125,7 @@ Use your favorite Hyperion client to select and run the clock effect, the second
 
 Use buttons connected to the GPIO to launch your predefined Hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
 
-The fan script requires you to do nothing, it's automated.
+Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold, and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
@@ -135,7 +135,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
    * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goes back to capture mode)
    * `STOP` in order to stop any video
-Now you can use the Google Assistant on your smartphone/tablet/Google home to tell Hyperion what to do. 
+Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do. 
 
 
 ## 📚 Resources
