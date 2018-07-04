@@ -107,6 +107,9 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
+re='^-?[0-9]+([.][0-9]+)?$'
+rei='^[0-9]+$'
+
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
@@ -152,18 +155,6 @@ if [ $gpio -ne 0 ]; then
 
 fi
 if [ $clock -ne 0 ]; then
-  if [ $interactive -ne 0 ] then
-    echo "
-Enter your OpenWeatherMap API key.
-Leave empty if you don't want to modify the default value.
-You can get a new API key here: https://openweathermap.org/appid
-    "
-    read -p "OpenWeatherMap API key: " OWMkey
-    echo "$OWMkey"
-    if [-z $OWMkey ]; then
-    echo "use jq"
-    fi
-  fi
   echo "Stop Hyperion, if necessary"
   if [ $OS_OPENELEC -eq 1 ]; then
     killall hyperiond 2>/dev/null
@@ -179,6 +170,64 @@ You can get a new API key here: https://openweathermap.org/appid
   # Clock effect for Hyperion
   echo -n "Installing pyowm..."
   sudo pip install pyowm
+  
+  ######################################
+    if [ $interactive -ne 0 ] then
+    echo "
+Enter your OpenWeatherMap API key.
+Leave empty if you don't want to modify the default value.
+You can get a new API key here: https://openweathermap.org/appid
+    "
+    read -p "OpenWeatherMap API key: " OWMkey
+    
+    echo "
+Enter your own latitude and longitude.
+Leave empty if you don't want to modify the default value.
+You can find your coordinates here: https://www.whataremycoordinates.com/
+    "
+    while read -p "Latitude: " lat; do
+      if ! [[ $lat  =~ $re ]]; then
+       echo "Latitude must be a decimal number"
+       else break
+      fi
+    done
+    while read -p "Longitude: " lon; do
+      if ! [[ $lon  =~ $re ]]; then
+       echo "Longitude must be a decimal number"
+       else break
+      fi
+    done
+    
+    echo "
+Enter your LED stip offset number.
+Leave empty if you don't want to modify the default value.
+    "
+    while read -p "Offset: " ofs; do
+      if ! [[ $lon  =~ $rei ]]; then
+       echo "Offset must be an integer number"
+       else break
+      fi
+    done
+
+        echo "
+Enter the direction of your LED stip.
+0 -> clockwise, 1 -> counterclockwise.
+Leave empty if you don't want to modify the default value.
+    "
+    while read -p "Direction: " direc; do
+      if ! [[ $lon  =~ [0-1]]]; then
+       echo "Direction must be an 0 or 1"
+       else break
+      fi
+    done
+    
+#use jq to write de values of $OWMkey $lat $lon $ofs $direc if they are not empty
+    if [-z $Cconfig ]; then
+    echo "use jq"
+    fi
+  fi
+  
+  ######################################
   echo -n "installing clock effect..."
   sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
   sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
