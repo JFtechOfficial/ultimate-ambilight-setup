@@ -96,11 +96,8 @@ nano ~/ultimate-ambilight-setup/scripts/buttons.json
 nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
-* You can modify the default `max_TEMP` value (Temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` value (Temerature in Celsius after which the fan stops) and `sleepTime` value (Temperature reading interval in seconds). You can find some pre-made fan profiles in the `fan.py` file:
-```shell
-nano ~/ultimate-ambilight-setup/scripts/fan.py
-```
+* You can modify the default `max_TEMP` value (temperature in Celsius after which the fan triggers),
+`cutoff_TEMP` value (temerature in Celsius after which the fan stops) and `sleepTime` value (temperature reading interval in seconds)
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Google Assistant
