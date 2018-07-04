@@ -3,7 +3,7 @@
         "script" : "clock.py",
         "args" :
         {
-                "owmAPIkey" : "",
+                "owmAPIkey" : "InsertYourKeyHere",
                 "latitude" : 41.894741,
                 "longitude" : 12.4839,
 
