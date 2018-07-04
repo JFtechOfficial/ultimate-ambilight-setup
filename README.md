@@ -130,7 +130,7 @@ Use a fan connected to the GPIO: it will automatically start to spin when the CP
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to `effect-topic` earlier)*
    * an effect name in order to activate an effect 
-* to the "effect clearing" topic *(the same topic assigned to `other-topic` earlier)*
+* to the "effect clearing" topic *(the same topic assigned to *`other-topic`* earlier)*
    * `OFF` in order to turn any Hyperion effect off
    * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
    * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goes back to capture mode)
