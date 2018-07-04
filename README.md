@@ -132,6 +132,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
    * `PLAY` in order to play the video from `video_uri` while turning any Hyperion effect off (goes back to capture mode)
    * `STOP` in order to stop any video
+
 Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do. 
 
 
