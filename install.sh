@@ -108,8 +108,8 @@ startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
 re='^-?[0-9]+[.][0-9]+$'
-rei='^[0-9]+$'
-reb='^[0-1]$'
+rei='^[123456789]+[0-9]*$'
+reb='^[01]$'
 
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
@@ -144,9 +144,9 @@ sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
-  echo -n "Downloading Rpi.GPIO..."
+  echo "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
-  echo -n "installing Rpi.GPIO..."
+  echo "installing Rpi.GPIO..."
   sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
