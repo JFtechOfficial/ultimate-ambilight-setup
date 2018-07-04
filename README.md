@@ -161,6 +161,10 @@ Major dependencies:
 The following user has been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3) <3
 
 
+## :date: Release History
+
+* 0.1.0 - beta release
+
 ## 🎓 License
 
 [MIT](http://webpro.mit-license.org/)
