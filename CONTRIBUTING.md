@@ -14,18 +14,19 @@ Before you open a new issue:
 
 ## Coding Style
 
+- lint your code
 - use unix line endings (not windows)
 - indent your code with TABs instead of spaces
 - use utf8 file encoding (ANSI encoding is strictly forbidden!)
-- use speaking names for variables.
+- use speaking names for variables
 - avoid code dups -> if you write similar code blocks more the 2 times -> refactoring!
 
 
 ## Pull Request Process
 
-1. Update the README.md with details of changes.
+1. Update the README.md with details of changes
 2. Increase the version numbers in any examples files and the README.md to the new version that this
-   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
+   Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/)
 3. Reference an issue (optional).
 
 ## Code of Conduct
