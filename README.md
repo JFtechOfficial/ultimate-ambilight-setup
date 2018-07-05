@@ -110,6 +110,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
 * If you used a different port you can modify the default `port` value of the `hyperion_server`
 * Create an [Adafruit-IO](https://io.adafruit.com/) account
+* Create an "effect launching" topic and an "effect clearing" topic
 * Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your Adafruit-IO username and key
 * Modify the `effect-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect launching" topic
 * Modify the `other-topic` value of the `adafruit_mqtt_broker` to match your Adafruit-IO "effect clearing" topic
