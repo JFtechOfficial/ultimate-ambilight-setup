@@ -53,7 +53,7 @@ Options:
 
 * Run the `install.sh` script:
 ```shell
-sudo ./install.sh -i
+sudo ./install.sh -s -i
 ```
 
 
