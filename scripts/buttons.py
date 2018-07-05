@@ -5,7 +5,7 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 """ Define some variables editing the button.json config file 
-    (please do NOT use pin 3 (BCM): it must be used as shutdown button) """
+    (please do NOT use pin 5 (BOARD): it must be used as shutdown button) """
 with open('buttons.json') as f:
     data = json.load(f)
     f.close()
