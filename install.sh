@@ -201,7 +201,7 @@ Enter your LED stip offset number.
 Leave empty if you don't want to modify the default value.
     "
     while read -p "Offset: " ofs; do
-      if ! [[ $lon  =~ $rei ]]; then
+      if ! [[ $ofs  =~ $rei ]]; then
         echo "Offset must be an integer number"
       else break
       fi
@@ -213,13 +213,13 @@ Enter the direction of your LED stip.
 Leave empty if you don't want to modify the default value.
     "
     while read -p "Direction: " direc; do
-      if ! [[ $lon  =~ $reb ]]; then
-        echo "Direction must be an 0 or 1"
+      if ! [[ $direc  =~ $reb ]]; then
+        echo "Direction must be 0 or 1"
       else break
       fi
     done
 
-    echo "$OWMkey"
+    echo "$OWMkey $lat $lon $ofs $direc"
     #use jq to write de values of $OWMkey $lat $lon $ofs $direc if they are not empty
     ##if [ -z $Cconfig ]; then
     echo "use jq"
