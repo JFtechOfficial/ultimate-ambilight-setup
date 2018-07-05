@@ -38,7 +38,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'argomento `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere consa intallare usando gli argomenti `-f`, `-b`, `-c` e `-a` (nessun argomento significa "installa tutto").
+* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'argomento `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando gli argomenti `-f`, `-b`, `-c` e `-a` (nessun argomento significa "installa tutto").
 ```shell
 Opzioni:
     Opzioni generali:
@@ -90,7 +90,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-*  Modifica i valori di `effects` e `clear` per farlo combaciare con il setup dei tuoi pin di GPIO. Evita di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD): è già stato hardcoded per te come pulsante di accensione/spegnimento del Raspberry Pi ;)
+*  Modifica i valori di `effects` e `clear` per farli combaciare con il setup dei tuoi pin di GPIO. Evita di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD): è già stato hardcoded per te come pulsante di accensione/spegnimento del Raspberry Pi ;)
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
 ### Ventola
