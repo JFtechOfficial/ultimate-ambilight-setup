@@ -61,7 +61,7 @@ sudo ./install.sh -s -i
 
 ## ⚙️ Configurazione Manuale
 Puoi configurare manualmente tutti i file .json che vuoi installare prima dell'esecuzione dello script `install.sh` invece di usare il terminale interattivo tramite l'argomento `-i` . In entrambi i casi dovrai fornire le stesse informazioni.
-Puoi anche cambiare qualsiasi valore di configurazione dopo il processo di [installazione](#-installazione) . Se lo fai, ricordati di riavviare il sistema:
+Puoi anche cambiare qualsiasi valore di configurazione dopo il processo di [installazione](#-installazione). Se lo fai, ricordati di riavviare il sistema:
 ```shell
 sudo reboot
 ```
@@ -72,7 +72,7 @@ sudo reboot
 ```shell
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
-* Modifica il valore di `owmAPIkey` incollando la tua API key (puoi usare la stessa key nell' app meteo di kodi)
+* Modifica il valore di `owmAPIkey` incollando la tua API key (puoi usare la stessa key nell' app Meteo di Kodi)
 * Ottieni [le tue coordinate](https://www.whataremycoordinates.com/) 
 * Modifica i valori di `latitude` e `longitude` incollando la tua latitudine e longitudine
 * Modifica il valore di `offset` per farlo combaciare con il setup dei tuoi LED
@@ -115,7 +115,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modifica i valori di `username` e `key` dell' `adafruit_mqtt_broker` per farli combaciare con lo username e la AIO key di Adafruit-IO
 * Modifica il valore di `effect-topic` dell' `adafruit_mqtt_broker` per farlo combaciare con il nome del tuo topic di Adafruit-IO per "laciare un effetto"
 * Modifica il valore di `other-topic` dell' `adafruit_mqtt_broker`  per farlo combaciare con il nome del tuo topic di Adafruit-IO per "spegnere un effetto"
-* Modifica il valore di `ip_address` del `kodi_server` per farlo combaciare con l'indirizzo IP del dispositivo su cui è in esecuzione kodi ("127.0.0.1" se è lo stesso dispositivo che fa girare lo script)
+* Modifica il valore di `ip_address` del `kodi_server` per farlo combaciare con l'indirizzo IP del dispositivo su cui è in esecuzione Kodi ("127.0.0.1" se è lo stesso dispositivo che fa girare lo script)
 * Modifica il valore di `video_uri` del `kodi_server` con il percorso locale o il link da internet del video che vuoi riprodurre (supportati: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK e molti altri)
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
