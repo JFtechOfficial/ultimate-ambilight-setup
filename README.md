@@ -121,7 +121,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 
 ## ▶️ Usage
 
-Use your favorite Hyperion client to select and run the clock effect, the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
+Use your favorite Hyperion client to select and run the clock effect: the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
 
 Use buttons connected to the GPIO to launch your predefined Hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
 
