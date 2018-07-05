@@ -17,6 +17,7 @@ Scripts che ho creato per migliorare l'esperienza con Hyperion. You can also rea
 * [Contribuire](#-contribuire)
 * [Crediti](#️-crediti)
 * [Supportami!](#-supportami)
+* [FAQ](#-faq)
 * [Release History](#️-release-history)
 * [Licenza](#-licenza)
 </details>
@@ -170,6 +171,16 @@ Il seguente utente è stato fonte di ispirazione: [7h30n3 (The One)](https://git
 
  [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Y8Y0FW3V)
 
+
+## 💭 FAQ
+
+> Posso usare lo stesso pin GPIO per la configurazione di due script differenti?
+
+No. Non dovresti mai utilizzare lo stesso pin per tasks differenti allo stesso momento (es. controllare la ventola leggere lo stato di un bottone dallo stesso pin allo stesso tempo non funzionerà e potrebbe danneggiare il Raspberry Pi).
+
+> Posso installare lo script del client di Google Assistantsu un Raspberry Pi differente da quello su cui gira Hyperion?
+
+Si. Puoi lasciarlo in esecuzione su una qualsiasi macchina unix connessa allo stesso network locale: invierà i comandi al Raspberry Pi che fa girare Hyperion. lo script della ventola, quello dei pulsanti e l'effetto orlologio non possono essere usati nella stessa maniera: devi installarli sulla macchina su cui intendi utilizzarli.
 
 
 ## 🗓️ Release History
