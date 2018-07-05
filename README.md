@@ -17,7 +17,7 @@ Scripts that I created to enhance the Hyperion experience. You can also read thi
 * [Contributing](#-contributing)
 * [Credits](#️-credits)
 * [Support Me!](#️-support-me!)
-* [Release History](#️-release-history)
+* [Release History](#️-:date:-release-history)
 * [License](#-license)
 </details>
 
