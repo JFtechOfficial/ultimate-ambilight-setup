@@ -66,7 +66,7 @@ You can also change any configuration value after the [installation](#-installat
 sudo reboot
 ```
 
-### Clock effect
+### Clock Effect
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file:
 ```shell
@@ -121,17 +121,17 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 
 ## ▶️ Usage
 
-Use your favorite Hyperion client to select and run the clock effect: the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
+Use your favorite [Hyperion client](https://play.google.com/store/apps/details?id=nl.hyperion.hyperionfree&hl=en_US) to select and run the clock effect: the second hand has a warmer color if outside is hot and it has a colder color if outside is cold.
 
-Use buttons connected to the GPIO to launch your predefined Hyperion effects, go back to the default mode, or safely turn off the Raspberry Pi.
+Use buttons connected to the GPIO to launch your predefined effects, go back to the capture mode, or safely turn off the Raspberry Pi.
 
-Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold, and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
+Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
-   * an effect name in order to activate an effect 
+   * an effect name in order to activate that effect 
 * to the "effect clearing" topic *(the same topic assigned to* `other-topic` *earlier)*
-   * `OFF` in order to turn any effect off
+   * `OFF` in order to turn any effect off (goes back to capture mode)
    * `ON` in order to turn on the `Dim cinema lights` effect (additional way to turn this effect on)
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
    * `STOP` in order to stop any video
