@@ -90,7 +90,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 3 (BOARD) a.k.a. GPIO 5 (BCM): it's already been hardcoded for you as power button ;)
+* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
 * Save `Ctrl + X` and close `Enter` the file
 ### Fan
 * Open the `fan.json` file:
