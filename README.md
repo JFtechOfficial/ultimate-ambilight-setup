@@ -72,7 +72,7 @@ sudo reboot
 ```shell
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
-* Modify the `owmAPIkey` value pasting your API key (you can use the same key in the kodi weather app)
+* Modify the `owmAPIkey` value pasting your API key (you can use the same key in the Kodi Weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
 * Modify the `offset` value to match your LED setup
@@ -114,7 +114,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * Modify the `username` and `key` values of the `adafruit_mqtt_broker` to match your Adafruit-IO username and AIO key
 * Modify the `effect-topic` value of the `adafruit_mqtt_broker` to match the name of your Adafruit-IO "effect launching" topic
 * Modify the `other-topic` value of the `adafruit_mqtt_broker` to match the name of your Adafruit-IO "effect clearing" topic
-* Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running kodi ("127.0.0.1" if it's the same device running this script)
+* Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running Kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Save `Ctrl + X` and close `Enter` the file
 
