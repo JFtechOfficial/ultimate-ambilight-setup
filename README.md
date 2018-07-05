@@ -72,7 +72,7 @@ sudo reboot
 ```shell
 sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
 ```
-* Modify the `owmAPIkey` value pasting your API key (you can use the same key in the Kodi Weather app)
+* Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
 * Modify the `offset` value to match your LED setup
