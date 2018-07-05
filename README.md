@@ -173,9 +173,13 @@ The following user has been a source of inspiration: [7h30n3 (The One)](https://
 
 ## 💭 FAQ
 
-* Can I use the same GPIO pin for the configuration of two different scripts? No. You should never use the same pins for different tasks at the same time (e.g. controlling the fan and reading the state of a button from the same pin at the same time will not work and could break your Raspberry Pi).
+> Can I use the same GPIO pin for the configuration of two different scripts?
 
-* Can I install the Google Assistant client script on a Raspberry Pi different from the one running Hyperion? Yes. You can run it on any unix machine connected to the same local network and it will send commands to the Raspberry Pi that runs Hyperion. The fan script, buttons script and the clock effect cannot be used in the same way: you must install them on the machine you intend to control.
+No. You should never use the same pins for different tasks at the same time (e.g. controlling the fan and reading the state of a button from the same pin at the same time will not work and could break your Raspberry Pi).
+
+> Can I install the Google Assistant client script on a Raspberry Pi different from the one running Hyperion?
+
+Yes. You can run it on any unix machine connected to the same local network: it will send commands to the Raspberry Pi that runs Hyperion. The fan script, buttons script and the clock effect cannot be used in the same way: you must install them on the machine you intend to control.
 
 
 ## 🗓️ Release History
