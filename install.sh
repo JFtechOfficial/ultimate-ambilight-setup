@@ -379,12 +379,18 @@ if [ $buttons -ne 0 ]; then
 Enter th pin number (BOARD) for the effect buttons.
 Leave empty if you don't want to modify the default value.
   "
+  eArray=()
+  itr=0
   while read -p "Do you want to add a new effect button? [Y/n]: " Yreply; do
     if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
       while read -p "GPIO pin: " ebutton; do
-        if ! { [[ $ebutton  =~ $reboard ]] || [ -z $ebuttons ]; }; then
+        if ! { [[ $ebutton  =~ $reboard ]] || [ -z $ebutton ]; }; then
           echo "Pin must be in the BOARD pin numbering"
-        else break
+        else
+          eArray[itr]=$ebutton
+          itr=$((var+1))
+          echo ${eArray[$itr]}
+          break
         fi
       done
     else break
