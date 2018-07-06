@@ -95,7 +95,7 @@ fi
 #silent option, output to /dev/null
 output=""
 if [ $silent -ne 0 ]; then
-  output="1>/dev/null" # 1,2, oppure & ???
+  output=" > /dev/null 2>&1" # 1,2, oppure & ???
 fi
 #no arguments
 default_install=$((fan+buttons+assistant+clock))
@@ -171,11 +171,11 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 #update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
   echo -n "Updating System..."
-  sudo apt-get update -y
+  sudo apt-get update -y $output
   ##sudo apt-get upgrade -y
   ##sudo apt-get dist-upgrade -y
-  sudo apt-get autoremove -y
-  sudo apt-get autoclean -y
+  sudo apt-get autoremove -y $output
+  sudo apt-get autoclean -y $output
 fi
 
 #Install dependencies and setup preperation
@@ -388,7 +388,6 @@ Leave empty if you don't want to modify the default value.
           echo "Pin must be in the BOARD pin numbering"
         else
           eArray[itr]=$ebutton
-          echo ${eArray[$itr]}
           itr=$((itr+1))
           break
         fi
@@ -396,6 +395,7 @@ Leave empty if you don't want to modify the default value.
     else break
     fi
   done
+  echo "${eArray[@]}"
   echo "
 Enter th pin number (BOARD) for the clear button.
 Leave empty if you don't want to modify the default value.
