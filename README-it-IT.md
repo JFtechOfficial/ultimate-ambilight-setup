@@ -39,7 +39,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'argomento `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando gli argomenti `-f`, `-b`, `-c` e `-a` (nessun argomento significa "installa tutto").
+* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'opzione `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando le opzioni `-f`, `-b`, `-c` e `-a` (nessuna opzione di installazione personalizzata significa "installa tutto").
 ```shell
 Opzioni:
     Opzioni generali:
@@ -61,7 +61,7 @@ sudo ./install.sh -s -i
 
 
 ## ⚙️ Configurazione Manuale
-Puoi configurare manualmente tutti i file .json che vuoi installare prima dell'esecuzione dello script `install.sh` invece di usare il terminale interattivo tramite l'argomento `-i` . In entrambi i casi dovrai fornire le stesse informazioni.
+Puoi configurare manualmente tutti i file .json che vuoi installare prima dell'esecuzione dello script `install.sh` invece di usare il terminale interattivo tramite l'opzione `-i` . In entrambi i casi dovrai fornire le stesse informazioni.
 Puoi anche cambiare qualsiasi valore di configurazione dopo il processo di [installazione](#-installazione). Se lo fai, ricordati di riavviare il sistema:
 ```shell
 sudo reboot
@@ -176,11 +176,11 @@ Il seguente utente è stato fonte di ispirazione: [7h30n3 (The One)](https://git
 
 > Posso usare lo stesso pin GPIO per la configurazione di due script differenti?
 
-No. Non dovresti mai utilizzare lo stesso pin per tasks differenti allo stesso momento (es. controllare la ventola leggere lo stato di un bottone dallo stesso pin allo stesso tempo non funzionerà e potrebbe danneggiare il Raspberry Pi).
+No. Non dovresti mai utilizzare lo stesso pin per tasks differenti allo stesso momento (es. controllare la ventola e contemporaneamente leggere lo stato di un pulsante dallo stesso pin non funzionerà e potrebbe danneggiare il Raspberry Pi).
 
-> Posso installare lo script del client di Google Assistantsu un Raspberry Pi differente da quello su cui gira Hyperion?
+> Posso installare lo script del client di Google Assistant su un Raspberry Pi differente da quello su cui è in esecuzione Hyperion?
 
-Si. Puoi lasciarlo in esecuzione su una qualsiasi macchina unix connessa allo stesso network locale: invierà i comandi al Raspberry Pi che fa girare Hyperion. lo script della ventola, quello dei pulsanti e l'effetto orlologio non possono essere usati nella stessa maniera: devi installarli sulla macchina su cui intendi utilizzarli.
+Si. Puoi lasciarlo in esecuzione su una qualsiasi macchina unix connessa allo stesso network locale: invierà i comandi al Raspberry Pi che su cui è in esecuzione Hyperion. lo script della ventola, quello dei pulsanti e l'effetto orlologio non possono essere usati nella stessa maniera: devi installarli sulla macchina su cui intendi utilizzarli.
 
 
 ## 🗓️ Release History
