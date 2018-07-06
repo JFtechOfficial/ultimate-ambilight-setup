@@ -81,7 +81,6 @@ while [ "$1" != "" ]; do
 done
 
 
-
 # we want to be root to install
 if [ $(id -u) != 0 ]; then
   echo '---> Critical Error: Please run the script as root (sudo ./install.sh) -> abort'
@@ -93,10 +92,12 @@ if [ "$DATE" -le "2017" ]; then
   echo "---> Critical Error: Please update your systemtime (Year of your system: ${DATE}) -> abort"
   exit 1
 fi
+#silent option, output to /dev/null
 output=""
 if [ $silent -ne 0 ]; then
   output="1>/dev/null"
 fi
+#no arguments
 default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
   fan=1
