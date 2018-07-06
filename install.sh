@@ -388,8 +388,8 @@ Leave empty if you don't want to modify the default value.
           echo "Pin must be in the BOARD pin numbering"
         else
           eArray[itr]=$ebutton
-          itr=$((itr+1))
           echo ${eArray[$itr]}
+          itr=$((itr+1))
           break
         fi
       done
