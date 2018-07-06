@@ -326,7 +326,7 @@ Enter th pin number (BOARD) for the fan.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "GPIO pin: " gpiopin; do
-    if ! [[ $gpiopin  =~ $rei ]]; then
+    if ! [[ $gpiopin  =~ $reboard ]]; then
       echo "Pin must be in the BOARD pin numbering"
     else break
     fi
