@@ -108,14 +108,52 @@ startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
 
+if [ $interactive -ne 0 ]; then
+  echo "This installation is going to install the following: "
+  
+  if [ $fan -ne 0 ]; then
+  echo "- fan script
+  a script that controls a fan (on/off) using a GPIO pin.
+  The fan will automatically start to spin when the CPU is above the max_TEMP threshold
+  and will automatically stop when the CPU is below the cutoff_TEMP threshold.
+  "
+  fi
+    if [ $buttons -ne 0 ]; then
+  echo "- buttons script
+  A script that let you use buttons connected to the GPIO
+  to launch effects, go back to the capture mode, or safely turn off the Raspberry Pi.
+  "
+  fi
+    if [ $clock -ne 0 ]; then
+  echo "- clock effect
+  a script that adds a new analog clock effect to the Hyperion effect list.
+  the second hand has a warmer color when outside is hot
+  and it has a colder color when outside is cold.
+  "
+  fi
+    if [ $assistant -ne 0 ]; then
+  echo "- Google Assistant script
+  a script that let you use the Google Assistant on your smartphone/tablet/Google Home
+  to tell Hyperion what to do (e.g. Ok, Google launch Rainbow swirl effect)
+  "
+  fi
+  read -p "Do you want to procede? " installReply
+  if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
+    echo "Starting..."
+  else
+    echo "Aborting..."
+    exit 1
+  fi
+fi
+
+
 re='^-?[0-9]+[.][0-9]+$'
 rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
-reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}'
+reip='^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 reboard='^([3578]|[1][01235689]|[2][12346])$'
 
 
-echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
 OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
@@ -382,5 +420,7 @@ if [[ "$REPLY" =~ ^(yes|y|Y)$ ]]; then
   reboot
 else
   echo
-  echo "Done"
+  echo "Done!
+  If You want to support me, you can donate here: https://ko-fi.com/jftech
+  Thank you."
 fi
