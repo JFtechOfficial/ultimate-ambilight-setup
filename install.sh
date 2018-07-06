@@ -139,7 +139,7 @@ if [ $interactive -ne 0 ]; then
   to tell Hyperion what to do (e.g. Ok, Google launch Rainbow swirl effect)
   "
   fi
-  read -p "Do you want to procede? [Y/n] " installReply
+  read -p "Do you want to procede? [Y/n]: " installReply
   if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
     echo "Starting..."
   else
@@ -233,7 +233,7 @@ You can find your coordinates here: https://www.whataremycoordinates.com/
       fi
     done
     while read -p "Longitude: " lon; do
-      if ! [[ $lon  =~ $re ]]; then
+      if ! { [[ $lon  =~ $re ]] || [ -z $lon ]; }; then
         echo "Longitude must be a decimal number"
       else break
       fi
@@ -244,7 +244,7 @@ Enter your LED stip offset number.
 Leave empty if you don't want to modify the default value.
     "
     while read -p "Offset: " ofs; do
-      if ! [[ $ofs  =~ $rei ]]; then
+      if ! { [[ $ofs  =~ $rei ]] || [ -z $ofs ]; }; then
         echo "Offset must be an integer number"
       else break
       fi
@@ -256,7 +256,7 @@ Enter the direction of your LED stip.
 Leave empty if you don't want to modify the default value.
     "
     while read -p "Direction: " direc; do
-      if ! [[ $direc  =~ $reb ]]; then
+      if ! { [[ $direc  =~ $reb ]] || [ -z $direc ]; }; then
         echo "Direction must be 0 or 1"
       else break
       fi
@@ -304,7 +304,7 @@ Enter the IP address of the device running Hyperion.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "IP address: " IPaddressH; do
-    if ! [[ $IPaddressH  =~ $reip ]]; then
+    if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
     else break
     fi
@@ -343,7 +343,7 @@ Enter the IP address of the device running Kodi.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "IP address: " IPaddressK; do
-    if ! [[ $IPaddressK  =~ $reip ]]; then
+    if ! { [[ $IPaddressK  =~ $reip ]] || [ -z $IPaddressK ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
     else break
     fi
@@ -365,7 +365,7 @@ Enter th pin number (BOARD) for the fan.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "GPIO pin: " gpiopin; do
-    if ! [[ $gpiopin  =~ $reboard ]]; then
+    if ! { [[ $gpiopin  =~ $reboard ]] || [ -z $gpiopin ]; }; then
       echo "Pin must be in the BOARD pin numbering"
     else break
     fi
@@ -379,10 +379,10 @@ if [ $buttons -ne 0 ]; then
 Enter th pin number (BOARD) for the effect buttons.
 Leave empty if you don't want to modify the default value.
   "
-  while read -p "Do you want to add a new effect button? " Yreply; do
+  while read -p "Do you want to add a new effect button? [Y/n]: " Yreply; do
     if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
       while read -p "GPIO pin: " ebutton; do
-        if ! [[ $ebutton  =~ $reboard ]]; then
+        if ! { [[ $ebutton  =~ $reboard ]] || [ -z $ebuttons ]; }; then
           echo "Pin must be in the BOARD pin numbering"
         else break
         fi
@@ -395,7 +395,7 @@ Enter th pin number (BOARD) for the clear button.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "GPIO pin: " cbutton; do
-    if ! [[ $cbutton  =~ $reboard ]]; then
+    if ! { [[ $cbutton  =~ $reboard ]] || [ -z $cbutton ]; }; then
       echo "Pin must be in the BOARD pin numbering"
     else break
     fi
