@@ -95,7 +95,7 @@ fi
 #silent option, output to /dev/null
 output=""
 if [ $silent -ne 0 ]; then
-  output="1>/dev/null"
+  output="1>/dev/null" # 1,2, oppure & ???
 fi
 #no arguments
 default_install=$((fan+buttons+assistant+clock))
@@ -108,7 +108,7 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
-
+#confirmation
 if [ $interactive -ne 0 ]; then
   echo "This installation is going to install the following: "
   
@@ -147,7 +147,7 @@ if [ $interactive -ne 0 ]; then
   fi
 fi
 
-
+#regex
 re='^-?[0-9]+[.][0-9]+$'
 rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
@@ -167,9 +167,8 @@ USE_SYSTEMD=`grep -m1 -c systemd /proc/1/comm`
 USE_INITCTL=`which /sbin/initctl | wc -l`
 USE_SERVICE=`which /usr/sbin/service | wc -l`
 
-
+#update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
-
   echo -n "Updating System..."
   sudo apt-get update -y
   ##sudo apt-get upgrade -y
@@ -177,7 +176,7 @@ if [ $OS_OPENELEC -ne 1 ]; then
   sudo apt-get autoremove -y
   sudo apt-get autoclean -y
 fi
-##-qq  1>/dev/null
+
 #Install dependencies and setup preperation
 echo -n "Downloading and installing Python..."
 sudo apt-get install -y build-essential
