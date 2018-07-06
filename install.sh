@@ -107,11 +107,13 @@ fi
 startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
 
+
 re='^-?[0-9]+[.][0-9]+$'
 rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
 reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}'
 reboard='^([3578]|[1][01235689]|[2][12346])$'
+
 
 echo "Starting..."
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
@@ -261,104 +263,104 @@ if [ $assistant -ne 0 ]; then
   echo "
 Enter the IP address of the device running Hyperion.
 Leave empty if you don't want to modify the default value.
-    "
+  "
   while read -p "IP address: " IPaddressH; do
     if ! [[ $IPaddressH  =~ $reip ]]; then
       echo "IP address must be in the 'num.num.num.num' format"
     else break
     fi
   done
-  
-    echo "
+
+  echo "
 Enter your Adafruit-IO username.
 Leave empty if you don't want to modify the default value.
 You can get a new account here: https://io.adafruit.com
-    "
- read -p "Your username: " IOuser
-  
+  "
+  read -p "Your username: " IOuser
+
   echo "
 Enter your Adafruit-IO AIO key.
 Leave empty if you don't want to modify the default value.
 You can get a new key here: https://io.adafruit.com
-    "
- read -p "Your AIO key: " IOkey
-    
-      echo "
+  "
+  read -p "Your AIO key: " IOkey
+
+  echo "
 Enter your Adafruit-IO 'effect launching' topic.
 Leave empty if you don't want to modify the default value.
 You can create a new topic (feed) here: https://io.adafruit.com
-    "
- read -p "effect_topic: " IOeffect
-  
-       echo "
+  "
+  read -p "effect_topic: " IOeffect
+
+  echo "
 Enter your Adafruit-IO 'effect clearing' topic.
 Leave empty if you don't want to modify the default value.
 You can create a new topic (feed) here: https://io.adafruit.com
-    "
- read -p "other_topic: " IOclear 
-  
+  "
+  read -p "other_topic: " IOclear
+
   echo "
 Enter the IP address of the device running Kodi.
 Leave empty if you don't want to modify the default value.
-    "
+  "
   while read -p "IP address: " IPaddressK; do
     if ! [[ $IPaddressK  =~ $reip ]]; then
       echo "IP address must be in the 'num.num.num.num' format"
     else break
     fi
   done
-  
-         echo "
+
+  echo "
 Enter the local path or web link to the video you want to play.
 Leave empty if you don't want to modify the default value.
-    "
- read -p "video uri: " videouri 
-  
+  "
+  read -p "video uri: " videouri
+
   echo -n "installing Google Assisant client script..."
   sudo forever-service install assistant-service --script scripts/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
-    echo "
+  echo "
 Enter th pin number (BOARD) for the fan.
 Leave empty if you don't want to modify the default value.
-    "
-    while read -p "GPIO pin: " gpiopin; do
-      if ! [[ $gpiopin  =~ $rei ]]; then
-        echo "Pin must be in the BOARD pin numbering"
-      else break
-      fi
-    done
+  "
+  while read -p "GPIO pin: " gpiopin; do
+    if ! [[ $gpiopin  =~ $rei ]]; then
+      echo "Pin must be in the BOARD pin numbering"
+    else break
+    fi
+  done
   echo -n "installing fan script..."
   sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
-    echo "
+  echo "
 Enter th pin number (BOARD) for the effect buttons.
 Leave empty if you don't want to modify the default value.
-    "
- while read -p "Do you want to add a new effect button? " Yreply; do
-  if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
-    while read -p "GPIO pin: " ebutton; do
-      if ! [[ $ebutton  =~ $rei ]]; then
-        echo "Pin must be in the BOARD pin numbering"
-      else break
-      fi
-    done
-  fi
-  else break
- done
-     echo "
+  "
+  while read -p "Do you want to add a new effect button? " Yreply; do
+    if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
+      while read -p "GPIO pin: " ebutton; do
+        if ! [[ $ebutton  =~ $reboard ]]; then
+          echo "Pin must be in the BOARD pin numbering"
+        else break
+        fi
+      done
+    else break
+    fi
+  done
+  echo "
 Enter th pin number (BOARD) for the clear button.
 Leave empty if you don't want to modify the default value.
-    "
-    while read -p "GPIO pin: " cbutton; do
-      if ! [[ $cbutton  =~ $rei ]]; then
-        echo "Pin must be an integer number"
-      else break
-      fi
-    done
+  "
+  while read -p "GPIO pin: " cbutton; do
+    if ! [[ $cbutton  =~ $reboard ]]; then
+      echo "Pin must be in the BOARD pin numbering"
+    else break
+    fi
+  done
   echo -n "installing buttons script..."
   sudo forever-service install buttons-service -s scripts/buttons.py -f " -c python"
   sudo service buttons-service start
