@@ -169,7 +169,7 @@ Il seguente utente è stato fonte di ispirazione: [7h30n3 (The One)](https://git
 
 ## 💵 Supportami!
 
- [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Y8Y0FW3V)
+ [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Y8Y0FW3V)  [![sub](https://i0.wp.com/www.francescorenzo.com/wp-content/uploads/2018/01/iscriviti-youtube.png)](https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=1)
 
 
 ## 💭 FAQ
