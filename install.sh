@@ -110,8 +110,9 @@ gpio=$((fan+buttons))
 
 #confirmation
 if [ $interactive -ne 0 ]; then
-  echo "This installation is going to install the following: "
-  
+  echo "This installation is going to install the following:
+  "
+
   if [ $fan -ne 0 ]; then
   echo "- fan script
   a script that controls a fan (on/off) using a GPIO pin.
@@ -138,7 +139,7 @@ if [ $interactive -ne 0 ]; then
   to tell Hyperion what to do (e.g. Ok, Google launch Rainbow swirl effect)
   "
   fi
-  read -p "Do you want to procede? " installReply
+  read -p "Do you want to procede? [Y/n] " installReply
   if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
     echo "Starting..."
   else
@@ -151,7 +152,7 @@ fi
 re='^-?[0-9]+[.][0-9]+$'
 rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
-reip='^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
+reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 reboard='^([3578]|[1][01235689]|[2][12346])$'
 
 
