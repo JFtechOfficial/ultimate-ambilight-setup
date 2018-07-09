@@ -17,14 +17,14 @@ usage(){
 Options:
     General options:
         -h --help           Show this screen.
-        -v --version        Show version.
-        -s --silent         Show less stuff during installation.
         -i --interactive    Insert installation parameters during installation.
+        -s --silent         Show less stuff during installation.
+        -v --version        Show version.
     Custom installation options:
-        -f --fan            Install fan script.
-        -c --clock          Install clock effect.
-        -b --buttons        Install buttons script.
         -a --assistant      Install Google Assistant script.
+        -b --buttons        Install buttons script.
+        -c --clock          Install clock effect.
+        -f --fan            Install fan script.
     ( if you use any of the custom installation options
     you will install only the scripts/effects you specify
     instead of all the scripts/effects )
