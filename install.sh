@@ -154,7 +154,7 @@ rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
 reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 reboard='^([3578]|[1][01235689]|[2][12346])$'
-
+reboardb='^([378]|[1][01235689]|[2][12346])$'
 
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
@@ -384,8 +384,8 @@ Leave empty if you don't want to modify the default value.
   while read -p "Do you want to add a new effect button? [Y/n]: " Yreply; do
     if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
       while read -p "GPIO pin: " ebutton; do
-        if ! { [[ $ebutton  =~ $reboard ]] || [ -z $ebutton ]; }; then
-          echo "Pin must be in the BOARD pin numbering"
+        if ! { [[ $ebutton  =~ $reboardb ]] || [ -z $ebutton ]; }; then
+          echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
         else
           eArray[itr]=$ebutton
           itr=$((itr+1))
@@ -401,8 +401,8 @@ Enter th pin number (BOARD) for the clear button.
 Leave empty if you don't want to modify the default value.
   "
   while read -p "GPIO pin: " cbutton; do
-    if ! { [[ $cbutton  =~ $reboard ]] || [ -z $cbutton ]; }; then
-      echo "Pin must be in the BOARD pin numbering"
+    if ! { [[ $cbutton  =~ $reboardb ]] || [ -z $cbutton ]; }; then
+      echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
     else break
     fi
   done
