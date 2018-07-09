@@ -39,7 +39,7 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories. If you choose to do so you can omit the `-i` argument, otherwise skip the [Manual Configuration](#️-configuration) and follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-f`, `-b`, `-c` and `-a` arguments (no custom installation arguments means "install everything").
+* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories. If you choose to do so you can omit the `-i` argument, otherwise skip the [Manual Configuration](#️-configuration) and follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
 ```shell
 Options:
     General options:
