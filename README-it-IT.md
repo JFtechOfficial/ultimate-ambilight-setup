@@ -39,19 +39,19 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'opzione `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando le opzioni `-f`, `-b`, `-c` e `-a` (nessuna opzione di installazione personalizzata significa "installa tutto").
+* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'opzione `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando le opzioni `-a`, `-b`, `-c` e `-f` (nessuna opzione di installazione personalizzata significa "installa tutto").
 ```shell
 Opzioni:
     Opzioni generali:
         -h --help           Mostra questa schermata.
-        -v --version        Mostra versione.
-        -s --silent         Mostra meno roba durante l'installazione.
         -i --interactive    Inserisci i parametri di installazione durante l'installazione.
+        -s --silent         Mostra meno roba durante l'installazione.
+        -v --version        Mostra versione.
     Opzioni di installazione personalizzata:
-        -f --fan            Installa lo script per la ventola.
-        -c --clock          Installa l'effetto orologio.
-        -b --buttons        Installa lo script per i pulsanti.
         -a --assistant      Installa lo script per Google Assistant.
+        -b --buttons        Installa lo script per i pulsanti.
+        -c --clock          Installa l'effetto orologio.
+        -f --fan            Installa lo script per la ventola.
 ```
 
 * Esegui lo script `install.sh` :
