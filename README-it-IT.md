@@ -99,9 +99,9 @@ nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
-* Modifica il valore di `pin`  per farlo combaciare con il setup dei tuoi pin di GPIO
-* Puoi modificare il valore di default di `max_TEMP` (temperatura in Celsius dopo la quale la ventola comincia a girare),
-`cutoff_TEMP` (temperatura in Celsius dopo la quale la ventola si ferma) e `sleepTime` (intervallo di letturs della temperature in secondi)
+* Modifica il valore di `pin` per farlo combaciare con il setup dei tuoi pin di GPIO
+* Puoi modificare il valore di default di `max_TEMP` (temperatura in gradi centigradi dopo la quale la ventola comincia a girare),
+`cutoff_TEMP` (temperatura in gradi centigradi dopo la quale la ventola si ferma) e `sleepTime` (intervallo di lettura della temperature in secondi)
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
 ### Google Assistant
