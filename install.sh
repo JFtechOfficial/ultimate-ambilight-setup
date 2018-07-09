@@ -153,8 +153,8 @@ re='^-?[0-9]+[.][0-9]+$'
 rei='^[123456789]+[0-9]*$'
 reb='^[01]$'
 reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
-reboard='^([3578]|[1][01235689]|[2][12346])$'
-reboardb='^([378]|[1][01235689]|[2][12346])$'
+reboard='^(([3578])|([1][01235689])|([2][12346]))$'
+reboardb='^(([378])|([1][01235689])|([2][12346]))$'
 
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
