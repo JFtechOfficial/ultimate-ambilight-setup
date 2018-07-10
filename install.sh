@@ -310,7 +310,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "IP address: " IPaddressH; do
     if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
-    else break
+    else 
+      if ! [ -z $lat ]; then
+          sudo python jsonHelper.py 'scripts/client.json' 'hyperion_server' 'ip_address' $IPaddressH
+      fi
+      break
     fi
   done
 
