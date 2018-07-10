@@ -36,7 +36,6 @@ pin = 26  # pin ID (BCM), edit here to change the default value
 
 with open('fan.json') as f:
     data = json.load(f)
-    f.close()
     pin = data['args']['pin']
     settings = data['args']['settings']
     for name in settings:
