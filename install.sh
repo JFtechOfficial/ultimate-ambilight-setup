@@ -216,20 +216,24 @@ if [ $clock -ne 0 ]; then
   if [ $interactive -ne 0 ]; then
     echo "
 Enter your OpenWeatherMap API key.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can get a new API key here: https://openweathermap.org/appid
     "
     read -p "OpenWeatherMap API key: " OWMkey
 
     echo "
 Enter your own latitude and longitude.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can find your coordinates here: https://www.whataremycoordinates.com/
     "
     while read -p "Latitude: " lat; do
       if ! { [[ $lat  =~ $re ]] || [ -z $lat ]; }; then
         echo "Latitude must be a decimal number"
-      else break
+      else 
+          if ! [ -z $lat ]; then
+              sudo python jsonHelper.py 'Hyperion\ effects/clock.json' 'latitude' $lat
+          fi
+          break
       fi
     done
     while read -p "Longitude: " lon; do
@@ -241,7 +245,7 @@ You can find your coordinates here: https://www.whataremycoordinates.com/
 
     echo "
 Enter your LED stip offset number.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
     "
     while read -p "Offset: " ofs; do
       if ! { [[ $ofs  =~ $rei ]] || [ -z $ofs ]; }; then
@@ -253,7 +257,7 @@ Leave empty if you don't want to modify the default value.
     echo "
 Enter the direction of your LED stip.
 0 -> clockwise, 1 -> counterclockwise.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
     "
     while read -p "Direction: " direc; do
       if ! { [[ $direc  =~ $reb ]] || [ -z $direc ]; }; then
@@ -301,7 +305,7 @@ if [ $assistant -ne 0 ]; then
   sudo npm install -g playonkodi
   echo "
 Enter the IP address of the device running Hyperion.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   while read -p "IP address: " IPaddressH; do
     if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
@@ -312,35 +316,35 @@ Leave empty if you don't want to modify the default value.
 
   echo "
 Enter your Adafruit-IO username.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can get a new account here: https://io.adafruit.com
   "
   read -p "Your username: " IOuser
 
   echo "
 Enter your Adafruit-IO AIO key.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can get a new key here: https://io.adafruit.com
   "
   read -p "Your AIO key: " IOkey
 
   echo "
 Enter your Adafruit-IO 'effect launching' topic.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "effect_topic: " IOeffect
 
   echo "
 Enter your Adafruit-IO 'effect clearing' topic.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
 You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "other_topic: " IOclear
 
   echo "
 Enter the IP address of the device running Kodi.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   while read -p "IP address: " IPaddressK; do
     if ! { [[ $IPaddressK  =~ $reip ]] || [ -z $IPaddressK ]; }; then
@@ -351,7 +355,7 @@ Leave empty if you don't want to modify the default value.
 
   echo "
 Enter the local path or web link to the video you want to play.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   read -p "video uri: " videouri
 
@@ -362,7 +366,7 @@ fi
 if [ $fan -ne 0 ]; then
   echo "
 Enter th pin number (BOARD) for the fan.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   while read -p "GPIO pin: " gpiopin; do
     if ! { [[ $gpiopin  =~ $reboard ]] || [ -z $gpiopin ]; }; then
@@ -377,7 +381,7 @@ fi
 if [ $buttons -ne 0 ]; then
   echo "
 Enter th pin number (BOARD) for the effect buttons.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   eArray=()
   itr=0
@@ -398,7 +402,7 @@ Leave empty if you don't want to modify the default value.
   echo "${eArray[@]}"
   echo "
 Enter th pin number (BOARD) for the clear button.
-Leave empty if you don't want to modify the default value.
+Leave empty if you don't want to modify the old value.
   "
   while read -p "GPIO pin: " cbutton; do
     if ! { [[ $cbutton  =~ $reboardb ]] || [ -z $cbutton ]; }; then
