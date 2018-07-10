@@ -267,10 +267,6 @@ Leave empty if you don't want to modify the old value.
     done
 
     echo "$OWMkey $lat $lon $ofs $direc"
-    #use jq to write de values of $OWMkey $lat $lon $ofs $direc if they are not empty
-    ##if [ -z $Cconfig ]; then
-    echo "use jq"
-    ##fi
   fi
 
   ######################################
