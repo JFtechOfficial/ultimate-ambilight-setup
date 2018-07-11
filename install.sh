@@ -320,6 +320,9 @@ Leave empty if you don't want to modify the old value.
 You can get a new account here: https://io.adafruit.com
   "
   read -p "Your username: " IOuser
+  if ! [ -z $IOuser ]; then
+      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'username' $IOuser
+  fi
 
   echo "
 Enter your Adafruit-IO AIO key.
@@ -327,21 +330,27 @@ Leave empty if you don't want to modify the old value.
 You can get a new key here: https://io.adafruit.com
   "
   read -p "Your AIO key: " IOkey
-
+  if ! [ -z $IOkey ]; then
+      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'key' $IOkey
+  fi
   echo "
 Enter your Adafruit-IO 'effect launching' topic.
 Leave empty if you don't want to modify the old value.
 You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "effect_topic: " IOeffect
-
+  if ! [ -z $IOeffect ]; then
+      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'effect_topic' $IOeffect
+  fi
   echo "
 Enter your Adafruit-IO 'effect clearing' topic.
 Leave empty if you don't want to modify the old value.
 You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "other_topic: " IOclear
-
+  if ! [ -z $IOclear ]; then
+      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'other_topic' $IOclear
+  fi
   echo "
 Enter the IP address of the device running Kodi.
 Leave empty if you don't want to modify the old value.
@@ -349,7 +358,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "IP address: " IPaddressK; do
     if ! { [[ $IPaddressK  =~ $reip ]] || [ -z $IPaddressK ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
-    else break
+    else 
+      if ! [ -z $IPaddressK ]; then
+          sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'ip_address' $IPaddressK
+      fi    
+      break
     fi
   done
 
@@ -358,7 +371,9 @@ Enter the local path or web link to the video you want to play.
 Leave empty if you don't want to modify the old value.
   "
   read -p "video uri: " videouri
-
+  if ! [ -z $videouri ]; then
+      sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'video_uri' $videouri
+  fi    
   echo -n "installing Google Assisant client script..."
   sudo forever-service install assistant-service --script scripts/client.js
   sudo service assistant-service start
@@ -371,7 +386,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "GPIO pin: " gpiopin; do
     if ! { [[ $gpiopin  =~ $reboard ]] || [ -z $gpiopin ]; }; then
       echo "Pin must be in the BOARD pin numbering"
-    else break
+    else 
+        if ! [ -z $gpiopin ]; then
+          sudo python jsonHelper.py 'scripts/fan.json' 'pin' $gpiopin
+        fi    
+        break
     fi
   done
   echo -n "installing fan script..."
@@ -380,26 +399,27 @@ Leave empty if you don't want to modify the old value.
 fi
 if [ $buttons -ne 0 ]; then
   echo "
-Enter th pin number (BOARD) for the effect buttons.
-Leave empty if you don't want to modify the old value.
+Enter the name of an effect and pin number (BOARD) for the effect buttons.
+Leave empty if you don't want to modify the pin's old value.
   "
   eArray=()
   itr=0
-  while read -p "Do you want to add a new effect button? [Y/n]: " Yreply; do
+  while read -p "Do you want to add an effect button? [Y/n]: " Yreply; do
     if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
+      read -p "effect name: " ename
       while read -p "GPIO pin: " ebutton; do
         if ! { [[ $ebutton  =~ $reboardb ]] || [ -z $ebutton ]; }; then
           echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
         else
-          eArray[itr]=$ebutton
-          itr=$((itr+1))
+          if ! [ -z $ebutton ]; then
+            sudo python jsonHelper.py 'scripts/buttons.json' 'effects' $ename $ebutton
+          fi   
           break
         fi
       done
     else break
     fi
   done
-  echo "${eArray[@]}"
   echo "
 Enter th pin number (BOARD) for the clear button.
 Leave empty if you don't want to modify the old value.
@@ -407,7 +427,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "GPIO pin: " cbutton; do
     if ! { [[ $cbutton  =~ $reboardb ]] || [ -z $cbutton ]; }; then
       echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
-    else break
+    else 
+        if ! [ -z $cbutton ]; then
+          sudo python jsonHelper.py 'scripts/buttons.json' 'clear' $cbutton
+        fi 
+       break
     fi
   done
   echo -n "installing buttons script..."
