@@ -171,27 +171,27 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 #update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
   echo -n "Updating System..."
-  sudo $output apt-get update -y
+  sudo apt-get update -y 
   ##sudo apt-get upgrade -y
   ##sudo apt-get dist-upgrade -y
-  sudo $output apt-get autoremove -y
-  sudo $output apt-get autoclean -y
+  sudo apt-get autoremove -y
+  sudo apt-get autoclean -y
 fi
 
 #Install dependencies and setup preperation
 echo -n "Downloading and installing Python..."
-sudo $output apt-get install -y build-essential
-sudo $output apt-get install -y python
-sudo $output apt-get install -y python-dev
-sudo $output apt install -y python-pip
+sudo apt-get install -y build-essential
+sudo apt-get install -y python
+sudo apt-get install -y python-dev
+sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
   echo "Downloading Rpi.GPIO..."
-  sudo $output wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo "installing Rpi.GPIO..."
-  sudo $output tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
-  sudo $output python setup.py install
+  sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
+  sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
 
 fi
