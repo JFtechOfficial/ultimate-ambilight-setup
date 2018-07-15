@@ -180,17 +180,17 @@ fi
 
 #Install dependencies and setup preperation
 echo -n "Downloading and installing Python..."
-sudo apt-get install -y build-essential
-sudo apt-get install -y python
-sudo apt-get install -y python-dev
-sudo apt install -y python-pip
+sudo apt-get install -y build-essential $output
+sudo apt-get install -y python $output
+sudo apt-get install -y python-dev $output
+sudo apt install -y python-pip $output
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
   echo "Downloading Rpi.GPIO..."
-  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz $output
   echo "installing Rpi.GPIO..."
-  sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
+  sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1 $output
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
 
