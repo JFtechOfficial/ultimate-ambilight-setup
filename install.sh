@@ -302,6 +302,7 @@ if [ $startup -ne 0 ]; then
   echo -n "installing nodejs and npm..."
   sudo apt-get install -y nodejs
   sudo apt-get install -y npm
+  sudo npm i npm@latest -g
   echo -n "installing forever-service..."
   sudo npm install -g forever
   sudo npm install -g forever-service
