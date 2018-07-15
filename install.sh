@@ -95,7 +95,7 @@ fi
 #silent option, output to /dev/null
 output=""
 if [ $silent -ne 0 ]; then
-  output=" > /dev/null 2>&1" # 1,2, oppure & ???
+  output=">/dev/null" # 1,2, oppure & ???
 fi
 #no arguments
 default_install=$((fan+buttons+assistant+clock))
