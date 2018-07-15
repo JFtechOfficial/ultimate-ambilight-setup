@@ -171,28 +171,28 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 #update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
   echo -n "Updating System..."
-  $output sudo apt-get update -y
+  sudo $output apt-get update -y
   ##sudo apt-get upgrade -y
   ##sudo apt-get dist-upgrade -y
-  $output sudo apt-get autoremove -y
-  $output sudo apt-get autoclean -y
+  sudo $output apt-get autoremove -y
+  sudo $output apt-get autoclean -y
 fi
 
 #Install dependencies and setup preperation
 echo -n "Downloading and installing Python..."
-$output sudo apt-get install -y build-essential
-$output sudo apt-get install -y python
-$output sudo apt-get install -y python-dev
-$output sudo apt install -y python-pip
+sudo $output apt-get install -y build-essential
+sudo $output apt-get install -y python
+sudo $output apt-get install -y python-dev
+sudo $output apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
   echo "Downloading Rpi.GPIO..."
-  $output sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  sudo $output wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo "installing Rpi.GPIO..."
-  $output sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
-  $output sudo python setup.py install
-  $output sudo rm -rf RPi.GPIO-0.6.2.tar.gz
+  sudo $output tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
+  sudo $output python setup.py install
+  sudo rm -rf RPi.GPIO-0.6.2.tar.gz
 
 fi
 if [ $clock -ne 0 ]; then
@@ -210,7 +210,7 @@ if [ $clock -ne 0 ]; then
   fi
   # Clock effect for Hyperion
   echo -n "Installing pyowm..."
-  $output sudo pip install pyowm
+  sudo pip install pyowm
 
   ######################################
   if [ $interactive -ne 0 ]; then
@@ -283,8 +283,8 @@ Leave empty if you don't want to modify the old value.
 
   ######################################
   echo -n "installing clock effect..."
-  $output sudo mv Hyperion_effects/clock.py /usr/share/hyperion/effects/
-  $output sudo mv Hyperion_effects/clock.json /usr/share/hyperion/effects/
+  sudo mv Hyperion_effects/clock.py /usr/share/hyperion/effects/
+  sudo mv Hyperion_effects/clock.json /usr/share/hyperion/effects/
   echo "Starting Hyperion..."
   if [ $OS_OPENELEC -eq 1 ]; then
     /storage/.config/autostart.sh > /dev/null 2>&1 &
@@ -297,15 +297,15 @@ Leave empty if you don't want to modify the old value.
   fi
 fi
 if [ $startup -ne 0 ]; then
-  $output sudo apt install -y curl
-  $output sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+  sudo apt install -y curl
+  sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   echo -n "installing nodejs and npm..."
-  $output sudo apt-get install -y nodejs
-  $output sudo apt-get install -y npm
-  $output sudo npm i npm@latest -g
-  $output npm cache clean --force
+  sudo apt-get install -y nodejs
+  sudo apt-get install -y npm
+  sudo npm i npm@latest -g
+  npm cache clean --force
   echo -n "installing forever-service..."
-  $output sudo npm install -g forever
+  sudo npm install -g forever
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
