@@ -136,7 +136,7 @@ if [ $interactive -ne 0 ]; then
   if [ $assistant -ne 0 ]; then
     echo "- Google Assistant script
   a script that let you use the Google Assistant on your smartphone/tablet/Google Home
-  to tell Hyperion what to do (e.g. Ok, Google launch Rainbow swirl effect)
+  to tell Hyperion what to do (e.g. Ok Google, launch Rainbow swirl effect)
     "
   fi
   read -p "Do you want to procede? [Y/n]: " installReply
@@ -319,7 +319,7 @@ Leave empty if you don't want to modify the old value.
     if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
     else
-      if ! [ -z $lat ]; then
+      if ! [ -z $IPaddressH ]; then
         sudo python jsonHelper.py 'scripts/client.json' 'hyperion_server' 'ip_address' $IPaddressH
       fi
       break
