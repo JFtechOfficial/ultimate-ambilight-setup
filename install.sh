@@ -220,7 +220,9 @@ Leave empty if you don't want to modify the old value.
 You can get a new API key here: https://openweathermap.org/appid
     "
     read -p "OpenWeatherMap API key: " OWMkey
-
+    if ! [ -z $OWMkey ]; then
+      sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $OWMkey
+    fi
     echo "
 Enter your own latitude and longitude.
 Leave empty if you don't want to modify the old value.
@@ -239,7 +241,11 @@ You can find your coordinates here: https://www.whataremycoordinates.com/
     while read -p "Longitude: " lon; do
       if ! { [[ $lon  =~ $re ]] || [ -z $lon ]; }; then
         echo "Longitude must be a decimal number"
-      else break
+      else
+        if ! [ -z $lon ]; then
+          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $lon
+        fi
+        break
       fi
     done
 
@@ -250,7 +256,11 @@ Leave empty if you don't want to modify the old value.
     while read -p "Offset: " ofs; do
       if ! { [[ $ofs  =~ $rei ]] || [ -z $ofs ]; }; then
         echo "Offset must be an integer number"
-      else break
+      else
+        if ! [ -z $ofs ]; then
+          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $ofs
+        fi
+        break
       fi
     done
 
@@ -262,11 +272,13 @@ Leave empty if you don't want to modify the old value.
     while read -p "Direction: " direc; do
       if ! { [[ $direc  =~ $reb ]] || [ -z $direc ]; }; then
         echo "Direction must be 0 or 1"
-      else break
+      else
+        if ! [ -z $direc ]; then
+          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $direc
+        fi
+        break
       fi
     done
-
-    echo "$OWMkey $lat $lon $ofs $direc"
   fi
 
   ######################################
@@ -402,8 +414,7 @@ if [ $buttons -ne 0 ]; then
 Enter the name of an effect and pin number (BOARD) for the effect buttons.
 Leave empty if you don't want to modify the pin's old value.
   "
-  eArray=()
-  itr=0
+
   while read -p "Do you want to add an effect button? [Y/n]: " Yreply; do
     if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
       read -p "effect name: " ename
