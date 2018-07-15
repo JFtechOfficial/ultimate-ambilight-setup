@@ -114,30 +114,30 @@ if [ $interactive -ne 0 ]; then
   "
 
   if [ $fan -ne 0 ]; then
-  echo "- fan script
+    echo "- fan script
   a script that controls a fan (on/off) using a GPIO pin.
   The fan will automatically start to spin when the CPU is above the max_TEMP threshold
   and will automatically stop when the CPU is below the cutoff_TEMP threshold.
-  "
+    "
   fi
-    if [ $buttons -ne 0 ]; then
-  echo "- buttons script
+  if [ $buttons -ne 0 ]; then
+    echo "- buttons script
   A script that let you use buttons connected to the GPIO
   to launch effects, go back to the capture mode, or safely turn off the Raspberry Pi.
-  "
+    "
   fi
-    if [ $clock -ne 0 ]; then
-  echo "- clock effect
+  if [ $clock -ne 0 ]; then
+    echo "- clock effect
   a script that adds a new analog clock effect to the Hyperion effect list.
   the second hand has a warmer color when outside is hot
   and it has a colder color when outside is cold.
-  "
+    "
   fi
-    if [ $assistant -ne 0 ]; then
-  echo "- Google Assistant script
+  if [ $assistant -ne 0 ]; then
+    echo "- Google Assistant script
   a script that let you use the Google Assistant on your smartphone/tablet/Google Home
   to tell Hyperion what to do (e.g. Ok, Google launch Rainbow swirl effect)
-  "
+    "
   fi
   read -p "Do you want to procede? [Y/n]: " installReply
   if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
@@ -229,11 +229,11 @@ You can find your coordinates here: https://www.whataremycoordinates.com/
     while read -p "Latitude: " lat; do
       if ! { [[ $lat  =~ $re ]] || [ -z $lat ]; }; then
         echo "Latitude must be a decimal number"
-      else 
-          if ! [ -z $lat ]; then
-              sudo python jsonHelper.py 'Hyperion\ effects/clock.json' 'latitude' $lat
-          fi
-          break
+      else
+        if ! [ -z $lat ]; then
+          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $lat
+        fi
+        break
       fi
     done
     while read -p "Longitude: " lon; do
@@ -271,8 +271,8 @@ Leave empty if you don't want to modify the old value.
 
   ######################################
   echo -n "installing clock effect..."
-  sudo mv Hyperion\ effects/clock.py /usr/share/hyperion/effects/
-  sudo mv Hyperion\ effects/clock.json /usr/share/hyperion/effects/
+  sudo mv Hyperion_effects/clock.py /usr/share/hyperion/effects/
+  sudo mv Hyperion_effects/clock.json /usr/share/hyperion/effects/
   echo "Starting Hyperion..."
   if [ $OS_OPENELEC -eq 1 ]; then
     /storage/.config/autostart.sh > /dev/null 2>&1 &
@@ -306,9 +306,9 @@ Leave empty if you don't want to modify the old value.
   while read -p "IP address: " IPaddressH; do
     if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
-    else 
+    else
       if ! [ -z $lat ]; then
-          sudo python jsonHelper.py 'scripts/client.json' 'hyperion_server' 'ip_address' $IPaddressH
+        sudo python jsonHelper.py 'scripts/client.json' 'hyperion_server' 'ip_address' $IPaddressH
       fi
       break
     fi
@@ -321,7 +321,7 @@ You can get a new account here: https://io.adafruit.com
   "
   read -p "Your username: " IOuser
   if ! [ -z $IOuser ]; then
-      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'username' $IOuser
+    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'username' $IOuser
   fi
 
   echo "
@@ -331,7 +331,7 @@ You can get a new key here: https://io.adafruit.com
   "
   read -p "Your AIO key: " IOkey
   if ! [ -z $IOkey ]; then
-      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'key' $IOkey
+    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'key' $IOkey
   fi
   echo "
 Enter your Adafruit-IO 'effect launching' topic.
@@ -340,7 +340,7 @@ You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "effect_topic: " IOeffect
   if ! [ -z $IOeffect ]; then
-      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'effect_topic' $IOeffect
+    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'effect_topic' $IOeffect
   fi
   echo "
 Enter your Adafruit-IO 'effect clearing' topic.
@@ -349,7 +349,7 @@ You can create a new topic (feed) here: https://io.adafruit.com
   "
   read -p "other_topic: " IOclear
   if ! [ -z $IOclear ]; then
-      sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'other_topic' $IOclear
+    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'other_topic' $IOclear
   fi
   echo "
 Enter the IP address of the device running Kodi.
@@ -358,10 +358,10 @@ Leave empty if you don't want to modify the old value.
   while read -p "IP address: " IPaddressK; do
     if ! { [[ $IPaddressK  =~ $reip ]] || [ -z $IPaddressK ]; }; then
       echo "IP address must be in the 'num.num.num.num' format"
-    else 
+    else
       if ! [ -z $IPaddressK ]; then
-          sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'ip_address' $IPaddressK
-      fi    
+        sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'ip_address' $IPaddressK
+      fi
       break
     fi
   done
@@ -372,8 +372,8 @@ Leave empty if you don't want to modify the old value.
   "
   read -p "video uri: " videouri
   if ! [ -z $videouri ]; then
-      sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'video_uri' $videouri
-  fi    
+    sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'video_uri' $videouri
+  fi
   echo -n "installing Google Assisant client script..."
   sudo forever-service install assistant-service --script scripts/client.js
   sudo service assistant-service start
@@ -386,11 +386,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "GPIO pin: " gpiopin; do
     if ! { [[ $gpiopin  =~ $reboard ]] || [ -z $gpiopin ]; }; then
       echo "Pin must be in the BOARD pin numbering"
-    else 
-        if ! [ -z $gpiopin ]; then
-          sudo python jsonHelper.py 'scripts/fan.json' 'pin' $gpiopin
-        fi    
-        break
+    else
+      if ! [ -z $gpiopin ]; then
+        sudo python jsonHelper.py 'scripts/fan.json' 'pin' $gpiopin
+      fi
+      break
     fi
   done
   echo -n "installing fan script..."
@@ -413,7 +413,7 @@ Leave empty if you don't want to modify the pin's old value.
         else
           if ! [ -z $ebutton ]; then
             sudo python jsonHelper.py 'scripts/buttons.json' 'effects' $ename $ebutton
-          fi   
+          fi
           break
         fi
       done
@@ -427,11 +427,11 @@ Leave empty if you don't want to modify the old value.
   while read -p "GPIO pin: " cbutton; do
     if ! { [[ $cbutton  =~ $reboardb ]] || [ -z $cbutton ]; }; then
       echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
-    else 
-        if ! [ -z $cbutton ]; then
-          sudo python jsonHelper.py 'scripts/buttons.json' 'clear' $cbutton
-        fi 
-       break
+    else
+      if ! [ -z $cbutton ]; then
+        sudo python jsonHelper.py 'scripts/buttons.json' 'clear' $cbutton
+      fi
+      break
     fi
   done
   echo -n "installing buttons script..."
