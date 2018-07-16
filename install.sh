@@ -95,7 +95,7 @@ fi
 #silent option, output to /dev/null
 output=""
 if [ $silent -ne 0 ]; then
-  output=">/dev/null" # 1,2, oppure & ???
+  output=">/dev/null"# 2>&1"
 fi
 #no arguments
 default_install=$((fan+buttons+assistant+clock))
@@ -187,14 +187,18 @@ sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
+  rpigpio $output
+fi
+
+rpigpio(){
   echo "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo "installing Rpi.GPIO..."
   sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
+}
 
-fi
 if [ $clock -ne 0 ]; then
   echo "Stop Hyperion, if necessary"
   if [ $OS_OPENELEC -eq 1 ]; then
