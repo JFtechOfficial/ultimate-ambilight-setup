@@ -70,7 +70,7 @@ sudo reboot
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file:
 ```shell
-sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
+sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
