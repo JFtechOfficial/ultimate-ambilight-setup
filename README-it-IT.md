@@ -24,7 +24,7 @@ Scripts che ho creato per migliorare l'esperienza con Hyperion. You can also rea
 
 ### Requisiti
 * Un Raspberry Pi 2, 3 o 3+
-* Una microSD con un OS installato e pronto all'uso, è consigliato [OSMC](https://osmc.tv/download/) ([come installae OSMC](https://youtu.be/cdpQa52AK0w))
+* Una microSD con un OS installato e pronto all'uso, è consigliato [OSMC](https://osmc.tv/download/) ([come installare OSMC](https://youtu.be/cdpQa52AK0w))
 
 Assicurati di avere [Hyperion](https://hyperion-project.org) installato e configurato (è consigliata l'installazione e la configurazione via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information)).
 
