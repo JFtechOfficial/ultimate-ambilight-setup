@@ -163,9 +163,6 @@ Major dependencies:
 * [play-on-kodi](https://github.com/ritiek/play-on-kodi)
 
 
-Il seguente utente è stato fonte di ispirazione: [7h30n3 (The One)](https://github.com/7h30n3) <3
-
-
 ## 💵 Supportami!
 
  [![ko-fi](https://i.imgur.com/3MPSu8i.png)](https://ko-fi.com/Y8Y0FW3V)
