@@ -23,8 +23,8 @@ Scripts che ho creato per migliorare l'esperienza con Hyperion. You can also rea
 </details>
 
 ### Requisiti
-* Un Raspberry Pi 2, 3 o 3+
-* Una microSD con un OS installato e pronto all'uso, è consigliato [OSMC](https://osmc.tv/download/) (tutorial: [come installare OSMC](https://youtu.be/cdpQa52AK0w))
+* Un Raspberry Pi 2, 3 o [3+](https://amzn.to/2Kx4ABj)
+* Una [microSD](https://amzn.to/2Kw6YZ0) con un OS installato e pronto all'uso, è consigliato [OSMC](https://osmc.tv/download/) (tutorial: [come installare OSMC](https://youtu.be/cdpQa52AK0w))
 
 Assicurati di avere [Hyperion](https://hyperion-project.org) installato e configurato (è consigliata l'installazione e la configurazione via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information)).
 
@@ -143,7 +143,7 @@ Ora puoi usare Google Assistant sul tuo smartphone/tablet/Google Home per dire a
 ## 📚 Risorse
 Ecco una video guida passo-passo su come costruire l'ultimate Ambilight setup: *TO-DO*
 
-Il file `hyperion.config.json` è un esempio di un file di configurazione funzionalte per Hyperion (generato via [HyperCon](https://github.com/hyperion-project/hypercon))
+Il file `hyperion.config.json` è un esempio di un file di configurazione funzionante per Hyperion (generato via [HyperCon](https://github.com/hyperion-project/hypercon))
 
 Visita [il sito hyperion-project](https://hyperion-project.org) per avere maggiori informazioni su Hyperion
 
