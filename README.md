@@ -45,7 +45,6 @@ Options:
     General options:
         -h --help           Show this screen.
         -i --interactive    Insert installation parameters during installation.
-        -s --silent         Show less stuff during installation.
         -v --version        Show version.
     Custom installation options:
         -a --assistant      Install Google Assistant script.
@@ -56,7 +55,7 @@ Options:
 
 * Run the `install.sh` script:
 ```shell
-sudo ./install.sh -s -i
+sudo ./install.sh -i
 ```
 
 
