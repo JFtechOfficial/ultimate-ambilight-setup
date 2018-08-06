@@ -180,7 +180,7 @@ Yes. You can run it on any unix machine connected to the same local network: it 
 
 ## 🗓️ Release History
 
-* 0.1.0 - beta release
+* 06/09/2018 - 0.1.0 - beta release
 
 
 ## 🎓 License
