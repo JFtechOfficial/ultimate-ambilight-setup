@@ -45,7 +45,6 @@ Opzioni:
     Opzioni generali:
         -h --help           Mostra questa schermata.
         -i --interactive    Inserisci i parametri di installazione durante l'installazione.
-        -s --silent         Mostra meno roba durante l'installazione.
         -v --version        Mostra versione.
     Opzioni di installazione personalizzata:
         -a --assistant      Installa lo script per Google Assistant.
@@ -56,7 +55,7 @@ Opzioni:
 
 * Esegui lo script `install.sh` :
 ```shell
-sudo ./install.sh -s -i
+sudo ./install.sh -i
 ```
 
 
@@ -71,7 +70,7 @@ sudo reboot
 * Ottieni [la tua API key di OpenWeatherMap](http://openweathermap.org/appid) 
 * Apri il file `clock.json` :
 ```shell
-sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
+sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Modifica il valore di `owmAPIkey` incollando la tua API key (puoi usare la stessa API key nell'app Meteo di Kodi)
 * Ottieni [le tue coordinate](https://www.whataremycoordinates.com/) 
