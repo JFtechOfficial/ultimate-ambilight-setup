@@ -181,7 +181,7 @@ Si. Puoi lasciarlo in esecuzione su una qualsiasi macchina unix connessa allo st
 
 ## 🗓️ Release History
 
-* 0.1.0 - beta release
+* 06/09/2018 - 0.1.0 - beta release
 
 
 ## 🎓 Licenza
