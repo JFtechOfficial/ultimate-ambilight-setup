@@ -4,32 +4,33 @@ import json
 from time import sleep
 import RPi.GPIO as GPIO
 
-""" Define some variables editing the button.json config file 
-    (please do NOT use pin 5 (BOARD): it must be used as shutdown button) """
+"""
+Define some variables editing the button.json config file
+(please do NOT use pin 5 (BOARD): it must be used as shutdown button)
+"""
 with open('buttons.json') as f:
     data = json.load(f)
-    f.close()
     clear = data['args']['clear']  # Pin ID
     effects = data['args']['effects']
     pins = {}  # {Pin ID: 'Effect name'}
     for name in effects:
-        pins.update({effects[name] : name})
-        
+        pins.update({effects[name]: name})
+
 FNULL = open(os.devnull, 'w')
 
 
 def Effect(channel):
-    """ Start an effect """
+    """Start an effect."""
     subprocess.call(['hyperion-remote', '-e', pins[channel]], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
 
 
 def Clear(channel):
-    """ Clear all effects """
+    """Clear all effects."""
     subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
 
 
 def setup():
-    """ Raspberry Pi GPIO setup """
+    """Raspberry Pi GPIO setup."""
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(3, GPIO.IN, pull_up_down=GPIO.PUD_UP)

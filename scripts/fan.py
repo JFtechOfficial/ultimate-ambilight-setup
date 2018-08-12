@@ -39,10 +39,11 @@ with open('fan.json') as f:
     pin = data['args']['pin']
     settings = data['args']['settings']
     for name in settings:
-        profile.update({name : settings[name]})
+        profile.update({name: settings[name]})
+
 
 def setup():
-    """ Raspberry Pi GPIO setup """
+    """Raspberry Pi GPIO setup."""
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(pin, GPIO.OUT)
@@ -50,7 +51,7 @@ def setup():
 
 
 def getCPUtemperature():
-    """ Measure CPU temperature """
+    """Measure CPU temperature."""
     res = os.popen('vcgencmd measure_temp').readline()
     temp = (res.replace("temp=", "").replace("'C\n", ""))
     # print("temp is {0}".format(temp))  # Uncomment here for testing
@@ -62,12 +63,12 @@ try:
     """ Manage the fan """
     while True:
         CPU_temp = float(getCPUtemperature())
-        if (CPU_temp > profile[max_TEMP]):
+        if (CPU_temp > profile["max_TEMP"]):
             GPIO.output(pin, True)
             # print ("ON")  # Uncomment here for testing
-        if (CPU_temp < profile[cutoff_TEMP]):
+        if (CPU_temp < profile["cutoff_TEMP"]):
             GPIO.output(pin, False)
             # print ("OFF")  # Uncomment here for testing
-        sleep(profile[sleepTime])
+        sleep(profile["sleepTime"])
 except KeyboardInterrupt:
     GPIO.cleanup()  # clean up GPIO on CTRL+C exit
