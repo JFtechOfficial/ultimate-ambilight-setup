@@ -23,8 +23,8 @@ Scripts che ho creato per migliorare l'esperienza con Hyperion. You can also rea
 </details>
 
 ### Requisiti
-* Un Raspberry Pi 2, 3 o 3+
-* Una microSD con un OS installato e pronto all'uso (è consigliato [OSMC](https://osmc.tv/download/))
+* Un Raspberry Pi 2, 3 o [3+](https://amzn.to/2Kx4ABj)
+* Una [microSD](https://amzn.to/2Kw6YZ0) con un OS installato e pronto all'uso, è consigliato [OSMC](https://osmc.tv/download/) (tutorial: [come installare OSMC](https://youtu.be/cdpQa52AK0w))
 
 Assicurati di avere [Hyperion](https://hyperion-project.org) installato e configurato (è consigliata l'installazione e la configurazione via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information)).
 
@@ -45,7 +45,6 @@ Opzioni:
     Opzioni generali:
         -h --help           Mostra questa schermata.
         -i --interactive    Inserisci i parametri di installazione durante l'installazione.
-        -s --silent         Mostra meno roba durante l'installazione.
         -v --version        Mostra versione.
     Opzioni di installazione personalizzata:
         -a --assistant      Installa lo script per Google Assistant.
@@ -56,7 +55,7 @@ Opzioni:
 
 * Esegui lo script `install.sh` :
 ```shell
-sudo ./install.sh -s -i
+sudo ./install.sh -i
 ```
 
 
@@ -71,7 +70,7 @@ sudo reboot
 * Ottieni [la tua API key di OpenWeatherMap](http://openweathermap.org/appid) 
 * Apri il file `clock.json` :
 ```shell
-sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
+sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Modifica il valore di `owmAPIkey` incollando la tua API key (puoi usare la stessa API key nell'app Meteo di Kodi)
 * Ottieni [le tue coordinate](https://www.whataremycoordinates.com/) 
@@ -144,7 +143,7 @@ Ora puoi usare Google Assistant sul tuo smartphone/tablet/Google Home per dire a
 ## 📚 Risorse
 Ecco una video guida passo-passo su come costruire l'ultimate Ambilight setup: *TO-DO*
 
-Il file `hyperion.config.json` è un esempio di un file di configurazione funzionalte per Hyperion (generato via [HyperCon](https://github.com/hyperion-project/hypercon))
+Il file `hyperion.config.json` è un esempio di un file di configurazione funzionante per Hyperion (generato via [HyperCon](https://github.com/hyperion-project/hypercon))
 
 Visita [il sito hyperion-project](https://hyperion-project.org) per avere maggiori informazioni su Hyperion
 
@@ -162,9 +161,6 @@ Major dependencies:
 * [hyperion](https://github.com/hyperion-project/hyperion)
 * [node-hyperion-client](https://github.com/WeeJeWel/node-hyperion-client)
 * [play-on-kodi](https://github.com/ritiek/play-on-kodi)
-
-
-Il seguente utente è stato fonte di ispirazione: [7h30n3 (The One)](https://github.com/7h30n3) <3
 
 
 ## 💵 Supportami!
@@ -185,7 +181,7 @@ Si. Puoi lasciarlo in esecuzione su una qualsiasi macchina unix connessa allo st
 
 ## 🗓️ Release History
 
-* 0.1.0 - beta release
+* 06/09/2018 - 0.1.0 - beta release
 
 
 ## 🎓 Licenza

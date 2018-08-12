@@ -18,7 +18,6 @@ Options:
     General options:
         -h --help           Show this screen.
         -i --interactive    Insert installation parameters during installation.
-        -s --silent         Show less stuff during installation.
         -v --version        Show version.
     Custom installation options:
         -a --assistant      Install Google Assistant script.
@@ -47,7 +46,6 @@ https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues
 "
 
 interactive=0
-silent=0
 fan=0
 buttons=0
 clock=0
@@ -63,8 +61,6 @@ while [ "$1" != "" ]; do
     -c | --clock )          clock=1
       ;;
     -a | --assistant )      assistant=1
-      ;;
-    -s | --silent )         silent=1
       ;;
     -i | --interactive )    interactive=1
       ;;
@@ -93,10 +89,10 @@ if [ "$DATE" -le "2017" ]; then
   exit 1
 fi
 #silent option, output to /dev/null
-output=""
-if [ $silent -ne 0 ]; then
-  output=">/dev/null" # 1,2, oppure & ???
-fi
+#output=""
+#if [ $-ne 0 ]; then
+#  output=">/dev/null"# 2>&1"
+#fi
 #no arguments
 default_install=$((fan+buttons+assistant+clock))
 if [ $default_install -eq 0 ]; then
@@ -187,14 +183,18 @@ sudo apt install -y python-pip
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
+  rpigpio $output
+fi
+
+rpigpio(){
   echo "Downloading Rpi.GPIO..."
   sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
   echo "installing Rpi.GPIO..."
   sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
   sudo python setup.py install
   sudo rm -rf RPi.GPIO-0.6.2.tar.gz
+}
 
-fi
 if [ $clock -ne 0 ]; then
   echo "Stop Hyperion, if necessary"
   if [ $OS_OPENELEC -eq 1 ]; then

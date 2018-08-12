@@ -45,7 +45,6 @@ Options:
     General options:
         -h --help           Show this screen.
         -i --interactive    Insert installation parameters during installation.
-        -s --silent         Show less stuff during installation.
         -v --version        Show version.
     Custom installation options:
         -a --assistant      Install Google Assistant script.
@@ -56,7 +55,7 @@ Options:
 
 * Run the `install.sh` script:
 ```shell
-sudo ./install.sh -s -i
+sudo ./install.sh -i
 ```
 
 
@@ -71,7 +70,7 @@ sudo reboot
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file:
 ```shell
-sudo nano ~/ultimate-ambilight-setup/hyperion\ effects/clock.json
+sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
@@ -163,9 +162,6 @@ Major dependencies:
 * [play-on-kodi](https://github.com/ritiek/play-on-kodi)
 
 
-The following user has been a source of inspiration: [7h30n3 (The One)](https://github.com/7h30n3) <3
-
-
 ## 💵 Support Me!
 
  [![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/Y8Y0FW3V)
@@ -184,7 +180,7 @@ Yes. You can run it on any unix machine connected to the same local network: it 
 
 ## 🗓️ Release History
 
-* 0.1.0 - beta release
+* 06/09/2018 - 0.1.0 - beta release
 
 
 ## 🎓 License
