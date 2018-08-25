@@ -142,7 +142,7 @@
 		"xbmcTcpPort" : 9090,
 		"grabVideo" : true,
 		"grabPictures" : true,
-		"grabAudio" : false,
+		"grabAudio" : true,
 		"grabMenu" : false,
 		"grabPause" : true,
 		"grabScreensaver" : false,
