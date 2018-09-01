@@ -283,8 +283,8 @@ Leave empty if you don't want to modify the old value.
 
   ######################################
   echo -n "installing clock effect..."
-  sudo mv Hyperion_effects/clock.py /usr/share/hyperion/effects/
-  sudo mv Hyperion_effects/clock.json /usr/share/hyperion/effects/
+  yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
+  yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
   echo "Starting Hyperion..."
   if [ $OS_OPENELEC -eq 1 ]; then
     /storage/.config/autostart.sh > /dev/null 2>&1 &

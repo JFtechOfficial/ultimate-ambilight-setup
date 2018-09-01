@@ -8,8 +8,8 @@ Please note we have a code of conduct, please follow it in all your interactions
 ## Opening Issues
 
 Before you open a new issue:
-- search for similar issue in the [Issues tab](https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues)
 - if the problem is related only to Hyperion please visit [this page](https://github.com/hyperion-project/hyperion.ng/blob/master/ISSUE_TEMPLATE)
+- search for similar issue in the [Issues tab](https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues)
 
 
 ## Coding Style
