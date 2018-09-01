@@ -1,7 +1,7 @@
+import json
 import os
 import subprocess
-import json
-from time import sleep
+import time
 import RPi.GPIO as GPIO
 
 """
@@ -19,14 +19,32 @@ with open('buttons.json') as f:
 FNULL = open(os.devnull, 'w')
 
 
+def launch(*args):
+    """Call hyperion-remote."""
+    if len(args) == 1:
+        subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+    if len(args) == 2:
+        subprocess.call(['hyperion-remote', str(args[0]), str(args[1])], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+
+
 def Effect(channel):
     """Start an effect."""
-    subprocess.call(['hyperion-remote', '-e', pins[channel]], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+    launch('-e', pins[channel])
 
 
 def Clear(channel):
-    """Clear all effects."""
-    subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+    """Clear all effects (short press) or set color to black (long press)."""
+    start = time.time()
+    stop = start
+    while GPIO.input(channel) == GPIO.LOW:
+        time.sleep(0.01)
+        stop = time.time() - start
+        if stop > 1:
+            launch('--color', '000000')
+            return
+    print(stop)
+    if stop > 0.02:
+        launch('--clearall')
 
 
 def setup():
@@ -39,16 +57,15 @@ def setup():
         GPIO.add_event_detect(key, GPIO.FALLING, callback=Effect, bouncetime=300)
     GPIO.setup(clear, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.add_event_detect(clear, GPIO.FALLING, callback=Clear, bouncetime=300)
-    return()
 
 
 setup()
 """ Waiting for shutdown button """
 try:
     GPIO.wait_for_edge(3, GPIO.FALLING)
-    subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+    launch('--clearall')
     GPIO.cleanup()
-    sleep(2)
+    time.sleep(1)
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
 
 except KeyboardInterrupt:
