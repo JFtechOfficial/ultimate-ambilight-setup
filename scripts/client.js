@@ -28,7 +28,6 @@ fs.readFile('./client.json', 'utf8', function(err, data) {
   var kodi_port = config.kodi_server.port || 8080;
   var uri = config.kodi_server.video_uri || 'https://youtu.be/dQw4w9WgXcQ';
 
-
   //mqtt client
   var client = mqtt.connect(url, options);
 
@@ -36,9 +35,11 @@ fs.readFile('./client.json', 'utf8', function(err, data) {
     Object.keys(topics).forEach(function(topic) {
       if (topics[topic]) {
         client.subscribe(user + '/feeds/' + topics[topic]);
+
         //console.log('sub', user + '/feeds/' + topics[topic]);
       }
     });
+
     //client.publish('username/feeds/hyperion-effects', 'Snake');
     //console.log('pub username/feeds/hyperion-effects  Snake');
   });

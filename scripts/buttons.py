@@ -1,4 +1,5 @@
-import json
+# import json
+import commentjson
 import os
 import subprocess
 import time
@@ -9,7 +10,7 @@ Define some variables editing the button.json config file
 (please do NOT use pin 5 (BOARD): it must be used as shutdown button)
 """
 with open('buttons.json') as f:
-    data = json.load(f)
+    data = commentjson.load(f)
     clear = data['args']['clear']  # Pin ID
     effects = data['args']['effects']
     pins = {}  # {Pin ID: 'Effect name'}
@@ -23,8 +24,8 @@ def launch(*args):
     """Call hyperion-remote."""
     if len(args) == 1:
         subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
-    if len(args) == 2:
-        subprocess.call(['hyperion-remote', str(args[0]), str(args[1])], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
+    if len(args) == 3:
+        subprocess.call(['hyperion-remote', str(args[0]), str(args[1]), '--priority', str(args[2])], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
 
 
 def Effect(channel):
@@ -40,7 +41,12 @@ def Clear(channel):
         time.sleep(0.01)
         stop = time.time() - start
         if stop > 1:
-            launch('--color', '000000')
+            with open('/etc/hyperion/hyperion.config.json') as config:
+                data = commentjson.load(config)
+            priority = data['grabber-v4l2']['priority']
+            # print(priority)
+            launch('--clearall')
+            launch('--color', '000000', priority + 1)
             return
     print(stop)
     if stop > 0.02:
