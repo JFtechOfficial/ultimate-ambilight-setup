@@ -151,6 +151,7 @@ reb='^[01]$'
 reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
 reboard='^(([3578])|([1][01235689])|([2][12346]))$'
 reboardb='^(([378])|([1][01235689])|([2][12346]))$'
+remode='^((AlwaysON)|(AlwaysOFF)|(Auto))$'
 
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
@@ -403,6 +404,20 @@ Leave empty if you don't want to modify the old value.
     else
       if ! [ -z $gpiopin ]; then
         sudo python jsonHelper.py 'scripts/fan.json' 'pin' $gpiopin
+      fi
+      break
+    fi
+  done
+   echo "
+Enter the fan mode (AlwaysON/AlwaysOFF/Auto).
+Leave empty if you don't want to modify the old value.
+  "
+  while read -p "fan mode: " mode; do
+    if ! { [[ $mode  =~ $remode ]] || [ -z $mode ]; }; then
+      echo "Mode must be 'AlwaysON', 'AlwaysOFF' or 'Auto'"
+    else
+      if ! [ -z $mode ]; then
+        sudo python jsonHelper.py 'scripts/fan.json' 'mode' $mode
       fi
       break
     fi
