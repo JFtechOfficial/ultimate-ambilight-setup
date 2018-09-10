@@ -23,15 +23,6 @@ profile = {
 }
 """
 
-""" Always ON profile """
-"""
-profile = {
-    'max_TEMP': 10,  # Temperature in Celsius after which the fan triggers
-    'cutoff_TEMP': 1,  # Temerature in Celsius after which the fan stops
-    'sleepTime': 1000  # Temperature reading interval in seconds
-}
-"""
-
 pin = 26  # pin ID (BCM), edit here to change the default value
 
 
@@ -67,15 +58,13 @@ def fanManager():
 try:
     setup()
     with open('fan.json') as f:
-    data = json.load(f)
+        data = json.load(f)
     pin = data['args']['pin']
     mode = data['args']['mode']
     if mode == 'AlwaysON':
         GPIO.output(pin, True)
     elif mode == 'Auto':
-        settings = data['args']['settings']
-        for name in settings:
-            profile.update({name: settings[name]})
+        profile = data['args']['settings']
         fanManager()
     else:
         GPIO.output(pin, False)
