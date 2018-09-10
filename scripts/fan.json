@@ -4,6 +4,7 @@
         "args" :
         {
 				"pin" : 26,
+				"AlwaysON/AlwaysOFF/Auto" : "Auto",
 				"settings" :
 				{
 						"max_TEMP" : 70,
