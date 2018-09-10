@@ -34,13 +34,6 @@ profile = {
 
 pin = 26  # pin ID (BCM), edit here to change the default value
 
-with open('fan.json') as f:
-    data = json.load(f)
-    pin = data['args']['pin']
-    settings = data['args']['settings']
-    for name in settings:
-        profile.update({name: settings[name]})
-
 
 def setup():
     """Raspberry Pi GPIO setup."""
@@ -58,9 +51,8 @@ def getCPUtemperature():
     return temp
 
 
-try:
-    setup()
-    """ Manage the fan """
+def fanManager():
+     """Manage the fan."""
     while True:
         CPU_temp = float(getCPUtemperature())
         if (CPU_temp > profile["max_TEMP"]):
@@ -70,5 +62,22 @@ try:
             GPIO.output(pin, False)
             # print ("OFF")  # Uncomment here for testing
         sleep(profile["sleepTime"])
+
+        
+try:
+    setup()
+    with open('fan.json') as f:
+    data = json.load(f)
+    pin = data['args']['pin']
+    mode = data['args']['mode']
+    if mode == 'AlwaysON':
+        GPIO.output(pin, True)
+    elif mode == 'Auto':
+        settings = data['args']['settings']
+        for name in settings:
+            profile.update({name: settings[name]})
+        fanManager()
+    else:
+        GPIO.output(pin, False)
 except KeyboardInterrupt:
     GPIO.cleanup()  # clean up GPIO on CTRL+C exit
