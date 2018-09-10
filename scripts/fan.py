@@ -80,4 +80,5 @@ try:
     else:
         GPIO.output(pin, False)
 except KeyboardInterrupt:
+    GPIO.output(pin, False)
     GPIO.cleanup()  # clean up GPIO on CTRL+C exit
