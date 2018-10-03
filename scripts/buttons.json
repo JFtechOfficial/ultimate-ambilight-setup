@@ -3,11 +3,25 @@
         "script" : "buttons.py",
         "args" :
         {
-				"clear" : 27,
-				"effects" : 
+				"gpio-mode" : "BCM",
+				"gpio-setup" :
 				{
-					"Rainbow swirl fast" : 17,
-					"Clock" : 22
-				}
+						"27" : 				
+						{
+								"short-press" : "clear",
+								"long-press" : [0,0,0]
+						},
+						"17" : 
+						{
+								"short-press" : "Rainbow swirl fast",
+								"long-press" : [0,128,128]
+						},
+						"22" : 
+						{
+								"short-press" : "Clock",
+								"long-press" : null
+						}
+				},
+				"priority" : 100
         }
 }
