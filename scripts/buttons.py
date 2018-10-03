@@ -48,19 +48,15 @@ def button_press(channel, duration):
     pin = str(channel)
     on_press = gpio_setup[pin][duration]
     if isinstance(on_press, list):
-        print("COLOR")
         if duration == 'long-press' and gpio_setup[pin]['short-press'] == 'clear':
-            print("lower")
             with open('/etc/hyperion/hyperion.config.json') as config:
                 hyperion_data = commentjson.load(config)
             color(on_press, hyperion_data['grabber-v4l2']['priority'] + 1)
         color(on_press, priority)
     elif isinstance(on_press, str):
         if on_press == 'clear':
-            print("CLEAR")
             clear_all()
         else:
-            print("EFFECT")
             effect(on_press, priority)
 
 
@@ -85,13 +81,11 @@ def setup():
     if data['args']['gpio-mode'] == 'BOARD':
         GPIO.setmode(GPIO.BOARD)
         power_button = 5
-    print(power_button)
     GPIO.setup(power_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     for pin in gpio_setup:
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         pin_setup = gpio_setup[pin]
         if pin_setup['short-press'] or pin_setup['long-press']:
-            print(pin)
             GPIO.add_event_detect(int(pin), GPIO.FALLING, callback=islongpress, bouncetime=300)
     
 
@@ -105,5 +99,4 @@ try:
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
 
 except KeyboardInterrupt:
-    pass
     GPIO.cleanup()
