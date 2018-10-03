@@ -32,10 +32,10 @@ def effect(name, priority):
     launch('-e', name, priority)
 
 
-def color(rgbColor, priority):
+def color(rgb_color, priority):
     """Start a color."""
-    hexColor = '%02x%02x%02x' % tuple(rgbColor)
-    launch('--color', hexColor, priority)
+    hex_color = '%02x%02x%02x' % tuple(rgb_color)
+    launch('--color', hex_color, priority)
 
 
 def clear_all():
@@ -51,8 +51,10 @@ def button_press(channel, duration):
         if duration == 'long-press' and gpio_setup[pin]['short-press'] == 'clear':
             with open('/etc/hyperion/hyperion.config.json') as config:
                 hyperion_data = commentjson.load(config)
+            clear_all()
             color(on_press, hyperion_data['grabber-v4l2']['priority'] + 1)
-        color(on_press, priority)
+        else:
+            color(on_press, priority)
     elif isinstance(on_press, str):
         if on_press == 'clear':
             clear_all()
@@ -70,7 +72,8 @@ def is_long_press(channel):
         stop = time.time() - start
         if stop > 1:
             button_press(channel, 'long-press')
-    return button_press(channel, 'short-press')
+            return
+    button_press(channel, 'short-press')
 
 
 def setup():
