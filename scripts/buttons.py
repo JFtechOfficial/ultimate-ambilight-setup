@@ -12,7 +12,7 @@ please do NOT use pin 5 (BOARD): it must be used as power button
 with open('buttons.json') as f:
     data = commentjson.load(f)
 gpio_setup = data['args']['gpio-setup']
-priority = data['args']['priority']
+priority = int(data['args']['priority'])
 if not priority:
     priority = 100
 with open('/etc/hyperion/hyperion.config.json') as config:
@@ -74,6 +74,14 @@ def is_long_press(channel):
             return
     if stop > 0.02:
         button_press(channel, 'short-press')
+
+    """ #non polling version
+    trigger = GPIO.wait_for_edge(channel, GPIO.RISING, timeout=1000)
+    if trigger is None:
+        button_press(channel, 'long-press')
+    else:
+        button_press(channel, 'short-press')
+    """
 
 
 def setup():
