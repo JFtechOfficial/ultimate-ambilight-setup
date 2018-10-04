@@ -89,7 +89,7 @@ def setup():
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         pin_setup = gpio_setup[pin]
         if pin_setup['short-press'] or pin_setup['long-press']:
-            GPIO.add_event_detect(int(pin), GPIO.FALLING, callback=islongpress, bouncetime=300)
+            GPIO.add_event_detect(int(pin), GPIO.FALLING, callback=is_long_press, bouncetime=300)
     
 
 setup()
@@ -100,5 +100,6 @@ try:
     GPIO.cleanup()
     time.sleep(1)
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
+
 except KeyboardInterrupt:
     GPIO.cleanup()
