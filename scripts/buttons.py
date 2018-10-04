@@ -76,7 +76,7 @@ def is_long_press(channel):
         button_press(channel, 'short-press')
 
     """ #non polling version
-    trigger = GPIO.wait_for_edge(channel, GPIO.RISING, timeout=1000)
+    trigger = GPIO.wait_for_edge(channel, GPIO.RISING, bouncetime=300, timeout=1000)
     if trigger is None:
         button_press(channel, 'long-press')
     else:
