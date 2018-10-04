@@ -7,8 +7,9 @@ import RPi.GPIO as GPIO
 
 """
 Define some variables editing the button.json config file
-please do NOT use pin 5 (BOARD): it must be used as power button
+please do NOT use pin 5 (BOARD) aka gpio 3 (BCM): it must be used as power button
 """
+power_button = 3
 with open('buttons.json') as f:
     data = commentjson.load(f)
 gpio_setup = data['args']['gpio-setup']
@@ -88,16 +89,16 @@ def setup():
     """Raspberry Pi GPIO setup."""
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
-    power_button = 3
     if data['args']['gpio-mode'] == 'BOARD':
         GPIO.setmode(GPIO.BOARD)
         power_button = 5
     GPIO.setup(power_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     for pin in gpio_setup:
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        channel = int(pin)
+        GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         pin_setup = gpio_setup[pin]
         if pin_setup['short-press'] or pin_setup['long-press']:
-            GPIO.add_event_detect(int(pin), GPIO.FALLING, callback=is_long_press, bouncetime=300)
+            GPIO.add_event_detect(channel, GPIO.FALLING, callback=is_long_press, bouncetime=300)
     
 
 setup()
