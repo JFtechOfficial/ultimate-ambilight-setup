@@ -13,9 +13,11 @@ power_button = 3
 with open('buttons.json') as f:
     data = commentjson.load(f)
 gpio_setup = data['args']['gpio-setup']
-priority = int(data['args']['priority'])
-if not priority:
+prior = data['args']['priority']
+if not prior:
     priority = 100
+else:
+    priority = int(prior)
 with open('/etc/hyperion/hyperion.config.json') as config:
     hyperion_data = commentjson.load(config)
 
@@ -78,10 +80,10 @@ def is_long_press(channel):
 
     """ #non polling version
     trigger = GPIO.wait_for_edge(channel, GPIO.RISING, bouncetime=300, timeout=1000)
-    if trigger is None:
-        button_press(channel, 'long-press')
-    else:
+    if trigger:
         button_press(channel, 'short-press')
+    else:
+        button_press(channel, 'long-press')
     """
 
 
