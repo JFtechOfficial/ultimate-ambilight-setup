@@ -15,6 +15,8 @@ gpio_setup = data['args']['gpio-setup']
 priority = data['args']['priority']
 if not priority:
     priority = 100
+with open('/etc/hyperion/hyperion.config.json') as config:
+    hyperion_data = commentjson.load(config)
 
 FNULL = open(os.devnull, 'w')
 
@@ -49,10 +51,8 @@ def button_press(channel, duration):
     on_press = gpio_setup[pin][duration]
     if isinstance(on_press, list):
         if duration == 'long-press' and gpio_setup[pin]['short-press'] == 'clear':
-            with open('/etc/hyperion/hyperion.config.json') as config:
-                hyperion_data = commentjson.load(config)
             clear_all()
-            color(on_press, hyperion_data['grabber-v4l2']['priority'] + 1)
+            color(on_press, hyperion_data['grabber-v4l2']['priority'])
         else:
             color(on_press, priority)
     elif isinstance(on_press, str):
@@ -66,14 +66,14 @@ def is_long_press(channel):
     """Detect long button press or short button press."""
     start = time.time()
     stop = start
-    time.sleep(0.02)
     while GPIO.input(channel) == GPIO.LOW:
         time.sleep(0.01)
         stop = time.time() - start
         if stop > 1:
             button_press(channel, 'long-press')
             return
-    button_press(channel, 'short-press')
+    if stop > 0.02:
+        button_press(channel, 'short-press')
 
 
 def setup():
@@ -100,6 +100,5 @@ try:
     GPIO.cleanup()
     time.sleep(1)
     subprocess.call(['shutdown', '-h', 'now'], shell=False)
-
 except KeyboardInterrupt:
     GPIO.cleanup()
