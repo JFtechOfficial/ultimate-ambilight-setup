@@ -78,11 +78,13 @@ def is_long_press(channel):
         button_press(channel, 'short-press')
 
     """ #non polling version
+    GPIO.remove_event_detect(channel)
     trigger = GPIO.wait_for_edge(channel, GPIO.RISING, bouncetime=300, timeout=1000)
     if trigger:
         button_press(channel, 'short-press')
     else:
         button_press(channel, 'long-press')
+    GPIO.add_event_detect(channel, GPIO.FALLING, callback=is_long_press, bouncetime=300)
     """
 
 
