@@ -49,7 +49,6 @@ echo -n "Downloading button script..."
 git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 if [ -d "buttons" ]; then
   yes | sudo cp -rf ultimate-ambilght-setup/buttons/buttons.py buttons
-  echo -n "UPDATING"
 else
   mv -T -f ultimate-ambilght-setup/buttons buttons
 fi
@@ -57,7 +56,6 @@ fi
 echo -n "Downloading clock script..."
 if [ -d "Hyperion_effects" ]; then
   yes | sudo cp -rf ultimate-ambilght-setup/Hyperion_effects/clock.py Hyperion_effects
-  echo -n "UPDATING"
 else
   mv -T -f ultimate-ambilght-setup/Hyperion_effects Hyperion_effects
 fi
@@ -67,9 +65,8 @@ rm -rf ultimate-ambilght-setup
 echo -n "Downloading Google Assisant client script..."
 git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
 if [ -d "Google_Assistant" ]; then
-  yes | sudo cp -rf hyperion-mqtt-subscriber/client.py Google_Assistant
+  yes | sudo cp -rf hyperion-mqtt-subscriber/client.js Google_Assistant
   rm -rf hyperion-mqtt-subscriber
-  echo -n "UPDATING"
 else
   mv -T -f hyperion-mqtt-subscriber Google_Assistant
 fi
@@ -79,7 +76,6 @@ git clone https://github.com/JFtechOfficial/Raspberry-Pi-PWM-fan.git
 if [ -d "fan" ]; then
   yes | sudo cp -rf Raspberry-Pi-PWM-fan/fan.py fan
   rm -rf Raspberry-Pi-PWM-fan
-  echo -n "UPDATING"
 else
   mv -T -f Raspberry-Pi-PWM-fan fan
 fi
