@@ -128,7 +128,7 @@ a script that let you use the Google Assistant on your smartphone/tablet/Google 
 to tell Hyperion what to do (e.g. Ok Google, launch Rainbow swirl effect)
   "
 fi
-read -p "Do you want to procede? [Y/n]: " installReply
+read -p "Do you want to procede? [y/N]: " installReply
 if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
   echo "Starting..."
 else
@@ -222,7 +222,7 @@ if [ $startup -ne 0 ]; then
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
-  echo -n "installing some usefull modules..."
+  echo -n "installing required modules for Google Assisant client script..."
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
