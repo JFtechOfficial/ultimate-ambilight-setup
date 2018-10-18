@@ -67,8 +67,8 @@ rm -rf ultimate-ambilght-setup
 echo -n "Downloading Google Assisant client script..."
 git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
 if [ -d "Google_Assistant" ]; then
-  yes | sudo cp -rf ultimate-ambilght-setup/hyperion-mqtt-subscriber/client.py Google_Assistant
-  #rm -rf hyperion-mqtt-subscriber
+  yes | sudo cp -rf hyperion-mqtt-subscriber/client.py Google_Assistant
+  rm -rf hyperion-mqtt-subscriber
   echo -n "UPDATING"
 else
   mv -T -f hyperion-mqtt-subscriber Google_Assistant
@@ -77,8 +77,8 @@ fi
 echo -n "Downloading fan script..."
 git clone https://github.com/JFtechOfficial/Raspberry-Pi-PWM-fan.git
 if [ -d "fan" ]; then
-  yes | sudo cp -rf ultimate-ambilght-setup/Raspberry-Pi-PWM-fan/fan.py fan
-  #rm -rf Raspberry-Pi-PWM-fan
+  yes | sudo cp -rf Raspberry-Pi-PWM-fan/fan.py fan
+  rm -rf Raspberry-Pi-PWM-fan
   echo -n "UPDATING"
 else
   mv -T -f Raspberry-Pi-PWM-fan fan
