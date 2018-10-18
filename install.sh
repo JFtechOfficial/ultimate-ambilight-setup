@@ -169,12 +169,15 @@ sudo apt-get install -y python-all-dev python-setuptools python-wheel
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
   echo "Downloading Rpi.GPIO..."
-  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.3.tar.gz
+  ##mkdir RPi.GPIO
+  ##cd RPi.GPIO
+  ##sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.3.tar.gz
   echo "installing Rpi.GPIO..."
-  sudo tar -xf RPi.GPIO-0.6.3.tar.gz --strip-components 1
-  sudo python setup.py install
-  sudo rm -rf RPi.GPIO-0.6.3.tar.gz
-  ##sudo pip install RPi.GPIO
+  ##sudo tar -xf RPi.GPIO-0.6.3.tar.gz --strip-components 1
+  ##sudo python setup.py install
+  ##sudo rm -rf RPi.GPIO-0.6.3.tar.gz
+  sudo -H pip install RPi.GPIO
+  ##cd ..
 fi
 
 if [ $clock -ne 0 ]; then
@@ -219,7 +222,7 @@ if [ $startup -ne 0 ]; then
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
-  ehco -n "installing some usefull modules..."
+  echo -n "installing some usefull modules..."
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
