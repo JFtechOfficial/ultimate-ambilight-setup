@@ -149,12 +149,12 @@ fi
 if [ $assistant -ne 0 ]; then
   echo -n "Douwnloading Google Assisant client script..."
   git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
-  mv hyperion-mqtt-subscriber-master Google_Assistant
+  mv hyperion-mqtt-subscriber Google_Assistant
 fi
 if [ $fan -ne 0 ]; then
   echo -n "Downloading fan script..."
   git clone https://github.com/JFtechOfficial/Raspberry-Pi-PWM-fan.git
-  mv Raspberry-Pi-PWM-fan-master fan
+  mv Raspberry-Pi-PWM-fan fan
 fi
 if [ $buttons -ne 1 ]; then
   sudo rm -rf buttons/
