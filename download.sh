@@ -47,7 +47,13 @@ fi
 
 echo -n "Downloading button script..."
 git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
-mv -T -f ultimate-ambilght-setup/buttons buttons
+if [ -d "buttons" ]; then
+  yes | sudo cp -rf ultimate-ambilght-setup/buttons.py buttons
+  echo -n "UPDATING"
+else
+  mv -T -f ultimate-ambilght-setup/buttons buttons
+fi
+
 
 echo -n "Downloading clock script..."
 mv -T -f ultimate-ambilght-setup/Hyperion_effects Hyperion_effects
