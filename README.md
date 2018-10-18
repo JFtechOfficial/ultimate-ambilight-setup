@@ -34,30 +34,14 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- * Prepare the download.sh and install.sh scripts:
-```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
-sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
-```
-* You can decide what to download using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
-```shell
-Options:
-    General options:
-        -h --help           Show this screen.
-        -v --version        Show version.
-    Custom download options:
-        -a --assistant      download Google Assistant script.
-        -b --buttons        download buttons script.
-        -c --clock          download clock effect.
-        -f --fan            download fan script.
-```
 
-* Run the `download.sh` script:
+* Run the `download.sh` script to download/update all the scripts:
 ```shell
+sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
 sudo ~/ultimate-ambilight-setup/./download.sh
 ```
 
-* Now you can [configure](#️-configuration) any .json files you would like to install. You can fin them in the directories: `Hyperion effects`, `buttons`, `Google_Assistant`and `fan`. You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
+* Now you can [configure](#️-configuration) any .json files you would like to install. You can find them in the following directories: `Hyperion effects`, `buttons`, `Google_Assistant`and `fan`. You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
 ```shell
 Options:
     General options:
@@ -72,6 +56,7 @@ Options:
 
 * Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
 ```shell
+sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
 sudo ~/ultimate-ambilight-setup/./install.sh
 ```
 
@@ -84,11 +69,11 @@ sudo reboot
 ```
 
 ### Clock Effect
-* Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Open the `clock.json` file:
 ```shell
 sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
+* Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
 * Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
 * Get [your coordinates](https://www.whataremycoordinates.com/) 
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
@@ -109,6 +94,7 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
 * Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
 * Save `Ctrl + X` and close `Enter` the file
+
 ### Fan
 * Open the `fan.json` file:
 ```shell
