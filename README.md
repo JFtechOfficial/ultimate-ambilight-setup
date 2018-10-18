@@ -34,17 +34,34 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
- * Prepare the install.sh script:
+ * Prepare the download.sh and install.sh scripts:
 ```shell
-cd ~/ultimate-ambilight-setup/
-sudo chmod 775 install.sh
+sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
+sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
 ```
-* Now you can [manually configure](#️-configuration) any .json files you would like to install in both `Hyperion effects` and `scripts` directories. If you choose to do so you can omit the `-i` argument, otherwise skip the [Manual Configuration](#️-configuration) and follow the instruction provided during the execution of the `install.sh` script. You can decide what to install using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
+* You can decide what to download using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
 ```shell
 Options:
     General options:
         -h --help           Show this screen.
-        -i --interactive    Insert installation parameters during installation.
+        -v --version        Show version.
+    Custom download options:
+        -a --assistant      download Google Assistant script.
+        -b --buttons        download buttons script.
+        -c --clock          download clock effect.
+        -f --fan            download fan script.
+```
+
+* Run the `download.sh` script:
+```shell
+sudo ~/ultimate-ambilight-setup/./download.sh
+```
+
+* Now you can [configure](#️-configuration) any .json files you would like to install. You can fin them in the directories: `Hyperion effects`, `buttons`, `Google_Assistant`and `fan`. You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
+```shell
+Options:
+    General options:
+        -h --help           Show this screen.
         -v --version        Show version.
     Custom installation options:
         -a --assistant      Install Google Assistant script.
@@ -53,14 +70,14 @@ Options:
         -f --fan            Install fan script.
 ```
 
-* Run the `install.sh` script:
+* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
 ```shell
-sudo ./install.sh -i
+sudo ~/ultimate-ambilight-setup/./install.sh
 ```
 
 
-## ⚙️ Manual Configuration
-You can manually configure all the .json files you want to install before the execution of the `install.sh` script instead of using the interactive terminal via the `-i` argument. In both cases you'll have to provide the same information.
+## ⚙️ Configuration
+You can configure all the .json files you want to install before the execution of the `install.sh` script.
 You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
 ```shell
 sudo reboot
@@ -88,14 +105,14 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ### Buttons
 * Open the `buttons.json` file:
 ```shell
-nano ~/ultimate-ambilight-setup/scripts/buttons.json
+nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
 * Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
 * Save `Ctrl + X` and close `Enter` the file
 ### Fan
 * Open the `fan.json` file:
 ```shell
-nano ~/ultimate-ambilight-setup/scripts/fan.json
+nano ~/ultimate-ambilight-setup/fan/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
 * You can modify the default `max_TEMP` value (temperature in Celsius after which the fan triggers),
@@ -105,7 +122,7 @@ nano ~/ultimate-ambilight-setup/scripts/fan.json
 ### Google Assistant
 * Open the `client.json` file:
 ```shell
-nano ~/ultimate-ambilight-setup/scripts/client.json
+nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 ```
 * Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
 * If you used a different port you can modify the default `port` value of the `hyperion_server`
