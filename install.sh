@@ -9,7 +9,6 @@ usage(){
 
   echo "Usage:
     sudo ./install.sh
-    sudo ./install.sh -i
     sudo ./install.sh [-f | --fan -c | --clock -b | --buttons -a | --assistant]
     sudo ./install.sh -h | --help
     sudo ./install.sh --version
@@ -17,7 +16,6 @@ usage(){
 Options:
     General options:
         -h --help           Show this screen.
-        -i --interactive    Insert installation parameters during installation.
         -v --version        Show version.
     Custom installation options:
         -a --assistant      Install Google Assistant script.
@@ -45,7 +43,6 @@ Report bugs and get help on GitHub
 https://github.com/JFtechOfficial/ultimate-ambilght-setup/issues
 "
 
-interactive=0
 fan=0
 buttons=0
 clock=0
@@ -61,8 +58,6 @@ while [ "$1" != "" ]; do
     -c | --clock )          clock=1
       ;;
     -a | --assistant )      assistant=1
-      ;;
-    -i | --interactive )    interactive=1
       ;;
     -v | --version )        version
       exit 1
@@ -101,57 +96,45 @@ if [ $default_install -eq 0 ]; then
   clock=1
   assistant=1
 fi
-startup=$((fan+buttons+assistant))
 gpio=$((fan+buttons))
+startup=$((fan+buttons+assistant))
 
-#confirmation
-if [ $interactive -ne 0 ]; then
-  echo "This installation is going to install the following:
+echo "This installation is going to install the following:
+"
+
+if [ $fan -ne 0 ]; then
+  echo "- fan script
+a script that controls a fan (on/off) using a GPIO pin.
+The fan will automatically start to spin when the CPU is above the max_TEMP threshold
+and will automatically stop when the CPU is below the cutoff_TEMP threshold.
   "
-
-  if [ $fan -ne 0 ]; then
-    echo "- fan script
-  a script that controls a fan (on/off) using a GPIO pin.
-  The fan will automatically start to spin when the CPU is above the max_TEMP threshold
-  and will automatically stop when the CPU is below the cutoff_TEMP threshold.
-    "
-  fi
-  if [ $buttons -ne 0 ]; then
-    echo "- buttons script
-  A script that let you use buttons connected to the GPIO
-  to launch effects, go back to the capture mode, or safely turn off the Raspberry Pi.
-    "
-  fi
-  if [ $clock -ne 0 ]; then
-    echo "- clock effect
-  a script that adds a new analog clock effect to the Hyperion effect list.
-  the second hand has a warmer color when outside is hot
-  and it has a colder color when outside is cold.
-    "
-  fi
-  if [ $assistant -ne 0 ]; then
-    echo "- Google Assistant script
-  a script that let you use the Google Assistant on your smartphone/tablet/Google Home
-  to tell Hyperion what to do (e.g. Ok Google, launch Rainbow swirl effect)
-    "
-  fi
-  read -p "Do you want to procede? [Y/n]: " installReply
-  if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
-    echo "Starting..."
-  else
-    echo "Aborting..."
-    exit 1
-  fi
 fi
-
-#regex
-re='^-?[0-9]+[.][0-9]+$'
-rei='^[123456789]+[0-9]*$'
-reb='^[01]$'
-reip='^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
-reboard='^(([3578])|([1][01235689])|([2][12346]))$'
-reboardb='^(([378])|([1][01235689])|([2][12346]))$'
-remode='^((AlwaysON)|(AlwaysOFF)|(Auto))$'
+if [ $buttons -ne 0 ]; then
+  echo "- buttons script
+A script that let you use buttons connected to the GPIO
+to launch effects, go back to the capture mode, or safely turn off the Raspberry Pi.
+  "
+fi
+if [ $clock -ne 0 ]; then
+  echo "- clock effect
+a script that adds a new analog clock effect to the Hyperion effect list.
+the second hand has a warmer color when outside is hot
+and it has a colder color when outside is cold.
+  "
+fi
+if [ $assistant -ne 0 ]; then
+  echo "- Google Assistant script
+a script that let you use the Google Assistant on your smartphone/tablet/Google Home
+to tell Hyperion what to do (e.g. Ok Google, launch Rainbow swirl effect)
+  "
+fi
+read -p "Do you want to procede? [Y/n]: " installReply
+if [[ "$installReply" =~ ^(yes|y|Y)$ ]]; then
+  echo "Starting..."
+else
+  echo "Aborting..."
+  exit 1
+fi
 
 # Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
@@ -168,7 +151,7 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 #update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
   echo -n "Updating System..."
-  sudo apt-get update -y 
+  sudo apt-get update -y
   ##sudo apt-get upgrade -y
   ##sudo apt-get dist-upgrade -y
   sudo apt-get autoremove -y
@@ -181,20 +164,18 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y python
 sudo apt-get install -y python-dev
 sudo apt install -y python-pip
+sudo apt-get install -y python-all-dev python-setuptools python-wheel
 ##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 ##python get-pip.py
 if [ $gpio -ne 0 ]; then
-  rpigpio $output
-fi
-
-rpigpio(){
   echo "Downloading Rpi.GPIO..."
-  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.2.tar.gz
+  sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.3.tar.gz
   echo "installing Rpi.GPIO..."
-  sudo tar -xf RPi.GPIO-0.6.2.tar.gz --strip-components 1
+  sudo tar -xf RPi.GPIO-0.6.3.tar.gz --strip-components 1
   sudo python setup.py install
-  sudo rm -rf RPi.GPIO-0.6.2.tar.gz
-}
+  sudo rm -rf RPi.GPIO-0.6.3.tar.gz
+  ##sudo pip install RPi.GPIO
+fi
 
 if [ $clock -ne 0 ]; then
   echo "Stop Hyperion, if necessary"
@@ -209,80 +190,8 @@ if [ $clock -ne 0 ]; then
   elif [ $USE_SERVICE -eq 1 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
-  # Clock effect for Hyperion
   echo -n "Installing pyowm..."
   sudo pip install pyowm
-
-  ######################################
-  if [ $interactive -ne 0 ]; then
-    echo "
-Enter your OpenWeatherMap API key.
-Leave empty if you don't want to modify the old value.
-You can get a new API key here: https://openweathermap.org/appid
-    "
-    read -p "OpenWeatherMap API key: " OWMkey
-    if ! [ -z $OWMkey ]; then
-      sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $OWMkey
-    fi
-    echo "
-Enter your own latitude and longitude.
-Leave empty if you don't want to modify the old value.
-You can find your coordinates here: https://www.whataremycoordinates.com/
-    "
-    while read -p "Latitude: " lat; do
-      if ! { [[ $lat  =~ $re ]] || [ -z $lat ]; }; then
-        echo "Latitude must be a decimal number"
-      else
-        if ! [ -z $lat ]; then
-          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $lat
-        fi
-        break
-      fi
-    done
-    while read -p "Longitude: " lon; do
-      if ! { [[ $lon  =~ $re ]] || [ -z $lon ]; }; then
-        echo "Longitude must be a decimal number"
-      else
-        if ! [ -z $lon ]; then
-          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $lon
-        fi
-        break
-      fi
-    done
-
-    echo "
-Enter your LED stip offset number.
-Leave empty if you don't want to modify the old value.
-    "
-    while read -p "Offset: " ofs; do
-      if ! { [[ $ofs  =~ $rei ]] || [ -z $ofs ]; }; then
-        echo "Offset must be an integer number"
-      else
-        if ! [ -z $ofs ]; then
-          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $ofs
-        fi
-        break
-      fi
-    done
-
-    echo "
-Enter the direction of your LED stip.
-0 -> clockwise, 1 -> counterclockwise.
-Leave empty if you don't want to modify the old value.
-    "
-    while read -p "Direction: " direc; do
-      if ! { [[ $direc  =~ $reb ]] || [ -z $direc ]; }; then
-        echo "Direction must be 0 or 1"
-      else
-        if ! [ -z $direc ]; then
-          sudo python jsonHelper.py 'Hyperion_effects/clock.json' 'latitude' $direc
-        fi
-        break
-      fi
-    done
-  fi
-
-  ######################################
   echo -n "installing clock effect..."
   yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
   yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
@@ -310,171 +219,27 @@ if [ $startup -ne 0 ]; then
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
-  ehco -n "installing some other usefull modules..."
+  ehco -n "installing some usefull modules..."
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
-  echo "
-Enter the IP address of the device running Hyperion.
-Leave empty if you don't want to modify the old value.
-  "
-  while read -p "IP address: " IPaddressH; do
-    if ! { [[ $IPaddressH  =~ $reip ]] || [ -z $IPaddressH ]; }; then
-      echo "IP address must be in the 'num.num.num.num' format"
-    else
-      if ! [ -z $IPaddressH ]; then
-        sudo python jsonHelper.py 'scripts/client.json' 'hyperion_server' 'ip_address' $IPaddressH
-      fi
-      break
-    fi
-  done
-
-  echo "
-Enter your Adafruit-IO username.
-Leave empty if you don't want to modify the old value.
-You can get a new account here: https://io.adafruit.com
-  "
-  read -p "Your username: " IOuser
-  if ! [ -z $IOuser ]; then
-    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'username' $IOuser
-  fi
-
-  echo "
-Enter your Adafruit-IO AIO key.
-Leave empty if you don't want to modify the old value.
-You can get a new key here: https://io.adafruit.com
-  "
-  read -p "Your AIO key: " IOkey
-  if ! [ -z $IOkey ]; then
-    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'key' $IOkey
-  fi
-  echo "
-Enter your Adafruit-IO 'effect launching' topic.
-Leave empty if you don't want to modify the old value.
-You can create a new topic (feed) here: https://io.adafruit.com
-  "
-  read -p "effect_topic: " IOeffect
-  if ! [ -z $IOeffect ]; then
-    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'effect_topic' $IOeffect
-  fi
-  echo "
-Enter your Adafruit-IO 'effect clearing' topic.
-Leave empty if you don't want to modify the old value.
-You can create a new topic (feed) here: https://io.adafruit.com
-  "
-  read -p "other_topic: " IOclear
-  if ! [ -z $IOclear ]; then
-    sudo python jsonHelper.py 'scripts/client.json' 'adafruit_mqtt_broker' 'topics' 'other_topic' $IOclear
-  fi
-  echo "
-Enter the IP address of the device running Kodi.
-Leave empty if you don't want to modify the old value.
-  "
-  while read -p "IP address: " IPaddressK; do
-    if ! { [[ $IPaddressK  =~ $reip ]] || [ -z $IPaddressK ]; }; then
-      echo "IP address must be in the 'num.num.num.num' format"
-    else
-      if ! [ -z $IPaddressK ]; then
-        sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'ip_address' $IPaddressK
-      fi
-      break
-    fi
-  done
-
-  echo "
-Enter the local path or web link to the video you want to play.
-Leave empty if you don't want to modify the old value.
-  "
-  read -p "video uri: " videouri
-  if ! [ -z $videouri ]; then
-    sudo python jsonHelper.py 'scripts/client.json' 'kodi_server' 'video_uri' $videouri
-  fi
+  sudo npm install -g translate
   echo -n "installing Google Assisant client script..."
-  sudo forever-service install assistant-service --script scripts/client.js
+  sudo forever-service install assistant-service --script Google_Assistant/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
-  echo "
-Enter th pin number (BOARD) for the fan.
-Leave empty if you don't want to modify the old value.
-  "
-  while read -p "GPIO pin: " gpiopin; do
-    if ! { [[ $gpiopin  =~ $reboard ]] || [ -z $gpiopin ]; }; then
-      echo "Pin must be in the BOARD pin numbering"
-    else
-      if ! [ -z $gpiopin ]; then
-        sudo python jsonHelper.py 'scripts/fan.json' 'pin' $gpiopin
-      fi
-      break
-    fi
-  done
-   echo "
-Enter the fan mode (AlwaysON/AlwaysOFF/Auto).
-Leave empty if you don't want to modify the old value.
-  "
-  while read -p "fan mode: " mode; do
-    if ! { [[ $mode  =~ $remode ]] || [ -z $mode ]; }; then
-      echo "Mode must be 'AlwaysON', 'AlwaysOFF' or 'Auto'"
-    else
-      if ! [ -z $mode ]; then
-        sudo python jsonHelper.py 'scripts/fan.json' 'mode' $mode
-      fi
-      break
-    fi
-  done
   echo -n "installing fan script..."
-  sudo forever-service install fan-service -s scripts/fan.py -f " -c python"
+  sudo forever-service install fan-service -s fan/fan.py -f " -c python"
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
-  echo "
-Enter the name of an effect and pin number (BOARD) for the effect buttons.
-Leave empty if you don't want to modify the pin's old value.
-  "
-
-  while read -p "Do you want to add an effect button? [Y/n]: " Yreply; do
-    if [[ "$Yreply" =~ ^(yes|y|Y)$ ]]; then
-      read -p "effect name: " ename
-      while read -p "GPIO pin: " ebutton; do
-        if ! { [[ $ebutton  =~ $reboardb ]] || [ -z $ebutton ]; }; then
-          echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
-        else
-          if ! [ -z $ebutton ]; then
-            sudo python jsonHelper.py 'scripts/buttons.json' 'effects' $ename $ebutton
-          fi
-          break
-        fi
-      done
-    else break
-    fi
-  done
-  echo "
-Enter th pin number (BOARD) for the clear button.
-Leave empty if you don't want to modify the old value.
-  "
-  while read -p "GPIO pin: " cbutton; do
-    if ! { [[ $cbutton  =~ $reboardb ]] || [ -z $cbutton ]; }; then
-      echo "Pin must be in the BOARD pin numbering (pin 5 not allowed)"
-    else
-      if ! [ -z $cbutton ]; then
-        sudo python jsonHelper.py 'scripts/buttons.json' 'clear' $cbutton
-      fi
-      break
-    fi
-  done
+  sudo -H pip install commentjson
   echo -n "installing buttons script..."
-  sudo forever-service install buttons-service -s scripts/buttons.py -f " -c python"
+  sudo forever-service install buttons-service -s buttons/buttons.py -f " -c python"
   sudo service buttons-service start
 fi
-##sudo apt-get install cron -y
-##if [ $? -eq 0 ]; then
-##    echo "OK"
-##else
-##    echo "ERROR"
-##    exit 1
-##fi
 
-# cleanup -> TO-DO
 echo
 echo -n "REBOOT NOW? [y/N]"
 read
