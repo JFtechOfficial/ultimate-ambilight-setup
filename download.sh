@@ -45,7 +45,7 @@ if [ $OS_OPENELEC -ne 0 ]; then
   exit 1
 fi
 
-echo -n "Downloading button script..."
+echo "Downloading button script..."
 git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 if [ -d "buttons" ]; then
   yes | sudo cp -rf ultimate-ambilght-setup/buttons/buttons.py buttons
@@ -53,7 +53,7 @@ else
   mv -T -f ultimate-ambilght-setup/buttons buttons
 fi
 
-echo -n "Downloading clock script..."
+echo "Downloading clock script..."
 if [ -d "Hyperion_effects" ]; then
   yes | sudo cp -rf ultimate-ambilght-setup/Hyperion_effects/clock.py Hyperion_effects
 else
@@ -62,7 +62,7 @@ fi
 
 rm -rf ultimate-ambilght-setup
 
-echo -n "Downloading Google Assisant client script..."
+echo "Downloading Google Assisant client script..."
 git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
 if [ -d "Google_Assistant" ]; then
   yes | sudo cp -rf hyperion-mqtt-subscriber/client.js Google_Assistant
@@ -71,7 +71,7 @@ else
   mv -T -f hyperion-mqtt-subscriber Google_Assistant
 fi
 
-echo -n "Downloading fan script..."
+echo "Downloading fan script..."
 git clone https://github.com/JFtechOfficial/Raspberry-Pi-PWM-fan.git
 if [ -d "fan" ]; then
   yes | sudo cp -rf Raspberry-Pi-PWM-fan/fan.py fan

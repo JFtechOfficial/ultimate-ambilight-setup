@@ -150,7 +150,7 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 
 #update before doing anything else
 if [ $OS_OPENELEC -ne 1 ]; then
-  echo -n "Updating System..."
+  echo "Updating System..."
   sudo apt-get update -y
   ##sudo apt-get upgrade -y
   ##sudo apt-get dist-upgrade -y
@@ -159,7 +159,7 @@ if [ $OS_OPENELEC -ne 1 ]; then
 fi
 
 #Install dependencies and setup preperation
-echo -n "Downloading and installing Python..."
+echo "Downloading and installing Python..."
 sudo apt-get install -y build-essential
 sudo apt-get install -y python
 sudo apt-get install -y python-dev
@@ -193,9 +193,9 @@ if [ $clock -ne 0 ]; then
   elif [ $USE_SERVICE -eq 1 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
-  echo -n "Installing pyowm..."
+  echo "Installing pyowm..."
   sudo pip install pyowm
-  echo -n "installing clock effect..."
+  echo "installing clock effect..."
   yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
   yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
   echo "Starting Hyperion..."
@@ -212,33 +212,33 @@ fi
 if [ $startup -ne 0 ]; then
   sudo apt install -y curl
   sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-  echo -n "installing nodejs and npm..."
+  echo "installing nodejs and npm..."
   sudo apt-get install -y nodejs
   sudo apt-get install -y npm
   sudo npm i npm@latest -g
   npm cache clean --force
-  echo -n "installing forever-service..."
+  echo "installing forever-service..."
   sudo npm install -g forever
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
-  echo -n "installing required modules for Google Assisant client script..."
+  echo "installing required modules for Google Assisant client script... "
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
   sudo npm install -g translate
-  echo -n "installing Google Assisant client script..."
+  echo "installing Google Assisant client script... "
   sudo forever-service install assistant-service --script Google_Assistant/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
-  echo -n "installing fan script..."
+  echo "installing fan script... "
   sudo forever-service install fan-service -s fan/fan.py -f " -c python"
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
   sudo -H pip install commentjson
-  echo -n "installing buttons script..."
+  echo "installing buttons script..."
   sudo forever-service install buttons-service -s buttons/buttons.py -f " -c python"
   sudo service buttons-service start
 fi
