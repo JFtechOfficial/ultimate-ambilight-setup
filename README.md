@@ -92,12 +92,23 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
-
 * Modify the pins values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
-* Modify the `short-press` and `long-press` values to match your preference. You can use an effect name (e.g. `"Rainbow swirl"`), an RGB value (e.g.:`[255,255,255]`), the string `"clear"` 
-or `null`
+* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. I suggest you not modify: 
+```
+{
+"short-press" : "clear",
+"long-press" : [0,0,0]
+}
+```
+* You can add/remove as many buttons as you want by pasting the following code after `gpio-setup: {` :
+```json
+"*Pin*" :
+{ 								
+ 			 "short-press" : *"effect"/[255,255,255]/"clear"/null*,  						"long press" : *"effect"/[R,G,B]/"clear"/null*
+},
+```
 
-* Modify the `gpio-mode`value to match the pin numbering you're using
+* Modify the `gpio-mode` value to match the pin numbering you're using
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Fan
@@ -106,8 +117,8 @@ or `null`
 nano ~/ultimate-ambilight-setup/fan/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
-* You can modify the default `max_TEMP` value (temperature in Celsius after which the fan triggers),
-`cutoff_TEMP` value (temerature in Celsius after which the fan stops) and `sleepTime` value (temperature reading interval in seconds)
+* Modify the `gpio-mode` value to match the pin numbering you're using
+* You can modify the other values to make sure your fan is working as intended
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Google Assistant
@@ -125,6 +136,16 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 * Modify the `other-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "effect clearing" topic
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running Kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
+* Get [your Yandex API key](http://openweathermap.org/appid) (skip if you use English as main language)
+* Modify the `API_key` value with the Yandex API key (skip if you use English as main language)
+* Modify the `from_language` value to match your language
+* You can add custom actions by pasting the following code after `"custom_actions": [` :
+```json
+{
+"message": "*your_message*", 
+"target": *"effect"/[255,255,255]/"clear"/null*
+},
+```
 * Save `Ctrl + X` and close `Enter` the file
 
 
