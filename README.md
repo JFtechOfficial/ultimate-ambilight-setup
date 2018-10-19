@@ -165,7 +165,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * a color name in order to activate that color 
 * to the "effect clearing" topic *(the same topic assigned to* `other-topic` *earlier)*
    * `OFF` in order to turn any effect off (goes back to capture mode)
-   * `ON` in order to turn on the lights on
+   * `ON` in order to turn on the lights
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
    * `STOP` in order to stop any video
 
