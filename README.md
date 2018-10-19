@@ -104,8 +104,8 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```json
 "*Pin*" :
 {
-    "short-press" : *"effect"/[255,255,255]/"clear"/null*,
-    "long-press" : *"effect"/[255,255,255]/"clear"/null*
+    "short-press" : *"effect"/[255,255,255]/null*,
+    "long-press" : *"effect"/[255,255,255]/null*
 },
 ```
 
