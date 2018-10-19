@@ -92,7 +92,12 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
-* Modify the `effects` and `clear` values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
+
+* Modify the pins values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
+* Modify the `short-press` and `long-press` values to match your preference. You can use an effect name (e.g. `"Rainbow swirl"`), an RGB value (e.g.:`[255,255,255]`), the string `"clear"` 
+or `null`
+
+* Modify the `gpio-mode`value to match the pin numbering you're using
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Fan
