@@ -103,8 +103,9 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 * You can add/remove as many buttons as you want by pasting the following code after `gpio-setup: {` :
 ```json
 "*Pin*" :
-{ 								
- 			 "short-press" : *"effect"/[255,255,255]/"clear"/null*,  						"long press" : *"effect"/[R,G,B]/"clear"/null*
+{
+    "short-press" : *"effect"/[255,255,255]/"clear"/null*,
+    "long-press" : *"effect"/[255,255,255]/"clear"/null*
 },
 ```
 
