@@ -109,7 +109,7 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 },
 ```
 
-* Modify the `gpio-mode` value to match the pin numbering you're using
+* Modify the `gpio-mode` value to match the pin numbering you're using ("BCM"/"BOARD")
 * Save `Ctrl + X` and close `Enter` the file
 
 ### Fan
@@ -118,7 +118,7 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 nano ~/ultimate-ambilight-setup/fan/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
-* Modify the `gpio-mode` value to match the pin numbering you're using
+* Modify the `gpio-mode` value to match the pin numbering you're using ("BCM"/"BOARD")
 * You can modify the other values to make sure your fan is working as intended
 * Save `Ctrl + X` and close `Enter` the file
 
