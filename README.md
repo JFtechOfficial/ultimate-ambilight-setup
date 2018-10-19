@@ -100,7 +100,7 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 "long-press" : [0,0,0]
 }
 ```
-* You can add/remove as many buttons as you want by pasting the following code after `gpio-setup: {` :
+* You can add as many buttons as you want by pasting the following code after `gpio-setup: {` :
 ```json
 "*Pin*" :
 {
