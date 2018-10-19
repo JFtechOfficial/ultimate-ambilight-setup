@@ -175,6 +175,10 @@ Now you can use the Google Assistant on your smartphone/tablet/Google Home to te
 ## 📚 Resources
 Here is a step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
 
+
+You can also check the [wiki](https://github.com/JFtechOfficial/ultimate-ambilght-setup/wiki)
+
+
 The `hyperion.config.json` file is an example of a working configuration file for Hyperion (generated via [HyperCon](https://github.com/hyperion-project/hypercon))
 
 Please visit the [hyperion-project website](https://hyperion-project.org) to learn more about Hyperion
