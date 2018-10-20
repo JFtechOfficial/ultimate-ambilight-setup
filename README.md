@@ -217,6 +217,10 @@ No. You should never use the same pin for different tasks at the same time (e.g.
 
 Yes. You can run it on any unix machine connected to the same local network: it will send commands to the Raspberry Pi that runs Hyperion. The fan script, buttons script and the clock effect cannot be used in the same way: you must install them on the machine that you intend to use them on.
 
+> What about the Rasbperry Pi Foundation TV µHAT?
+
+I don't think I'll ever buy one, IPTV is good enough imho.
+
 
 ## 🗓️ Release History
 
