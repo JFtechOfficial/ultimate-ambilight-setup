@@ -41,7 +41,16 @@ sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
 sudo ~/ultimate-ambilight-setup/./download.sh
 ```
 
-* Now you can [configure](#️-configuration) any .json file you would like to install. You can find them in the following directories: `Hyperion_effects`, `buttons`, `Google_Assistant`and `fan`. You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
+* Now you can [configure](#️-configuration) any .json file you would like to install. You can find them in the following directories: `Hyperion_effects`, `buttons`, `Google_Assistant`and `fan`.
+
+
+* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
+```shell
+sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
+sudo ~/ultimate-ambilight-setup/./install.sh
+```
+
+* You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
 ```shell
 Options:
     General options:
@@ -52,12 +61,6 @@ Options:
         -b --buttons        Install buttons script.
         -c --clock          Install clock effect.
         -f --fan            Install fan script.
-```
-
-* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
-```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
-sudo ~/ultimate-ambilight-setup/./install.sh
 ```
 
 
@@ -152,11 +155,11 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 
 ## ▶️ Usage
 
-Use your favorite [Hyperion client](https://play.google.com/store/apps/details?id=nl.hyperion.hyperionfree&hl=en_US) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
+Use your favorite [Hyperion client](https://github.com/JFtechOfficial/hyperion-controller) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
 
 Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi.
 
-Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
+Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the max threshold and will automatically stop when the CPU is below the min threshold.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
@@ -167,7 +170,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * `OFF` in order to turn any effect off (goes back to capture mode)
    * `ON` in order to turn on the lights
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
-   * `STOP` in order to stop any video
+   * `STOP` in order to stop any video (goes back to capture mode)
 
 Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do. 
 
