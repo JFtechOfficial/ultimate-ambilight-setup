@@ -134,7 +134,7 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 * Modify the `username` and `key` values of the `mqtt_broker` to match your Adafruit-IO username and AIO key
 * Modify the `effect-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "effect launching" topic
 * Modify the `color-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "color launching" topic
-* Modify the `other-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "effect clearing" topic
+* Modify the `misc-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "miscellaneous" topic
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running Kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Get [your Yandex API key](https://translate.yandex.com/developers/keys) (skip if you use English as main language)
@@ -163,7 +163,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * an effect name in order to activate that effect
 * to the "color launching" topic *(the same topic assigned to* `color-topic` *earlier)*
    * a color name in order to activate that color 
-* to the "effect clearing" topic *(the same topic assigned to* `other-topic` *earlier)*
+* to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
    * `OFF` in order to turn any effect off (goes back to capture mode)
    * `ON` in order to turn on the lights
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
