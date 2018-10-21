@@ -27,19 +27,8 @@ if [ "$DATE" -le "2017" ]; then
 fi
 
 
-# Find out if we are on OpenElec (Rasplex) / OSMC / Raspbian
+# Find out if we are on OpenElec
 OS_OPENELEC=`grep -m1 -c 'OpenELEC\|RasPlex\|LibreELEC\|OpenPHT\|PlexMediaPlayer' /etc/issue`
-OS_LIBREELEC=`grep -m1 -c LibreELEC /etc/issue`
-OS_RASPLEX=`grep -m1 -c RasPlex /etc/issue`
-OS_OSMC=`grep -m1 -c OSMC /etc/issue`
-OS_RASPBIAN=`grep -m1 -c 'Raspbian\|RetroPie' /etc/issue`
-
-# check which should use
-USE_SYSTEMD=`grep -m1 -c systemd /proc/1/comm`
-USE_INITCTL=`which /sbin/initctl | wc -l`
-USE_SERVICE=`which /usr/sbin/service | wc -l`
-
-#update before doing anything else
 if [ $OS_OPENELEC -ne 0 ]; then
   echo '---> Critical Error: This script is not compatible with OpenELEC -> abort'
   exit 1
