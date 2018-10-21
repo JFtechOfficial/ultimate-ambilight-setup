@@ -41,7 +41,16 @@ sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
 sudo ~/ultimate-ambilight-setup/./download.sh
 ```
 
-* Now you can [configure](#️-configuration) any .json file you would like to install. You can find them in the following directories: `Hyperion_effects`, `buttons`, `Google_Assistant`and `fan`. You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
+* Now you can [configure](#️-configuration) any .json file you would like to install. You can find them in the following directories: `Hyperion_effects`, `buttons`, `Google_Assistant`and `fan`.
+
+
+* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
+```shell
+sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
+sudo ~/ultimate-ambilight-setup/./install.sh
+```
+
+* You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
 ```shell
 Options:
     General options:
@@ -52,12 +61,6 @@ Options:
         -b --buttons        Install buttons script.
         -c --clock          Install clock effect.
         -f --fan            Install fan script.
-```
-
-* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
-```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
-sudo ~/ultimate-ambilight-setup/./install.sh
 ```
 
 
@@ -134,7 +137,7 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 * Modify the `username` and `key` values of the `mqtt_broker` to match your Adafruit-IO username and AIO key
 * Modify the `effect-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "effect launching" topic
 * Modify the `color-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "color launching" topic
-* Modify the `other-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "effect clearing" topic
+* Modify the `misc-topic` value of the `mqtt_broker` to match the name of your Adafruit-IO "miscellaneous" topic
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running Kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Get [your Yandex API key](https://translate.yandex.com/developers/keys) (skip if you use English as main language)
@@ -152,22 +155,22 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 
 ## ▶️ Usage
 
-Use your favorite [Hyperion client](https://play.google.com/store/apps/details?id=nl.hyperion.hyperionfree&hl=en_US) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
+Use your favorite [Hyperion client](https://github.com/JFtechOfficial/hyperion-controller) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
 
 Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi.
 
-Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the `max_TEMP` threshold and will automatically stop when the CPU is below the `cutoff_TEMP` threshold.
+Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the max threshold and will automatically stop when the CPU is below the min threshold.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
    * an effect name in order to activate that effect
 * to the "color launching" topic *(the same topic assigned to* `color-topic` *earlier)*
    * a color name in order to activate that color 
-* to the "effect clearing" topic *(the same topic assigned to* `other-topic` *earlier)*
+* to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
    * `OFF` in order to turn any effect off (goes back to capture mode)
    * `ON` in order to turn on the lights
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
-   * `STOP` in order to stop any video
+   * `STOP` in order to stop any video (goes back to capture mode)
 
 Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do. 
 
@@ -213,6 +216,10 @@ No. You should never use the same pin for different tasks at the same time (e.g.
 > Can I install the Google Assistant client script on a Raspberry Pi different from the one running Hyperion?
 
 Yes. You can run it on any unix machine connected to the same local network: it will send commands to the Raspberry Pi that runs Hyperion. The fan script, buttons script and the clock effect cannot be used in the same way: you must install them on the machine that you intend to use them on.
+
+> What about the Rasbperry Pi Foundation TV µHAT?
+
+I don't think I'll ever buy one, IPTV is good enough imho.
 
 
 ## 🗓️ Release History
