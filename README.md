@@ -76,9 +76,9 @@ sudo reboot
 ```shell
 sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
-* Get [your OpenWeatherMap API key](http://openweathermap.org/appid) 
+* Get [your OpenWeatherMap API key](http://openweathermap.org/appid)
 * Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
-* Get [your coordinates](https://www.whataremycoordinates.com/) 
+* Get [your coordinates](https://www.whataremycoordinates.com/)
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
 * Modify the `offset` value to match your LED setup
 * Modify the `direction` value to match your LED setup ( `0` -> clockwise, `1` -> counterclockwise)
@@ -96,7 +96,7 @@ sudo nano /usr/share/hyperion/effects/clock.json
 nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
 * Modify the pins values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
-* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. I suggest you not modify: 
+* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. I suggest you not modify:
 ```
 {
 "short-press" : "clear",
@@ -146,7 +146,7 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 * You can add custom actions by pasting the following code after `"custom_actions": [` :
 ```json
 {
-"message": "*your_message*", 
+"message": "*your_message*",
 "target": *"effect"/[255,255,255]/"clear"/null*
 },
 ```
@@ -165,14 +165,14 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
    * an effect name in order to activate that effect
 * to the "color launching" topic *(the same topic assigned to* `color-topic` *earlier)*
-   * a color name in order to activate that color 
+   * a color name in order to activate that color
 * to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
    * `OFF` in order to turn any effect off (goes back to capture mode)
    * `ON` in order to turn on the lights
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
    * `STOP` in order to stop any video (goes back to capture mode)
 
-Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do. 
+Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do.
 
 
 ## 📚 Resources
@@ -217,9 +217,9 @@ No. You should never use the same pin for different tasks at the same time (e.g.
 
 Yes. You can run it on any unix machine connected to the same local network: it will send commands to the Raspberry Pi that runs Hyperion. The fan script, buttons script and the clock effect cannot be used in the same way: you must install them on the machine that you intend to use them on.
 
-> What about the Rasbperry Pi Foundation TV µHAT?
+> What about the Raspberry Pi Foundation TV µHAT?
 
-I don't think I'll ever buy one, IPTV is good enough imho.
+I don't think I'll ever use one, IPTV is good enough imho.
 
 
 ## 🗓️ Release History
@@ -230,5 +230,3 @@ I don't think I'll ever buy one, IPTV is good enough imho.
 ## 🎓 License
 
 [MIT](http://webpro.mit-license.org/)
-
-
