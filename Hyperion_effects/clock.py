@@ -1,6 +1,7 @@
 import hyperion
 import pyowm
 import time
+import geocoder
 from datetime import datetime
 
 
@@ -52,8 +53,13 @@ hourColor = hyperion.args.get('hour-color', (255, 0, 0))
 minuteColor = hyperion.args.get('minute-color', (0, 255, 0))
 secondColor = hyperion.args.get('second-color', (0, 0, 255))
 
-latitude = hyperion.args.get('latitude', 0)
-longitude = hyperion.args.get('longitude', 0)
+latitude = hyperion.args.get('latitude', None)
+longitude = hyperion.args.get('longitude', None)
+if not (latitude or longitude):
+    g = geocoder.ipinfo('me')
+    if g.latlng:
+        latitude = g.latlng[0]
+        longitude = g.latlng[1]
 
 owmWait = 0
 owmAPIkey = hyperion.args.get('owmAPIkey', '')

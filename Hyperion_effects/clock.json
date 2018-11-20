@@ -4,8 +4,8 @@
         "args" :
         {
                 "owmAPIkey" : "InsertYourKeyHere",
-                "latitude" : 41.894741,
-                "longitude" : 12.4839,
+                "latitude" : 0.0000,
+                "longitude" : 0.0000,
 
                 "offset" : 69,
                 "direction" : 1,
