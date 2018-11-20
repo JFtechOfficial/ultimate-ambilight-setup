@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 """
 Define some variables editing the button.json config file
-please do NOT use pin 5 (BOARD) aka gpio 3 (BCM): it must be used as power button
+please don't use pin 5 (BOARD) aka gpio 3 (BCM): it must be used as power button
 """
 with open('buttons.json') as f:
     data = commentjson.load(f)
@@ -29,8 +29,8 @@ def launch(*args):
         subprocess.call(['hyperion-remote', '--clearall'], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
     if len(args) == 3:
         subprocess.call(['hyperion-remote', str(args[0]), str(args[1]), '--priority', str(args[2])], shell=False, stdout=FNULL, stderr=subprocess.STDOUT)
-    
-    
+
+
 def effect(name, priority):
     """Start an effect."""
     launch('-e', name, priority)
@@ -104,7 +104,7 @@ def setup():
         if pin_setup['short-press'] or pin_setup['long-press']:
             GPIO.add_event_detect(channel, GPIO.FALLING, callback=is_long_press, bouncetime=300)
     return power_button
-    
+
 
 power_button = setup()
 """ Waiting for shutdown button """

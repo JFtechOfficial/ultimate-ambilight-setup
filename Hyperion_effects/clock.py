@@ -1,8 +1,8 @@
+import time
+from datetime import datetime
+import geocoder
 import hyperion
 import pyowm
-import time
-import geocoder
-from datetime import datetime
 
 
 def myRange(index, margin):
@@ -99,7 +99,7 @@ while not hyperion.abort():
     minuteRange = myRange(led_minute, minuteMargin)
     secondRange = myRange(led_second, secondMargin)
 
-    if owmWait >= 600 and owmAPIkey != '':
+    if owmWait >= 600 and owmAPIkey:
         secondColor = myTemp(latitude, longitude)
         owmWait = 0
 
