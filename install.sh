@@ -193,8 +193,9 @@ if [ $clock -ne 0 ]; then
   elif [ $USE_SERVICE -eq 1 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
-  echo "Installing pyowm..."
+  echo "Installing pyowm and geocoder..."
   sudo pip install pyowm
+  sudo pip install geocoder
   echo "installing clock effect..."
   yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
   yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
