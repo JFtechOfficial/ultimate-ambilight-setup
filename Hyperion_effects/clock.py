@@ -63,7 +63,7 @@ if not (latitude or longitude):
 
 owmWait = 0
 owmAPIkey = hyperion.args.get('owmAPIkey', '')
-if owmAPIkey != '':
+if owmAPIkey and latitude and longitude:
     owm = pyowm.OWM(owmAPIkey)  # You MUST provide a valid API key
     secondColor = myTemp(latitude, longitude)
 
@@ -99,7 +99,7 @@ while not hyperion.abort():
     minuteRange = myRange(led_minute, minuteMargin)
     secondRange = myRange(led_second, secondMargin)
 
-    if owmWait >= 600 and owmAPIkey:
+    if owmWait >= 600 and owmAPIkey and latitude and longitude:
         secondColor = myTemp(latitude, longitude)
         owmWait = 0
 
