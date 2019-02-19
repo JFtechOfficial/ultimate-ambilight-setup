@@ -21,6 +21,7 @@ with open('/etc/hyperion/hyperion.config.json') as config:
     hyperion_data = commentjson.load(config)
 
 FNULL = open(os.devnull, 'w')
+ignore = False
 
 
 def launch(*args):
@@ -66,26 +67,27 @@ def button_press(channel, duration):
 
 def is_long_press(channel):
     """Detect long button press or short button press."""
+    #print("PRESS")
+    global ignore # Other buttons get triggered sometimes for no apparent reason. 
+    #print("ignore: ", ignore)
+    if ignore:
+        return
+    ignore = True
     start = time.time()
     stop = start
     while GPIO.input(channel) == GPIO.LOW:
         time.sleep(0.01)
         stop = time.time() - start
-        if stop > 1:
+        if stop > 2:
             button_press(channel, 'long-press')
-            return
-    if stop > 0.02:
+            break
+    if stop > 0.03 and stop <= 2:
         button_press(channel, 'short-press')
 
-    """ #non polling version
-    GPIO.remove_event_detect(channel)
-    trigger = GPIO.wait_for_edge(channel, GPIO.RISING, bouncetime=300, timeout=1000)
-    if trigger:
-        button_press(channel, 'short-press')
-    else:
-        button_press(channel, 'long-press')
-    GPIO.add_event_detect(channel, GPIO.FALLING, callback=is_long_press, bouncetime=300)
-    """
+    time.sleep(0.3)
+
+    ignore = False
+    #print("DONE")
 
 
 def setup():
