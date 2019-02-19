@@ -224,6 +224,7 @@ if [ $startup -ne 0 ]; then
 fi
 if [ $assistant -ne 0 ]; then
   echo "installing required modules for Google Assisant client script... "
+  sudo npm install -g mqtt
   sudo npm install -g hyperion-client
   sudo -H pip install --upgrade youtube-dl
   sudo npm install -g playonkodi
