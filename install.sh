@@ -240,8 +240,8 @@ fi
 if [ $buttons -ne 0 ]; then
   ##sudo -H pip install commentjson
   echo "installing buttons script..."
-  pip install -r ultimate-ambilght-setup/buttons/requirements.txt
-  sudo forever-service install buttons-service -s ultimate-ambilght-setup/buttons/buttons.py -f " -c python"
+  pip install -r buttons/requirements.txt
+  sudo forever-service install buttons-service -s buttons/buttons.py -f " -c python"
   sudo service buttons-service start
 fi
 
