@@ -217,9 +217,7 @@ fi
 if [ $assistant -ne 0 ]; then
   git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
   echo "installing required modules for Google Assisant client script... "
-  cd hyperion-mqtt-subscriber/
   cat hyperion-mqtt-subscriber/requirements.txt | xargs npm install -g
-  cd ..
   ## sudo npm install -g mqtt
   ## sudo npm install -g hyperion-client
   ## sudo -H pip install --upgrade youtube-dl
