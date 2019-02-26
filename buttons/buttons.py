@@ -108,14 +108,22 @@ def setup():
     return power_button
 
 
+def shutdown():
+    """Shutdown procedure."""
+    GPIO.wait_for_edge(power_button, GPIO.FALLING)
+    time.sleep(2)
+    if GPIO.input(power_button) == GPIO.LOW:
+        launch('--clearall')
+        GPIO.cleanup()
+        time.sleep(1)
+        subprocess.call(['shutdown', '-h', 'now'], shell=False)
+    else:
+        shutdown()
+
+
 power_button = setup()
 """ Waiting for shutdown button """
 try:
-    GPIO.wait_for_edge(power_button, GPIO.FALLING)
-    launch('--clearall')
-    GPIO.cleanup()
-    time.sleep(1)
-    subprocess.call(['shutdown', '-h', 'now'], shell=False)
-
+    shutdown()
 except KeyboardInterrupt:
     GPIO.cleanup()
