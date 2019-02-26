@@ -165,19 +165,11 @@ sudo apt-get install -y python
 sudo apt-get install -y python-dev
 sudo apt install -y python-pip
 sudo apt-get install -y python-all-dev python-setuptools python-wheel
-##curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-##python get-pip.py
 if [ $gpio -ne 0 ]; then
   echo "Downloading Rpi.GPIO..."
-  ##mkdir RPi.GPIO
-  ##cd RPi.GPIO
-  ##sudo wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.6.3.tar.gz
   echo "installing Rpi.GPIO..."
-  ##sudo tar -xf RPi.GPIO-0.6.3.tar.gz --strip-components 1
-  ##sudo python setup.py install
-  ##sudo rm -rf RPi.GPIO-0.6.3.tar.gz
-  sudo -H pip install RPi.GPIO
-  ##cd ..
+
+  ##sudo -H pip install RPi.GPIO
 fi
 
 if [ $clock -ne 0 ]; then
@@ -194,8 +186,8 @@ if [ $clock -ne 0 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
   echo "Installing pyowm and geocoder..."
-  sudo pip install pyowm
-  sudo pip install geocoder
+  ##sudo pip install pyowm
+  ##sudo pip install geocoder
   echo "installing clock effect..."
   yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
   yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
@@ -223,25 +215,33 @@ if [ $startup -ne 0 ]; then
   sudo npm install -g forever-service
 fi
 if [ $assistant -ne 0 ]; then
+  git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
   echo "installing required modules for Google Assisant client script... "
-  sudo npm install -g mqtt
-  sudo npm install -g hyperion-client
-  sudo -H pip install --upgrade youtube-dl
-  sudo npm install -g playonkodi
-  sudo npm install -g translate
+  cd hyperion-mqtt-subscriber/
+  cat hyperion-mqtt-subscriber/requirements.txt | xargs npm install -g
+  cd ..
+  ## sudo npm install -g mqtt
+  ## sudo npm install -g hyperion-client
+  ## sudo -H pip install --upgrade youtube-dl
+  ## sudo npm install -g playonkodi
+  ## sudo npm install -g translate
   echo "installing Google Assisant client script... "
   sudo forever-service install assistant-service --script Google_Assistant/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
+  echo "Downloading fan script..."
+  git clone https://github.com/JFtechOfficial/Raspberry-Pi-PWM-fan.git
   echo "installing fan script... "
-  sudo forever-service install fan-service -s fan/fan.py -f " -c python"
+  pip install -r Raspberry-Pi-PWM-fan/requirements.txt
+  sudo forever-service install fan-service -s Raspberry-Pi-PWM-fan/fan.py -f " -c python"
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
-  sudo -H pip install commentjson
+  ##sudo -H pip install commentjson
   echo "installing buttons script..."
-  sudo forever-service install buttons-service -s buttons/buttons.py -f " -c python"
+  pip install -r ultimate-ambilght-setup/buttons/requirements.txt
+  sudo forever-service install buttons-service -s ultimate-ambilght-setup/buttons/buttons.py -f " -c python"
   sudo service buttons-service start
 fi
 
