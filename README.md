@@ -35,7 +35,7 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
 
-* If you want you can [pre-configure](#️-configuration) the Hyperion effects and buttons script. You can find them in the following directories: `Hyperion_effects`, `buttons`.
+* If you want you can [pre-configure](#️-configuration) the Hyperion effects and [buttons script](#buttons). You can find them in the following directories: `Hyperion_effects`, `buttons`.
 
 
 * Run the `install.sh` script:
