@@ -96,7 +96,6 @@ if [ $default_install -eq 0 ]; then
   clock=1
   assistant=1
 fi
-gpio=$((fan+buttons))
 startup=$((fan+buttons+assistant))
 
 echo "This installation is going to install the following:
@@ -152,8 +151,6 @@ USE_SERVICE=`which /usr/sbin/service | wc -l`
 if [ $OS_OPENELEC -ne 1 ]; then
   echo "Updating System..."
   sudo apt-get update -y
-  ##sudo apt-get upgrade -y
-  ##sudo apt-get dist-upgrade -y
   sudo apt-get autoremove -y
   sudo apt-get autoclean -y
 fi
@@ -165,12 +162,6 @@ sudo apt-get install -y python
 sudo apt-get install -y python-dev
 sudo apt install -y python-pip
 sudo apt-get install -y python-all-dev python-setuptools python-wheel
-if [ $gpio -ne 0 ]; then
-  echo "Downloading Rpi.GPIO..."
-  echo "installing Rpi.GPIO..."
-
-  ##sudo -H pip install RPi.GPIO
-fi
 
 if [ $clock -ne 0 ]; then
   echo "Stop Hyperion, if necessary"
@@ -185,10 +176,9 @@ if [ $clock -ne 0 ]; then
   elif [ $USE_SERVICE -eq 1 ]; then
     /usr/sbin/service hyperion stop 2>/dev/null
   fi
-  echo "Installing pyowm and geocoder..."
-  ##sudo pip install pyowm
-  ##sudo pip install geocoder
+
   echo "installing clock effect..."
+  pip install -r Hyperion_effects/requirements.txt
   yes | sudo cp -rf Hyperion_effects/clock.py /usr/share/hyperion/effects/
   yes | sudo cp -rf Hyperion_effects/clock.json /usr/share/hyperion/effects/
   echo "Starting Hyperion..."
@@ -218,13 +208,8 @@ if [ $assistant -ne 0 ]; then
   git clone https://github.com/JFtechOfficial/hyperion-mqtt-subscriber.git
   echo "installing required modules for Google Assisant client script... "
   cat hyperion-mqtt-subscriber/requirements.txt | xargs npm install -g
-  ## sudo npm install -g mqtt
-  ## sudo npm install -g hyperion-client
-  ## sudo -H pip install --upgrade youtube-dl
-  ## sudo npm install -g playonkodi
-  ## sudo npm install -g translate
   echo "installing Google Assisant client script... "
-  sudo forever-service install assistant-service --script Google_Assistant/client.js
+  sudo forever-service install assistant-service --script hyperion-mqtt-subscriber/client.js
   sudo service assistant-service start
 fi
 if [ $fan -ne 0 ]; then
@@ -236,7 +221,6 @@ if [ $fan -ne 0 ]; then
   sudo service fan-service start
 fi
 if [ $buttons -ne 0 ]; then
-  ##sudo -H pip install commentjson
   echo "installing buttons script..."
   pip install -r buttons/requirements.txt
   sudo forever-service install buttons-service -s buttons/buttons.py -f " -c python"
