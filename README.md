@@ -35,7 +35,7 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
 
-* If you want you can [pre-configure](#️-configuration) the [Hyperion effects]() and [buttons script](#buttons). You can find them in the following directories: `Hyperion_effects`, `buttons`.
+* If you want you can [pre-configure](#️-configuration) the [Hyperion effects](#clock-effect) and [buttons script](#buttons). You can find them in the following directories: `Hyperion_effects`, `buttons`.
 
 
 * Run the `install.sh` script:
@@ -56,7 +56,7 @@ Options:
         -c --clock          Install clock effect.
         -f --fan            Install fan script.
 ```
-* You now may [configure](#️-configuration) any .json files, including the ones for the [Google Assistant script]() and the [fan script](#fan). You can find them in the following directories: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
+* You now may [configure](#️-configuration) any .json files, including the ones for the [Google Assistant script](#google-assistant) and the [fan script](#fan). You can find them in the following directories: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
 
 
 
@@ -79,7 +79,7 @@ sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 * Modify the `direction` value to match your LED setup ( `0` -> clockwise, `1` -> counterclockwise)
 * You can modify the default colors and widths of the "virutal" clock hands and/or add markers
 * Save `Ctrl + X` and close `Enter` the file
-* If you want to modify the `clock.json` file after the installation you can find it in the Hyperion effects directory:
+* If you want to modify the `clock.json` file AFTER the installation you can find it in the Hyperion effects directory:
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
