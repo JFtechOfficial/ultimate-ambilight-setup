@@ -56,7 +56,9 @@ Options:
         -c --clock          Install clock effect.
         -f --fan            Install fan script.
 ```
-* You now may configure any .json files, including the ones for the Google Assistant script and the fan script. You can find them in the following directories: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
+* You now may [configure](#️-configuration) any .json files, including the ones for the Google Assistant script and the fan script. You can find them in the following directories: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
+
+
 
 ## ⚙️ Configuration
 You can change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
@@ -103,8 +105,8 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```json
 "Pin number" :
 {
-    "short-press" : "effect name"/[R,G,B]/null,
-    "long-press" : "effect name"/[R,G,B]/null
+    "short-press" : "effect name"/[255,255,255]/null,
+    "long-press" : "effect name"/[255,255,255]/null
 },
 ```
 
@@ -143,7 +145,7 @@ nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 ```json
 {
 "message": "your_message",
-"target": "effect name"/[R,G,B]/"clear"/null
+"target": "effect name"/[255,255,255]/"clear"/null
 },
 ```
 * Save `Ctrl + X` and close `Enter` the file
@@ -163,8 +165,8 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
 * to the "color launching" topic *(the same topic assigned to* `color-topic` *earlier)*
    * a color name in order to activate that color
 * to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
-   * `OFF` in order to turn any effect off (goes back to capture mode)
-   * `ON` in order to turn on the lights
+   * `OFF` in order to turn any effect/color off (goes back to capture mode)
+   * `ON` in order to turn on the lights with white color
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
    * `STOP` in order to stop any video (goes back to capture mode)
 
