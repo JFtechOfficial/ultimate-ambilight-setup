@@ -158,7 +158,7 @@ Use your favorite [Hyperion client](https://github.com/JFtechOfficial/hyperion-c
 
 Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi.
 
-Use a fan connected to the GPIO: it will automatically start to spin when the CPU is above the max threshold and will automatically stop when the CPU is below the min threshold.
+Use a fan connected to the GPIO: it will automatically start to spin and cool down the system varing its speed depending on the Rasperry Pi's CPU temperature.
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
