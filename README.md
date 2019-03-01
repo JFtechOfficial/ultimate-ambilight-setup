@@ -140,7 +140,7 @@ nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 * Modify the `ip_address` value of the `kodi_server` to match the IP address of the device running Kodi ("127.0.0.1" if it's the same device running this script)
 * Modify the `video_uri` value of the `kodi_server` to the local path or internet link of the video you want to play (supported: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK and many more)
 * Get [your Yandex API key](https://translate.yandex.com/developers/keys) (skip if you use English as main language)
-* Modify the `API_key` value with the Yandex API key (skip if you use English as main language)
+* Modify the `API_key` value with the Yandex API key (skip this step if you use English as main language)
 * Modify the `from_language` value to match your language
 * You can add custom actions by pasting the following code after `"custom_actions": [` :
 ```json
