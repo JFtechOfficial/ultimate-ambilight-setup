@@ -35,16 +35,10 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
 ```
 
-* Run the `download.sh` script to download/update all the other scripts:
-```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/download.sh
-sudo ~/ultimate-ambilight-setup/./download.sh
-```
-
-* Now you can [configure](#️-configuration) any .json file you would like to install. You can find them in the following directories: `Hyperion_effects`, `buttons`, `Google_Assistant`and `fan`.
+* If you want you can [pre-configure](#️-configuration) the Hyperion effects and buttons script. You can find them in the following directories: `Hyperion_effects`, `buttons`.
 
 
-* Once the [configuration step](#️-configuration) is completed, run the `install.sh` script:
+* Run the `install.sh` script:
 ```shell
 sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
 sudo ~/ultimate-ambilight-setup/./install.sh
@@ -62,11 +56,10 @@ Options:
         -c --clock          Install clock effect.
         -f --fan            Install fan script.
 ```
-
+* You now may configure any .json files, including the ones for the Google Assistant script and the fan script. You can find them in the following directories: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
 
 ## ⚙️ Configuration
-You can configure all the .json files you want to install before the execution of the `install.sh` script.
-You can also change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
+You can change any configuration value after the [installation](#-installation) process. If you do, please remember to reboot your device afterwards
 ```shell
 sudo reboot
 ```
@@ -96,19 +89,22 @@ sudo nano /usr/share/hyperion/effects/clock.json
 nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
 * Modify the pins values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
-* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. I suggest you not modify:
+* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. 
+
+*I suggest you not modify:*
 ```
 {
 "short-press" : "clear",
 "long-press" : [0,0,0]
 }
 ```
-* You can add as many buttons as you want by pasting the following code after `gpio-setup: {` :
+
+* You can add as many buttons as you want by pasting (and configuring) the following code after `gpio-setup: {` :
 ```json
-"*Pin*" :
+"Pin number" :
 {
-    "short-press" : *"effect"/[255,255,255]/null*,
-    "long-press" : *"effect"/[255,255,255]/null*
+    "short-press" : "effect name"/[R,G,B]/null,
+    "long-press" : "effect name"/[R,G,B]/null
 },
 ```
 
@@ -118,7 +114,7 @@ nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ### Fan
 * Open the `fan.json` file:
 ```shell
-nano ~/ultimate-ambilight-setup/fan/fan.json
+nano ~/ultimate-ambilight-setup/Raspberry-Pi-PWM-fan/fan.json
 ```
 * Modify the `pin` value to match your GPIO setup
 * Modify the `gpio-mode` value to match the pin numbering you're using ("BCM"/"BOARD")
@@ -128,7 +124,7 @@ nano ~/ultimate-ambilight-setup/fan/fan.json
 ### Google Assistant
 * Open the `client.json` file:
 ```shell
-nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
+nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 ```
 * Modify the `ip_address` value of the `hyperion_server` to match the IP address of the device running Hyperion ("127.0.0.1" if it's the same device running this script)
 * If you used a different port you can modify the default `port` value of the `hyperion_server`
@@ -146,8 +142,8 @@ nano ~/ultimate-ambilight-setup/Google_Assistant/client.json
 * You can add custom actions by pasting the following code after `"custom_actions": [` :
 ```json
 {
-"message": "*your_message*",
-"target": *"effect"/[255,255,255]/"clear"/null*
+"message": "your_message",
+"target": "effect name"/[R,G,B]/"clear"/null
 },
 ```
 * Save `Ctrl + X` and close `Enter` the file
