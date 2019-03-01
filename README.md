@@ -83,6 +83,7 @@ sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```shell
 sudo nano /usr/share/hyperion/effects/clock.json
 ```
+
 *(example with the default path)*
 
 ### Buttons
