@@ -72,7 +72,7 @@ sudo reboot
 sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid)
-* Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app)
+* Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app btw)
 * Get [your coordinates](https://www.whataremycoordinates.com/)
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
 * Modify the `offset` value to match your LED setup
@@ -90,8 +90,8 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/buttons/buttons.json
 ```
-* Modify the pins values to match your GPIO setup. Avoid using pin 5 (BOARD) a.k.a. GPIO 3 (BCM): it's already been hardcoded for you as power button ;)
-* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g.:`[255,255,255]`) to launch the color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. 
+* Modify the pins values to match your GPIO setup. AVOID using pin 5 (BOARD) a.k.a. GPIO 3 (BCM) for anything else than the power button: it's been hardcoded for you in this way and it cannot be changed for hardware related reasons. You DO NOT need to configure it in the `buttons.json` file.
+* Modify the `short-press` and `long-press` values for each pin. You can assign an effect name (e.g. `"Rainbow swirl"`) to launch the effect, an RGB value (e.g. `[255,0,0]`) to launch the resulting color, the string `"clear"` to go back to the default capture mode, or `null` to do nothing. 
 
 *I suggest you not modify:*
 ```
