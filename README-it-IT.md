@@ -11,7 +11,7 @@ Scripts che ho creato per migliorare l'esperienza con Hyperion. You can also rea
 
 * [Getting started](#-getting-started)
 * [Installazione](#-installazione)
-* [Configurazione](#️-configurazione-manuale)
+* [Configurazione](#️-configurazione)
 * [Uso](#️-uso)
 * [Risorse](#-risorse)
 * [Contribuire](#-contribuire)
@@ -39,7 +39,14 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 cd ~/ultimate-ambilight-setup/
 sudo chmod 775 install.sh
 ```
-* Ora puoi [configurare manualmente](#️-configurazione) i file .json che vuoi installare, sia nella cartella `Hyperion effects` che nella cartella `scripts` . Se decidi di farlo puoi omettere l'opzione `-i` , altrimenti salta la [Configurazione Manuale](#️-configurazione) e segui le istruzioni fornite durante l'esecuzione dello script `install.sh` . Puoi decidere cosa installare usando le opzioni `-a`, `-b`, `-c` e `-f` (nessuna opzione di installazione personalizzata significa "installa tutto").
+* Se vuoi puoi [pre-configurare](#️-configurazione) gli [effetti di Hyperion](#effetto-orologio) e lo [script dei pulsanti](#pulsanti). Li puoi trovare nelle seguenti cartelle: `Hyperion_effects`, `buttons`.
+
+* Esegui lo script `install.sh` :
+```shell
+sudo ./install.sh
+```
+
+* Puoi decidere cosa installare usando le opzioni `-a`, `-b`, `-c` e `-f` (nessuna opzione di installazione personalizzata significa "installa tutto").
 ```shell
 Opzioni:
     Opzioni generali:
@@ -52,15 +59,10 @@ Opzioni:
         -c --clock          Installa l'effetto orologio.
         -f --fan            Installa lo script per la ventola.
 ```
-
-* Esegui lo script `install.sh` :
-```shell
-sudo ./install.sh -i
-```
+* Puoi ora [configurare](#️-configurazione) tutti i file .json, inclusi quelli per [lo script di Google Assistant](#google-assistant) e quello per lo [script della ventola](#ventola). Li puoi trovare nelle seguenti cartelle: `hyperion-mqtt-subscriber`, `Raspberry-Pi-PWM-fan`.
 
 
-## ⚙️ Configurazione Manuale
-Puoi configurare manualmente tutti i file .json che vuoi installare prima dell'esecuzione dello script `install.sh` invece di usare il terminale interattivo tramite l'opzione `-i` . In entrambi i casi dovrai fornire le stesse informazioni.
+## ⚙️ Configurazione
 Puoi anche cambiare qualsiasi valore di configurazione dopo il processo di [installazione](#-installazione). Se lo fai, ricordati di riavviare il sistema:
 ```shell
 sudo reboot
@@ -90,7 +92,27 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-*  Modifica i valori di `effects` e `clear` per farli combaciare con il setup dei tuoi pin di GPIO. Evita di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD): è già stato hardcoded per te come pulsante di accensione/spegnimento del Raspberry Pi ;)
+*  Modifica i valori di `effects` e `clear` per farli combaciare con il setup dei tuoi pin di GPIO. EVITA di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD) per qualsiasi  scopo diverso dal pulsante di accensione/spegnimento: è già stato hardcoded per te in questa maniera e non può essere cambiato per motivi legati all'hardware. Perciò NON devi configurarlo nel file `buttons.json`.
+* Modifica i valori di `short-press` e `long-press` per ogni pin. Puoi assegnare il nome di un effetto (e.g. `"Rainbow swirl"`) per lanciare il suddetto effetto, un valore RGB (e.g. `[255,0,0]`) per lanciare il colore risultante, la stringa `"clear"` per tornare alla modalità di cattura di default, oppure `null` per non fare nulla. 
+
+*Suggerisco di non modificare:*
+```
+{
+"short-press" : "clear",
+"long-press" : [0,0,0]
+}
+```
+
+* Puoi aggiungere quanti pulsanti vuoi incollando (e configurando) il seguente codice dopo `gpio-setup: {` :
+```json
+"Pin number" :
+{
+    "short-press" : "effect name"/[255,255,255]/null,
+    "long-press" : "effect name"/[255,255,255]/null
+},
+```
+
+* Modifica il valore di `gpio-mode` per farlo combaciare con quello usato per assegnare i numeri ai pin ("BCM"/"BOARD")
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
 ### Ventola
@@ -99,8 +121,8 @@ nano ~/ultimate-ambilight-setup/scripts/buttons.json
 nano ~/ultimate-ambilight-setup/scripts/fan.json
 ```
 * Modifica il valore di `pin` per farlo combaciare con il setup dei tuoi pin di GPIO
-* Puoi modificare il valore di default di `max_TEMP` (temperatura in gradi centigradi dopo la quale la ventola comincia a girare),
-`cutoff_TEMP` (temperatura in gradi centigradi dopo la quale la ventola si ferma) e `sleepTime` (intervallo di lettura della temperature in secondi)
+* Modifica il valore di `gpio-mode` per farlo combaciare con quello usato per assegnare i numeri ai pin ("BCM"/"BOARD")
+* Puoi modificare gli altri valori per assicurarti che la ventola funzioni come dovrebbe
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
 ### Google Assistant
@@ -114,9 +136,20 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 * crea un topic (feed) per "lanciare un effetto" e uno per "spegnere un effetto"
 * Modifica i valori di `username` e `key` dell' `adafruit_mqtt_broker` per farli combaciare con lo username e la AIO key di Adafruit-IO
 * Modifica il valore di `effect-topic` dell' `adafruit_mqtt_broker` per farlo combaciare con il nome del tuo topic di Adafruit-IO per "laciare un effetto"
-* Modifica il valore di `other-topic` dell' `adafruit_mqtt_broker`  per farlo combaciare con il nome del tuo topic di Adafruit-IO per "spegnere un effetto"
+* Modifica il valore di `color-topic` dell' `adafruit_mqtt_broker` per farlo combaciare con il nome del tuo topic di Adafruit-IO per "laciare un colore"
+* Modifica il valore di `misc-topic` dell' `adafruit_mqtt_broker`  per farlo combaciare con il nome del tuo topic di Adafruit-IO per "comandi misti"
 * Modifica il valore di `ip_address` del `kodi_server` per farlo combaciare con l'indirizzo IP del dispositivo su cui è in esecuzione Kodi ("127.0.0.1" se è lo stesso dispositivo che fa girare lo script)
 * Modifica il valore di `video_uri` del `kodi_server` con il percorso locale o il link da internet del video che vuoi riprodurre (supportati: YouTube, Dropbox, Flickr, GoogleDrive, Reddit, Twitch:video, Vimeo, VK e molti altri)
+* Ottieni [la tua API key di Yandex](https://translate.yandex.com/developers/keys).
+* Modifica il valore di `API_key` inserendo la tua API key di Yandex.
+* Modifica il valore di `from_language` per farlo combaciare con la tua lingua (it per Italiano)
+* Puoi aggiungere azioni personalizzate incollando il seguente codice dopo `"custom_actions": [` :
+```json
+{
+"message": "your_message",
+"target": "effect name"/[255,255,255]/"clear"/null
+},
+```
 * Salva `Ctrl + X` e chiudi il file `Enter`
 
 
@@ -124,16 +157,18 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 
 Usa il tuo [client di Hyperion](https://play.google.com/store/apps/details?id=nl.hyperion.hyperionfree&hl=it_IT) pereferito per selezionare e lanciare l'effetto orologio: la lancetta dei secondi avrà un colore più caldo quando fuori fa caldo e un colore più freddo quando fuori fa freddo.
 
-Usa dei pulsanti connessi al GPIO per avviare i gli effetti di Hyperion che hai predefinito, tornare alla modalità cattura, o spegnere in maniera sicura il tuo Raspberry Pi.
+Usa i pulsanti connessi al GPIO per avviare i gli effetti di Hyperion che hai predefinito, tornare alla modalità cattura, o spegnere in maniera sicura il tuo Raspberry Pi. Puoi attivare diverse funzioni alla pressione e alla pressione prolungata.
 
-Usa una ventola connessa al GPIO: comincerà a girare automaticamente quando la CPU è sopra la soglia di `max_TEMP` e si fermerà automaticamente quando la CPU è sotto la soglia di `cutoff_TEMP`.
+Usa una ventola connessa al GPIO: comincerà a girare automaticamente  ea a raffreddare il sistema variando la sua velocità a seconda della temperatura della CPU del Raspberry Pi.
 
 Usa [IFTTT](https://ifttt.com/) per interfacciare Google Assistant con il broker mqtt di Adafruit-IO. Puoi inviare:
 * al topic di Adafruit-IO per "lanciare un effetto" *(lo stesso topic assegnato a* `effect-topic` *in precedenza)*
    * il nome di un effetto per lanciare quell'effetto
-* al topic di Adafruit-IO per "spegnere un effetto" *(lo stesso topic assegnato a* `other-topic` *in precedenza)*
-   * `OFF` per spegnere qualsiasi effetto
-   * `ON` per accendere l'effetto `Dim cinema lights` (maniera aggiuntiva per avviare questo effetto)
+* al topic di Adafruit-IO per "lanciare un colore" *(lo stesso topic assegnato a* `color-topic` *in precedenza)*
+   * il nome di un colore per lanciare quel colore
+* al topic di Adafruit-IO per "comandi misti" *(lo stesso topic assegnato a* `misc-topic` *in precedenza)*
+   * `OFF` per spegnere qualsiasi effetto/colore (torna alla modalità di cattura di default)
+   * `ON` per accendere le luci di colore bianco (azione personalizzata)
    * `PLAY` per riprodurre il video da `video_uri` e contemporaneamente spegnere qualsiasi effetto (torna in modalità cattura)
    * `STOP` per interrompere qualsiasi video
 
