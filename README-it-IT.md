@@ -170,7 +170,7 @@ Usa [IFTTT](https://ifttt.com/) per interfacciare Google Assistant con il broker
    * `OFF` per spegnere qualsiasi effetto/colore (torna alla modalità di cattura di default)
    * `ON` per accendere le luci di colore bianco (azione personalizzata)
    * `PLAY` per riprodurre il video da `video_uri` e contemporaneamente spegnere qualsiasi effetto (torna in modalità cattura)
-   * `STOP` per interrompere qualsiasi video
+   * `STOP` per interrompere qualsiasi video (torna alla modalità di cattura di default)
 
 Ora puoi usare Google Assistant sul tuo smartphone/tablet/Google Home per dire a Hyperion cosa fare. 
 
