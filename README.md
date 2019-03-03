@@ -156,7 +156,7 @@ nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 
 Use your favorite [Hyperion client](https://github.com/JFtechOfficial/hyperion-controller) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
 
-Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi.
+Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi. You can trigger different functions by pressing and long-pressing the buttons.
 
 Use a fan connected to the GPIO: it will automatically start to spin and cool down the system varing its speed depending on the Rasperry Pi's CPU temperature.
 
@@ -167,7 +167,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
    * a color name in order to activate that color
 * to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
    * `OFF` in order to turn any effect/color off (goes back to capture mode)
-   * `ON` in order to turn on the lights with white color
+   * `ON` in order to turn on the lights with white color (custom action)
    * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
    * `STOP` in order to stop any video (goes back to capture mode)
 
