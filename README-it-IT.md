@@ -51,7 +51,6 @@ sudo ./install.sh
 Opzioni:
     Opzioni generali:
         -h --help           Mostra questa schermata.
-        -i --interactive    Inserisci i parametri di installazione durante l'installazione.
         -v --version        Mostra versione.
     Opzioni di installazione personalizzata:
         -a --assistant      Installa lo script per Google Assistant.
