@@ -175,7 +175,9 @@ Now you can use the Google Assistant on your smartphone/tablet/Google Home to te
 
 
 ## 📚 Resources
-Here is a step-by-step video guide about how to build the ultimate Ambilight setup: *TO-DO*
+Here is a step-by-step video guide about how to build the ultimate Ambilight setup (ITA):
+
+[![YouTube-tutorial](https://img.youtube.com/vi/1jSvfTHL-Lc/0.jpg)](https://www.youtube.com/playlist?list=PLdofamVz_h4NEx3Nl7P7_7uFXKz59dCV5)
 
 
 You can also check the [wiki](https://github.com/JFtechOfficial/ultimate-ambilght-setup/wiki)
