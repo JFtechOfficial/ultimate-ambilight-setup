@@ -38,8 +38,9 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 
  * Esegui lo script di installazione:
 ```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
-sudo ~/ultimate-ambilight-setup/./install.sh
+cd  ~/ultimate-ambilight-setup/
+sudo chmod 775 install.sh
+sudo ./install.sh
 ```
 
 * Puoi decidere cosa installare usando le opzioni `-a`, `-b`, `-c` e `-f` (nessuna opzione di installazione personalizzata significa "installa tutto").
