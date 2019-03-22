@@ -91,10 +91,10 @@ sudo nano /usr/share/hyperion/effects/clock.json
 ```shell
 nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ```
-*  Modifica i valori di `effects` e `clear` per farli combaciare con il setup dei tuoi pin di GPIO. EVITA di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD) per qualsiasi  scopo diverso dal pulsante di accensione/spegnimento: è già stato hardcoded per te in questa maniera e non può essere cambiato per motivi legati all'hardware. Perciò NON devi configurarlo nel file `buttons.json`.
-* Modifica i valori di `short-press` e `long-press` per ogni pin. Puoi assegnare il nome di un effetto (e.g. `"Rainbow swirl"`) per lanciare il suddetto effetto, un valore RGB (e.g. `[255,0,0]`) per lanciare il colore risultante, la stringa `"clear"` per tornare alla modalità di cattura di default, oppure `null` per non fare nulla. 
+*  Modifica i valori di `effects` e `clear` per farli combaciare con il setup dei tuoi pin di GPIO. EVITA di usare il pin 3 (BCM) a.k.a. GPIO 5 (BOARD) per qualsiasi  scopo diverso dal pulsante di accensione/spegnimento: è già stato hardcoded per te in questa maniera e non può essere cambiato per motivi legati all'hardware. Per questo motivo NON devi configurarlo nel file `buttons.json`.
+* Modifica i valori di `short-press` e `long-press` per ogni pin. Puoi assegnare il nome di un effetto (es. `"Rainbow swirl"`) per lanciare il suddetto effetto, un valore RGB (es. `[255,0,0]`) per lanciare il colore risultante, la stringa `"clear"` per tornare alla modalità di cattura di default, oppure `null` per non fare nulla. 
 
-*Suggerisco di non modificare:*
+*Personalmente suggerisco di non modificare:*
 ```
 {
 "short-press" : "clear",
@@ -175,7 +175,11 @@ Ora puoi usare Google Assistant sul tuo smartphone/tablet/Google Home per dire a
 
 
 ## 📚 Risorse
-Ecco una video guida passo-passo su come costruire l'ultimate Ambilight setup: *TO-DO*
+Ecco una video guida passo-passo su come costruire l'ultimate Ambilight setup: 
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1jSvfTHL-Lc/0.jpg)](https://www.youtube.com/playlist?list=PLdofamVz_h4NEx3Nl7P7_7uFXKz59dCV5)
+
+
 
 Il file `hyperion.config.json` è un esempio di un file di configurazione funzionante per Hyperion (generato via [HyperCon](https://github.com/hyperion-project/hypercon))
 
