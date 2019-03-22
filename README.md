@@ -156,7 +156,7 @@ nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 
 Use your favorite [Hyperion client](https://github.com/JFtechOfficial/hyperion-controller) to select and run the clock effect: the second hand has a warmer color when outside is hot and it has a colder color when outside is cold.
 
-Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, or safely turn off the Raspberry Pi. You can trigger different functions by pressing and long-pressing the buttons.
+Use buttons connected to the GPIO to launch effects or color, to go back to the capture mode, turn on or safely turn off the Raspberry Pi. You can trigger different functions by pressing and long-pressing the buttons.
 
 Use a fan connected to the GPIO: it will automatically start to spin and cool down the system varing its speed depending on the Rasperry Pi's CPU temperature.
 
