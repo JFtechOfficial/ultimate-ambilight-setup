@@ -156,7 +156,7 @@ nano ~/ultimate-ambilight-setup/scripts/client.json
 
 Usa il tuo [client di Hyperion](https://play.google.com/store/apps/details?id=nl.hyperion.hyperionfree&hl=it_IT) pereferito per selezionare e lanciare l'effetto orologio: la lancetta dei secondi avrà un colore più caldo quando fuori fa caldo e un colore più freddo quando fuori fa freddo.
 
-Usa i pulsanti connessi al GPIO per avviare i gli effetti di Hyperion che hai predefinito, tornare alla modalità cattura, o spegnere in maniera sicura il tuo Raspberry Pi. Puoi attivare diverse funzioni alla pressione e alla pressione prolungata.
+Usa i pulsanti connessi al GPIO per avviare i gli effetti di Hyperion che hai predefinito, tornare alla modalità cattura, accendere o spegnere in maniera sicura il tuo Raspberry Pi. Puoi attivare diverse funzioni alla pressione e alla pressione prolungata.
 
 Usa una ventola connessa al GPIO: comincerà a girare automaticamente  ea a raffreddare il sistema variando la sua velocità a seconda della temperatura della CPU del Raspberry Pi.
 
