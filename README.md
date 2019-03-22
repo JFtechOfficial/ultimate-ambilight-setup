@@ -32,7 +32,7 @@ Make sure you have [Hyperion](https://hyperion-project.org) installed and config
 ## 💾 Installation
 * Open a terminal window on your Raspberry Pi or connect via SSH (use the Terminal app on MacOS/Linux, or download [PuTTY](https://www.putty.org) on Windows) and run this command to clone this repository on your device:
 ```shell
-cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
+cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilight-setup.git
 ```
 
 * If you want you can [pre-configure](#️-configuration) the [Hyperion effects](#clock-effect) and [buttons script](#buttons). You can find them in the following directories: `Hyperion_effects`, `buttons`.
