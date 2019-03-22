@@ -29,12 +29,13 @@ Options:
 }
 
 clear
+echo "                                  "
 echo "   ______________            __   "
 echo "  /___    ____/ /____  _____/ /_  "
 echo " __  / / /_  / __/ _ \/ ___/ __ \ "
 echo "/ /_/ / __/ / /_/  __/ /__/ / / / "
 echo "\____/_/    \__/\___/\___/_/ /_/  "
-echo ""
+echo "                                  "
 echo "
 Find out how to install both hardware and software for this project on YouTube
 https://www.youtube.com/channel/UCHVYUIHCpWdqdW0ALlMS9Hg?sub_confirmation=1
