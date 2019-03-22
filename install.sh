@@ -28,7 +28,7 @@ Options:
   "
 }
 
-
+clear
 echo "   ______________            __   "
 echo "  /___    ____/ /____  _____/ /_  "
 echo " __  / / /_  / __/ _ \/ ___/ __ \ "
@@ -103,15 +103,17 @@ echo "This installation is going to install the following:
 
 if [ $fan -ne 0 ]; then
   echo "- fan script
-a script that controls a fan (on/off) using a GPIO pin.
-The fan will automatically start to spin when the CPU is above the max_TEMP threshold
-and will automatically stop when the CPU is below the cutoff_TEMP threshold.
+a script that controls a simple fan connected to the GPIO.
+The fan will automatically start to spin and cool down the system 
+varing its speed depending on the Rasperry Pi's CPU temperature.
   "
 fi
 if [ $buttons -ne 0 ]; then
   echo "- buttons script
-A script that let you use buttons connected to the GPIO
-to launch effects, go back to the capture mode, or safely turn off the Raspberry Pi.
+a script that let you use buttons connected to the GPIO
+to launch effects or color, to go back to the capture mode, 
+turn on or safely turn off the Raspberry Pi. 
+You can trigger different functions by pressing and long-pressing the buttons.
   "
 fi
 if [ $clock -ne 0 ]; then
@@ -124,7 +126,7 @@ fi
 if [ $assistant -ne 0 ]; then
   echo "- Google Assistant script
 a script that let you use the Google Assistant on your smartphone/tablet/Google Home
-to tell Hyperion what to do (e.g. Ok Google, launch Rainbow swirl effect)
+to tell Hyperion what to do (e.g. Hey Google, launch Rainbow swirl effect)
   "
 fi
 read -p "Do you want to procede? [y/N]: " installReply
