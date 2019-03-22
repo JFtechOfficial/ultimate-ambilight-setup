@@ -34,16 +34,12 @@ Assicurati di avere [Hyperion](https://hyperion-project.org) installato e config
 ```shell
 cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilight-setup.git
 ```
- * Prepara lo script install.sh:
+* Se vuoi puoi [pre-configurare](#️-configurazione) gli [effetti di Hyperion](#effetto-orologio) e lo [script dei pulsanti](#pulsanti). Li puoi trovare nelle seguenti cartelle: `Hyperion_effects`, `buttons`.
+
+ * Esegui lo script di installazione:
 ```shell
 sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
 sudo ~/ultimate-ambilight-setup/./install.sh
-```
-* Se vuoi puoi [pre-configurare](#️-configurazione) gli [effetti di Hyperion](#effetto-orologio) e lo [script dei pulsanti](#pulsanti). Li puoi trovare nelle seguenti cartelle: `Hyperion_effects`, `buttons`.
-
-* Esegui lo script `install.sh` :
-```shell
-sudo ./install.sh
 ```
 
 * Puoi decidere cosa installare usando le opzioni `-a`, `-b`, `-c` e `-f` (nessuna opzione di installazione personalizzata significa "installa tutto").
