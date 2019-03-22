@@ -40,8 +40,9 @@ cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial
 
 * Run the `install.sh` script:
 ```shell
-sudo chmod 775 ~/ultimate-ambilight-setup/install.sh
-sudo ~/ultimate-ambilight-setup/./install.sh
+cd  ~/ultimate-ambilight-setup/
+sudo chmod 775 install.sh
+sudo ./install.sh
 ```
 
 * You can decide what to install/reinstall using the `-a`, `-b`, `-c` and `-f` arguments (no custom installation arguments means "install everything").
