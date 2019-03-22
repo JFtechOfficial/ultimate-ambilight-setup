@@ -32,7 +32,7 @@ Assicurati di avere [Hyperion](https://hyperion-project.org) installato e config
 ## 💾 Installazione
 * Apri una finestra del terminale sul tuo Raspberry Pi o connettiti via SSH (usa l'app Terminale su MacOS/Linux, o scarica [PuTTY](https://www.putty.org) su Windows) e esegui questo comando per clonare questa repository sul tuo dispositivo:
 ```shell
-cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilght-setup.git
+cd ~/ && sudo apt-get install git && git clone https://github.com/JFtechOfficial/ultimate-ambilight-setup.git
 ```
  * Prepara lo script install.sh:
 ```shell
