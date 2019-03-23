@@ -74,7 +74,7 @@ sudo nano ~/ultimate-ambilight-setup/Hyperion_effects/clock.json
 ```
 * Get [your OpenWeatherMap API key](http://openweathermap.org/appid)
 * Modify the `owmAPIkey` value pasting your API key (you can use the same API key in the Kodi Weather app btw)
-* Get [your coordinates](https://www.whataremycoordinates.com/)
+* Get [your coordinates](https://gps-coordinates.org)
 * Modify both `latitude` and `longitude` values pasting your own latitude and longitude
 * Modify the `offset` value to match your LED setup
 * Modify the `direction` value to match your LED setup ( `0` -> clockwise, `1` -> counterclockwise)
