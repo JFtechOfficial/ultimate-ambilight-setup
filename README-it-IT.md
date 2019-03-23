@@ -114,7 +114,7 @@ nano ~/ultimate-ambilight-setup/scripts/buttons.json
 ### Ventola
 * Apri il file `fan.json` :
 ```shell
-nano ~/ultimate-ambilight-setup/scripts/fan.json
+nano ~/ultimate-ambilight-setup/Raspberry-Pi-PWM-fan/fan.json
 ```
 * Modifica il valore di `pin` per farlo combaciare con il setup dei tuoi pin di GPIO
 * Modifica il valore di `gpio-mode` per farlo combaciare con quello usato per assegnare i numeri ai pin ("BCM"/"BOARD")
@@ -124,7 +124,7 @@ nano ~/ultimate-ambilight-setup/scripts/fan.json
 ### Google Assistant
 * Apri il file `client.json` :
 ```shell
-nano ~/ultimate-ambilight-setup/scripts/client.json
+nano ~/ultimate-ambilight-setup/hyperion-mqtt-subscriber/client.json
 ```
 * Modifica il valore di `ip_address` dell' `hyperion_server` per farlo combaciare con l'indirizzo IP del dispositivo su cui è in esecuzione Hyperion ("127.0.0.1" se è lo stesso dispositivo che fa girare lo script)
 * Se hai usato una porta differente puoi modificare il valore di default di `port` dell' `hyperion_server`
