@@ -159,14 +159,14 @@ Usa una ventola connessa al GPIO: comincerà a girare automaticamente  ea a raff
 
 Usa [IFTTT](https://ifttt.com/) per interfacciare Google Assistant con il broker mqtt di Adafruit-IO. Puoi inviare:
 * al topic di Adafruit-IO per "lanciare un effetto" *(lo stesso topic assegnato a* `effect-topic` *in precedenza)*
-   * il nome di un effetto per lanciare quell'effetto
+   * [il nome di un effetto per lanciare quell'effetto](https://ifttt.com/applets/suqzaZhF-hey-google-launch-hyperion-effect)
 * al topic di Adafruit-IO per "lanciare un colore" *(lo stesso topic assegnato a* `color-topic` *in precedenza)*
-   * il nome di un colore per lanciare quel colore
+   * [il nome di un colore per lanciare quel colore](https://ifttt.com/applets/E5QBnhzL-hey-google-turn-the-tv-lights-this-color-hyperion)
 * al topic di Adafruit-IO per "comandi misti" *(lo stesso topic assegnato a* `misc-topic` *in precedenza)*
-   * `OFF` per spegnere qualsiasi effetto/colore (torna alla modalità di cattura di default)
-   * `ON` per accendere le luci di colore bianco (azione personalizzata)
-   * `PLAY` per riprodurre il video da `video_uri` e contemporaneamente spegnere qualsiasi effetto (torna in modalità cattura)
-   * `STOP` per interrompere qualsiasi video (torna alla modalità di cattura di default)
+   * [`OFF` per spegnere qualsiasi effetto/colore (torna alla modalità di cattura di default)](https://ifttt.com/applets/daPyXsWx-hey-google-turn-off-the-tv-lights-hyperion)
+   * [`ON` per accendere le luci di colore bianco (azione personalizzata)](https://ifttt.com/applets/ajTmzHpA-hey-google-turn-on-the-tv-lights-hyperion)
+   * [`PLAY` per riprodurre il video da `video_uri` e contemporaneamente spegnere qualsiasi effetto (torna in modalità cattura)](https://ifttt.com/applets/EuJBGj7Y-hey-google-light-the-tv-fireplace-hyperion)
+   * [`STOP` per interrompere qualsiasi video (torna alla modalità di cattura di default)](https://ifttt.com/applets/VFy3dnc8-hey-google-put-out-the-fire-of-the-tv-fireplace-hyperion)
 
 Ora puoi usare Google Assistant sul tuo smartphone/tablet/Google Home per dire a Hyperion cosa fare. 
 
