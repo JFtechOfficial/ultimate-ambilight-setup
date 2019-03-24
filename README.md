@@ -169,7 +169,7 @@ Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-
 * to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
    * [`OFF` in order to turn any effect/color off (goes back to capture mode)](https://ifttt.com/applets/daPyXsWx-hey-google-turn-off-the-tv-lights-hyperion)
    * [`ON` in order to turn on the lights with white color (custom action)](https://ifttt.com/applets/ajTmzHpA-hey-google-turn-on-the-tv-lights-hyperion)
-   * [`PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)(https://ifttt.com/applets/EuJBGj7Y-hey-google-light-the-tv-fireplace-hyperion)
+   * [`PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)](https://ifttt.com/applets/EuJBGj7Y-hey-google-light-the-tv-fireplace-hyperion)
    * [`STOP` in order to stop any video (goes back to capture mode)](https://ifttt.com/applets/VFy3dnc8-hey-google-put-out-the-fire-of-the-tv-fireplace-hyperion)
 
 Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do.
