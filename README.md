@@ -163,14 +163,14 @@ Use a fan connected to the GPIO: it will automatically start to spin and cool do
 
 Use [IFTTT](https://ifttt.com/) to interface Google Assistant with the Adafruit-IO mqtt broker. You can send:
 * to the "effect launching" topic *(the same topic assigned to* `effect-topic` *earlier)*
-   * an effect name in order to activate that effect
+   * [an effect name in order to activate that effect](https://ifttt.com/applets/suqzaZhF-hey-google-launch-hyperion-effect)
 * to the "color launching" topic *(the same topic assigned to* `color-topic` *earlier)*
-   * a color name in order to activate that color
+   * [a color name in order to activate that color](https://ifttt.com/applets/E5QBnhzL-hey-google-turn-the-tv-lights-this-color-hyperion)
 * to the "miscellaneous" topic *(the same topic assigned to* `misc-topic` *earlier)*
-   * `OFF` in order to turn any effect/color off (goes back to capture mode)
-   * `ON` in order to turn on the lights with white color (custom action)
-   * `PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)
-   * `STOP` in order to stop any video (goes back to capture mode)
+   * [`OFF` in order to turn any effect/color off (goes back to capture mode)](https://ifttt.com/applets/daPyXsWx-hey-google-turn-off-the-tv-lights-hyperion)
+   * [`ON` in order to turn on the lights with white color (custom action)](https://ifttt.com/applets/ajTmzHpA-hey-google-turn-on-the-tv-lights-hyperion)
+   * [`PLAY` in order to play the video from `video_uri` while turning any effect off (goes back to capture mode)(https://ifttt.com/applets/EuJBGj7Y-hey-google-light-the-tv-fireplace-hyperion)
+   * [`STOP` in order to stop any video (goes back to capture mode)](https://ifttt.com/applets/VFy3dnc8-hey-google-put-out-the-fire-of-the-tv-fireplace-hyperion)
 
 Now you can use the Google Assistant on your smartphone/tablet/Google Home to tell Hyperion what to do.
 
