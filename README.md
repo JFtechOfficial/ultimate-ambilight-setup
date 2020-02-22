@@ -23,7 +23,7 @@ Scripts that I created to enhance the Hyperion experience. You can also read thi
 </details>
 
 ### Requirements
-* A Raspberry Pi 2, 3 or 3+
+* A Raspberry Pi 2, or higher
 * A microSD card with an OS already up and running ([OSMC](https://osmc.tv/download/) is suggested)
 
 Make sure you have [Hyperion](https://hyperion-project.org) installed and configured (installation and configuration via [HyperCon](https://hyperion-project.org/wiki/HyperCon-Information) is suggested).
